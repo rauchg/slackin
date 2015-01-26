@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+// es6 polyfills
+require('6to5/register');
+
+var pkg = require('../package');
+var program = require('commander');
+var slackin = require('../node');
+
+program
+.version(pkg.version)
+.option('-p, --port [port]', 'Port to listen on', 3000)
+.option('-t, --token [token]', 'Token (https://api.slack.com/web)')
+.option('-o, --org [org]', 'Organization subdomain ({xxx}.slack.com)')
+.option('-c, --channel [chan]', 'Invite users only to this channel')
+.option('-i, --interval [int]', 'How frequently we poll Slack', 1000)
+.option('-s, --silent', 'Do not print out warns or errors')
+.parse(process.argv);
+
+var port = program.port;
+slackin(program).listen(port, function(err){
+  if (err) throw err;
+  if (!program.silent) console.log('%s – listening on *:%d', new Date, port);
+});
