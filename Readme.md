@@ -21,7 +21,7 @@ You get:
 
 ### Server
 
-`deploy to heroku button here`
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin)
 
 To launch it:
 
@@ -36,7 +36,7 @@ The available options are:
 - `--token [token]` (required) – API token for your org. Get it
 [here](https://api.slack.com/web).
 - `--org [org]` (required) – Organization subdomain (//**this**.slack.com)
-- `--channel [chan]` – If you want users to join *just one guest channel* 
+- `--channel [chan]` – If you want users to join *just one guest channel*
   within your organization, provide it.
 - `--silent` - If provided, no errors or warnings are printed out.
 
@@ -83,7 +83,7 @@ require('slackin')({
   token: 'yourtoken', // required
   interval: 1000,
   org: 'your-slack-subdomain', // required
-  channel: 'channel' // for single channel mode,
+  channel: 'channel', // for single channel mode,
   silent: false // suppresses warnings
 }).listen(3000);
 ```
@@ -97,7 +97,7 @@ By default logging is enabled.
 
 - The SVG badge generation was taken from the
 excellent [shields](https://github.com/badges/shields) project.
-- The button CSS is based on 
+- The button CSS is based on
 [github-buttons](https://github.com/mdo/github-buttons).
 
 ## License
