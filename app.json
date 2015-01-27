@@ -1,0 +1,22 @@
+{
+  "name": "Slackin",
+  "description": "Make your Slack organization/channel public.",
+  "keywords": [
+    "Slack",
+    "Chat",
+    "irc"
+  ],
+  "website": "https://github.com/rauchg/slackin",
+  "repository": "https://github.com/rauchg/slackin",
+  "env": {
+    "SLACK_API_TOKEN": {
+      "description": "API token for your org. Get it here: https://api.slack.com/web.",
+    },
+    "SLACK_API_ORG": {
+      "description": " Organization subdomain (//**this**.slack.com)"
+    },
+    "SLACK_API_CHANNEL": {
+      "description": "Channel you want users to join.",
+    }
+  }
+}
