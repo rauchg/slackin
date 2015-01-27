@@ -5,7 +5,7 @@ require('6to5/register');
 
 var pkg = require('../package');
 var program = require('commander');
-var slackin = require('../node');
+var slackin = require('../lib');
 
 program
 .version(pkg.version)
