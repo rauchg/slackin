@@ -2,6 +2,9 @@
   "name": "slackin",
   "version": "0.1.2",
   "description": "",
+  "scripts": {
+    "start": "./bin/slackin --port ${PORT:=} --org ${ORG:=''} --token ${TOKEN:=''}"
+  },
   "dependencies": {
     "body-parser": "1.10.2",
     "commander": "2.6.0",
