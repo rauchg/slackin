@@ -21,6 +21,6 @@
     "supertest": "0.15.0"
   },
   "bin": {
-    "slackin": "./bin/skackin"
+    "slackin": "./bin/slackin"
   }
 }
