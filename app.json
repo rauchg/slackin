@@ -1,6 +1,6 @@
 {
   "name": "Slackin",
-  "description": "",
+  "description": "A little server that enables public access to a Slack server",
   "repository": "https://github.com/rauchg/slackin",
   "keywords": ["slack"],
   "env": {
