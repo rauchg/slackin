@@ -1,7 +1,7 @@
 {
   "name": "Slackin",
   "description": "Let people invite themselves to your Slack",
-  "logo": "https://i.imgur.com/odDO1Fx.png"
+  "logo": "https://i.imgur.com/odDO1Fx.png",
   "repository": "https://github.com/rauchg/slackin",
   "keywords": ["node", "slack"],
   "env": {
