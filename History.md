@@ -1,4 +1,9 @@
 
+0.2.1 / 2015-01-30
+==================
+
+ * improved startup speed by leveraging pre-compilation
+
 0.2.0 / 2015-01-30
 ==================
 

@@ -1,11 +1,8 @@
 #!/usr/bin/env node
 
-// es6 polyfills
-require('6to5/register');
-
 var pkg = require('../package');
 var program = require('commander');
-var slackin = require('../lib');
+var slackin = require('../node');
 
 program
 .version(pkg.version)
