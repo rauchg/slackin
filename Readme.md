@@ -17,7 +17,7 @@ It provides
 
 ### Server
 
-With one click: [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Or install it and launch it on your sever:
 
