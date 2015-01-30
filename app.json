@@ -1,0 +1,21 @@
+{
+  "name": "Slackin",
+  "description": "Let people invite themselves to your Slack channel",
+  "repository": "https://github.com/rauchg/slackin",
+  "keywords": ["node", "slack"],
+  "env": {
+    "SLACK_ORG": {
+      "description": "The name of your Slack organization (**this**.slack.com)",
+      "required": true
+    },
+    "SLACK_API_TOKEN": {
+      "description": "Slack API token (you can find it on api.slack.com/web)",
+      "required": true
+    },
+    "SLACK_CHANNEL": {
+      "description": "The slack channel to invite people to",
+      "value": "general",
+      "required": false
+    }
+  }
+}
