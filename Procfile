@@ -1,1 +1,1 @@
-web: bin/slackin --token $SLACK_API_TOKEN --org $SLACK_ORG --port $PORT --channel $SLACK_CHANNEL
+web: bin/slackin --port $PORT $SLACK_SUBDOMAIN $SLACK_API_TOKEN

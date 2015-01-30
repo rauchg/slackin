@@ -27,18 +27,23 @@ To launch it:
 
 ```bash
 $ npm install -g slackin
-$ slackin --token "token" --org socketio
+$ slackin "your-slack-subdomain" "an-api-token"
 ```
 
-The available options are:
+You can find your API token at [api.slack.com/web](https://api.slack.com/web).
 
-- `--port [port]` – What port to bind to (defaults to `3000`)
-- `--token [token]` (required) – API token for your org. Get it
-[here](https://api.slack.com/web).
-- `--org [org]` (required) – Organization subdomain (//**this**.slack.com)
-- `--channel [chan]` – If you want users to join *just one guest channel* 
-  within your organization, provide it.
-- `--silent` - If provided, no errors or warnings are printed out.
+```
+  Usage: slackin [options] <slack-subdomain> <api-token>
+
+  Options:
+
+    -h, --help            output usage information
+    -V, --version         output the version number
+    -p, --port <port>     Port to listen on [$PORT or 3000]
+    -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
+    -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
+    -s, --silent          Do not print out warns or errors
+```
 
 ### Realtime Badge
 

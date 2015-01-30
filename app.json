@@ -4,12 +4,12 @@
   "repository": "https://github.com/rauchg/slackin",
   "keywords": ["node", "slack"],
   "env": {
-    "SLACK_ORG": {
-      "description": "The name of your Slack organization (**this**.slack.com)",
+    "SLACK_SUBDOMAIN": {
+      "description": "Your Slack's subdomain (**this**.slack.com)",
       "required": true
     },
     "SLACK_API_TOKEN": {
-      "description": "Slack API token (you can find it on api.slack.com/web)",
+      "description": "A Slack API token (find it on https://api.slack.com/web)",
       "required": true
     },
     "SLACK_CHANNEL": {
