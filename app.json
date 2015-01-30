@@ -13,8 +13,7 @@
       "required": true
     },
     "SLACK_CHANNEL": {
-      "description": "The slack channel to invite people to",
-      "value": "general",
+      "description": "Name of a single guest channel to invite them to (leave blank for a normal, all-channel invite)",
       "required": false
     }
   }
