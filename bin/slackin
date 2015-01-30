@@ -9,11 +9,11 @@ var slackin = require('../lib');
 
 program
 .version(pkg.version)
-.option('-p, --port [port]', 'Port to listen on', 3000)
-.option('-t, --token [token]', 'Token (https://api.slack.com/web)')
-.option('-o, --org [org]', 'Organization subdomain ({xxx}.slack.com)')
-.option('-c, --channel [chan]', 'Invite users only to this channel')
-.option('-i, --interval [int]', 'How frequently we poll Slack', 1000)
+.option('-p, --port <port>', 'Port to listen on', parseInt, 3000)
+.option('-t, --token <token>', 'Token (https://api.slack.com/web)')
+.option('-o, --org <org>', 'Organization subdomain ({xxx}.slack.com)')
+.option('-c, --channel <chan>', 'Invite users only to this channel')
+.option('-i, --interval <int>', 'How frequently we poll Slack', parseInt, 1000)
 .option('-s, --silent', 'Do not print out warns or errors')
 .parse(process.argv);
 
