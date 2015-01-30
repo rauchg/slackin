@@ -21,7 +21,7 @@ You get:
 
 ### Server
 
-`deploy to heroku button here`
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 To launch it:
 
