@@ -17,8 +17,7 @@ program
 .option('-s, --silent', 'Do not print out warns or errors')
 .parse(process.argv);
 
-var port = program.port;
-slackin(program).listen(port, function(err){
+slackin(program).listen(program.port, function(err){
   if (err) throw err;
-  if (!program.silent) console.log('%s – listening on *:%d', new Date, port);
+  if (!program.silent) console.log('%s – listening on *:%d', new Date, program.port);
 });
