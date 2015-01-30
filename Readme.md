@@ -21,28 +21,30 @@ You get:
 
 ### Server
 
+Deploy it to Heroku:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-To launch it:
+Or install and launch it locally:
 
 ```bash
 $ npm install -g slackin
-$ slackin "your-slack-subdomain" "an-api-token"
+$ slackin "your-slack-org-subdomain" "api-token"
 ```
 
-You can find your API token at [api.slack.com/web](https://api.slack.com/web).
+You can find your API token at [api.slack.com/web](https://api.slack.com/web)
 
 ```
-  Usage: slackin [options] <slack-subdomain> <api-token>
+Usage: slackin [options] <slack-subdomain> <api-token>
 
-  Options:
+Options:
 
-    -h, --help            output usage information
-    -V, --version         output the version number
-    -p, --port <port>     Port to listen on [$PORT or 3000]
-    -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
-    -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
-    -s, --silent          Do not print out warns or errors
+  -h, --help            output usage information
+  -V, --version         output the version number
+  -p, --port <port>     Port to listen on [$PORT or 3000]
+  -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
+  -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
+  -s, --silent          Do not print out warns or errors
 ```
 
 ### Realtime Badge
