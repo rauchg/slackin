@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "dependencies": {
     "body-parser": "1.10.2",
@@ -20,6 +20,7 @@
     "mocha": "2.1.0",
     "supertest": "0.15.0"
   },
+  "main": "./node/index",
   "bin": {
     "slackin": "./bin/slackin"
   }
