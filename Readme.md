@@ -4,14 +4,10 @@
 A little server that enables public access
 to a Slack server. Like Freenode, but on Slack.
 
-It prompts users to join by emailing them an
-invite to your organization (all of it or just
-one guest channel) through the Slack API.
+It provides
 
-You get:
-
-- A landing page you can point users to
-  (`http://slack.yourdomain.com`)
+- A landing page you can point users to fill in their
+  emails and receive an invite (`http://slack.yourdomain.com`)
 - An `<iframe>` badge to embed on any website
   that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums
@@ -21,24 +17,31 @@ You get:
 
 ### Server
 
-`deploy to heroku button here`
+With one click: [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-To launch it:
+Or install it and launch it on your sever:
 
 ```bash
 $ npm install -g slackin
-$ slackin --token "token" --org socketio
+$ slackin "your-slack-subdomain" "your-slack-token"
 ```
+
+You can find your API token at [api.slack.com/web](https://api.slack.com/web).
 
 The available options are:
 
-- `--port [port]` – What port to bind to (defaults to `3000`)
-- `--token [token]` (required) – API token for your org. Get it
-[here](https://api.slack.com/web).
-- `--org [org]` (required) – Organization subdomain (//**this**.slack.com)
-- `--channel [chan]` – If you want users to join *just one guest channel* 
-  within your organization, provide it.
-- `--silent` - If provided, no errors or warnings are printed out.
+```
+Usage: slackin [options] <slack-subdomain> <api-token>
+
+Options:
+
+  -h, --help            output usage information
+  -V, --version         output the version number
+  -p, --port <port>     Port to listen on [$PORT or 3000]
+  -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
+  -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
+  -s, --silent          Do not print out warns or errors
+```
 
 ### Realtime Badge
 
