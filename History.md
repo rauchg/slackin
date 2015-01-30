@@ -1,4 +1,11 @@
 
+0.2.0 / 2015-01-30
+==================
+
+ * improved CLI interface [buildkite]
+ * support for ENV vars [buildkite]
+ * deploy to heroku button [buildkite]
+
 0.1.2 / 2015-01-28
 ==================
 
