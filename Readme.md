@@ -1,12 +1,9 @@
 
 # slackin
 
-A little server that enables public access
-to a Slack server. Like Freenode, but on Slack.
+Let people invite themselves to your Slack.
 
-It prompts users to join by emailing them an
-invite to your organization (all of it or just
-one guest channel) through the Slack API.
+[![](https://cldup.com/WIbawiqp0Q.png)](http://slack.socket.io)
 
 You get:
 
