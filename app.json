@@ -1,0 +1,21 @@
+{
+  "name": "Slackin",
+  "description": "Let people invite themselves to your Slack",
+  "logo": "https://i.imgur.com/odDO1Fx.png",
+  "repository": "https://github.com/rauchg/slackin",
+  "keywords": ["node", "slack"],
+  "env": {
+    "SLACK_SUBDOMAIN": {
+      "description": "Your Slack's subdomain (**this**.slack.com)",
+      "required": true
+    },
+    "SLACK_API_TOKEN": {
+      "description": "A Slack API token (find it on https://api.slack.com/web)",
+      "required": true
+    },
+    "SLACK_CHANNEL": {
+      "description": "Name of a single guest channel to invite them to (leave blank for a normal, all-channel invite)",
+      "required": false
+    }
+  }
+}
