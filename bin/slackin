@@ -6,18 +6,27 @@ var slackin = require('../node');
 
 program
 .version(pkg.version)
-.usage('[options] <slack-subdomain> <api-token>')
+.usage('[options] <slack-subdomain> <api-token> <lang>')
 .option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', process.env.PORT || 3000)
 .option('-c, --channel <chan>', 'Single channel guest invite [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
 .option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]', process.env.SLACK_INTERVAL || 1000)
 .option('-s, --silent', 'Do not print out warns or errors')
 .parse(process.argv);
 
-if (program.args.length != 2) {
+if (program.args.length < 2) {
   program.help();
 } else {
   program.org = program.args[0];
   program.token = program.args[1];
+
+  var args = program.args.slice(2, program.args.length);
+  if(args.length) {
+    var langs = {};
+    for(var i in args) {
+      try { langs[args[i]] = require('../node/locale/'+args[i]); }catch(e){ console.log(e); };
+    }
+    program.langs = langs;
+  }
 }
 
 var port = program.port;

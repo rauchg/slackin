@@ -5,9 +5,17 @@ all: node
 
 node: lib
 	@mkdir -p node/assets/
+	@mkdir -p node/locale/
 	@rm -rf node/assets/*
 	@cp -r lib/assets node/
 	@for path in lib/*.js; do \
 		file=`basename $$path`; \
 		$(6TO5) "lib/$$file" > "node/$$file"; \
 	done
+	@for path in lib/locale/*.js; do \
+		file=`basename $$path`; \
+		$(6TO5) "lib/locale/$$file" > "node/locale/$$file"; \
+	done
+
+clean:
+	@rm -rf ./node/

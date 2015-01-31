@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Urucas/slackin.svg?branch=master)](https://travis-ci.org/Urucas/slackin)
 
 # slackin
 
@@ -41,6 +42,24 @@ Options:
   -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
   -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
   -s, --silent          Do not print out warns or errors
+```
+
+#### Build from source
+
+Clone this repository, then install the `6to5` npm module locally and run the Makefile.
+
+```bash
+$ git clone <repository url>
+$ cd slackin
+$ npm install 6to5
+$ make
+$ npm install
+```
+
+And finally, start slackin:
+
+```bash
+$ ./bin/slackin "your-slack-subdomain" "your-slack-token"
 ```
 
 ### Realtime Badge
