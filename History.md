@@ -1,4 +1,9 @@
 
+0.2.5 / 2015-02-01
+==================
+
+ * fix single channel invites to be ultra restricted
+
 0.2.4 / 2015-02-01
 ==================
 
