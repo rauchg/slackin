@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "dependencies": {
     "body-parser": "1.10.2",
