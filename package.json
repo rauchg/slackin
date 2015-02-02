@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "",
   "dependencies": {
     "6to5": "3.3.2",
