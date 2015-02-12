@@ -27,8 +27,9 @@ $ slackin "your-slack-subdomain" "your-slack-token"
 ```
 
 You can find your API token at [api.slack.com/web](https://api.slack.com/web).
-**Note:** As of 02/10 Slack is only allowing our invite API request
-from paid organizations only.
+
+**NOTE:** As of 02/10 Slack is only allowing our invite API request
+from paid organizations only, or personal user tokens.
 
 The available options are:
 
