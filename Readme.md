@@ -13,6 +13,8 @@ It provides
 - A SVG badge that works well from static mediums
   (like GitHub README pages)
 
+Read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
+
 ## How to use
 
 ### Server
