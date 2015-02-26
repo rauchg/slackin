@@ -1,7 +1,7 @@
 // checks translations prototypes
 describe("translations test ->", () => {
 
-    var normalizedPath = require("path").join(__dirname, "../node/locale");
+    var normalizedPath = require("path").join(__dirname, "../lib/locale");
     require("fs").readdirSync(normalizedPath).forEach(function(file) {
 
       it("testing "+file+" prototype", (done) => {
