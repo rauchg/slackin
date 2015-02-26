@@ -1,6 +1,6 @@
-import slackin from '../node/';
+import slackin from '../lib/';
 import {token, org} from './config';
-import en from '../node/locale/en';
+import en from '../lib/locale/en';
 import dom from 'vd';
 
 describe('Slackin instance test', () => {
