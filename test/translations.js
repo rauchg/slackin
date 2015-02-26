@@ -5,7 +5,7 @@ describe("translations test ->", () => {
     require("fs").readdirSync(normalizedPath).forEach(function(file) {
 
       it("testing "+file+" prototype", (done) => {
-        var locale = require("../node/locale/" + file);
+        var locale = require("../lib/locale/" + file);
         if(locale.join == undefined) {
           throw new Error("join is not defined");
         }
