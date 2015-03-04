@@ -4,15 +4,7 @@
 // we do this in addition to the polyfill
 // required in lib/index to support `git clone`
 // based installations (eg: heroku deploy)
-require('6to5/register')({
-  // prevent issues with global installs
-  // and 6to5 ignoring any occurrence of
-  // 'node_modules' by default, including
-  // /usr/local/lib/node_modules, which
-  // makes it noop entirely
-  ignore: false,
-  only: /slackin\/lib\//
-});
+require('6to5/register');
 
 var pkg = require('../package');
 var program = require('commander');
