@@ -1,6 +1,9 @@
 {
   "name": "slackin",
   "version": "0.3.1",
+  "scripts": {
+    "postinstall": "make"
+  },
   "description": "",
   "dependencies": {
     "babel": "4.7.1",
