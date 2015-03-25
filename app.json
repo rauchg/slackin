@@ -16,6 +16,10 @@
     "SLACK_CHANNEL": {
       "description": "Name of a single guest channel to invite them to (leave blank for a normal, all-channel invite)",
       "required": false
+    },
+    "SLACK_RESTRICT": {
+      "description": "If it's a restricted account or not (default it's false)",
+      "required": false
     }
   }
 }
