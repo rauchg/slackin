@@ -1,4 +1,14 @@
 
+0.4.0 / 2015-04-10
+==================
+
+ * use SVG Heroku button
+ * fixed svg dimensions issues
+ * exclude bots (and slackbot) from users count
+ * improve mobile zoom
+ * use `<input type="email">`
+ * fix for single-channel guests invitation parameter name
+
 0.3.1 / 2015-03-16
 ==================
 
