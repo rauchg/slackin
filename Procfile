@@ -1,1 +1,1 @@
-web: make && bin/slackin --port $PORT $SLACK_SUBDOMAIN $SLACK_API_TOKEN -c $SLACK_CHANNEL
+web: make && bin/slackin --channel $SLACK_CHANNEL --port $PORT $SLACK_SUBDOMAIN $SLACK_API_TOKEN
