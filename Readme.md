@@ -45,6 +45,8 @@ Options:
   -s, --silent          Do not print out warns or errors
 ```
 
+**Important: if you use Slackin in single-channel mode, you'll only be able to invite as many external accounts as paying members you have times 5. If you are not getting invite emails, this might be the reason. Workaround: sign up for a free org, and set up Slackin to point to it (all channels will be visible).**
+
 ### Realtime Badge
 
 [![](https://cldup.com/IaiPnDEAA6.gif)](http://slack.socket.io)
