@@ -15,7 +15,8 @@
     "vd": "0.1.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "nock": "^0.48.1"
   },
   "main": "./node/index",
   "bin": {
