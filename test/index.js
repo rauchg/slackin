@@ -33,8 +33,8 @@ describe('slackin', () => {
       request(app)
         .post('/invite')
         .send({ email: 'foo@example.com' })
-        // .expect('Content-Type', /json/)
-        .expect(200, {})
+        .expect('Content-Type', /json/)
+        .expect(200, { msg: 'success' })
         .end(done);
     });
 
@@ -58,7 +58,7 @@ describe('slackin', () => {
       request(app)
         .post('/invite')
         .send({ email: 'foo@example.com' })
-        // .expect('Content-Type', /json/)
+        .expect('Content-Type', /json/)
         .expect(400, { msg: "other error" })
         .end(done);
     });
