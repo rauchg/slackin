@@ -28,7 +28,7 @@ $ npm install -g slackin
 $ slackin "your-slack-subdomain" "your-slack-token"
 ```
 
-You can find your API token at [api.slack.com/web](https://api.slack.com/web).
+You can find your API token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You may want to create a dedicated `@slackin-inviter` user (or similar) for this.
 
 The available options are:
 
@@ -104,7 +104,7 @@ By default logging is enabled.
 
 - The SVG badge generation was taken from the
 excellent [shields](https://github.com/badges/shields) project.
-- The button CSS is based on 
+- The button CSS is based on
 [github-buttons](https://github.com/mdo/github-buttons).
 
 ## License
