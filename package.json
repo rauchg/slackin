@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "mocha": "^2.2.4",
-    "nock": "^0.48.1"
+    "nock": "^0.48.1",
+    "supertest": "^0.15.0"
   },
   "main": "./node/index",
   "bin": {
