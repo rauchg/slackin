@@ -24,6 +24,6 @@
     "slackin": "./bin/slackin"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel/register"
+    "test": "mocha"
   }
 }
