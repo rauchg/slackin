@@ -40,7 +40,7 @@ Options:
   -h, --help               output usage information
   -V, --version            output the version number
   -p, --port <port>        Port to listen on [$PORT or 3000]
-  -c, --channels [<chan>]  One or more channel names to allow single-channel guests [$SLACK_CHANNELS]
+  -c, --channels [<chan>]  One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]
   -i, --interval <int>     How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
   -s, --silent             Do not print out warns or errors
 ```
