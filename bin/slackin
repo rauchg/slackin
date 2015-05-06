@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
+// es6 runtime requirements
+require('babel/register');
+
 var pkg = require('../package');
 var program = require('commander');
-var slackin = require('../node');
+var slackin = require('../lib');
 
 program
 .version(pkg.version)
