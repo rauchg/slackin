@@ -37,12 +37,12 @@ Usage: slackin [options] <slack-subdomain> <api-token>
 
 Options:
 
-  -h, --help            output usage information
-  -V, --version         output the version number
-  -p, --port <port>     Port to listen on [$PORT or 3000]
-  -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
-  -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
-  -s, --silent          Do not print out warns or errors
+  -h, --help               output usage information
+  -V, --version            output the version number
+  -p, --port <port>        Port to listen on [$PORT or 3000]
+  -c, --channels [<chan>]  One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]
+  -i, --interval <int>     How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
+  -s, --silent             Do not print out warns or errors
 ```
 
 **Important: if you use Slackin in single-channel mode, you'll only be
@@ -94,7 +94,7 @@ require('slackin')({
   token: 'yourtoken', // required
   interval: 1000,
   org: 'your-slack-subdomain', // required
-  channel: 'channel' // for single channel mode,
+  channels: 'channel,channel,...' // for single channel mode
   silent: false // suppresses warnings
 }).listen(3000);
 ```
