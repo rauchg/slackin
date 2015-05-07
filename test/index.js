@@ -8,6 +8,7 @@ describe('slackin', () => {
       nock(`https://${org}.slack.com`)
         .get('/api/rtm.start?token=mytoken')
         .reply(200, {
+          channels: [{}],
           team: {
             name: 'myteam',
             icon: {}

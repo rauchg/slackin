@@ -19,7 +19,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.4.0)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/d36c365)
 
 Or install it and launch it on your sever:
 
@@ -28,7 +28,7 @@ $ npm install -g slackin
 $ slackin "your-slack-subdomain" "your-slack-token"
 ```
 
-You can find your API token at [api.slack.com/web](https://api.slack.com/web).
+You can find your API token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You may want to create a dedicated `@slackin-inviter` user (or similar) for this.
 
 The available options are:
 
@@ -37,15 +37,19 @@ Usage: slackin [options] <slack-subdomain> <api-token>
 
 Options:
 
-  -h, --help            output usage information
-  -V, --version         output the version number
-  -p, --port <port>     Port to listen on [$PORT or 3000]
-  -c, --channel <chan>  Single channel guest invite [$SLACK_CHANNEL]
-  -i, --interval <int>  How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
-  -s, --silent          Do not print out warns or errors
+  -h, --help               output usage information
+  -V, --version            output the version number
+  -p, --port <port>        Port to listen on [$PORT or 3000]
+  -c, --channels [<chan>]  One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]
+  -i, --interval <int>     How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
+  -s, --silent             Do not print out warns or errors
 ```
 
-**Important: if you use Slackin in single-channel mode, you'll only be able to invite as many external accounts as paying members you have times 5. If you are not getting invite emails, this might be the reason. Workaround: sign up for a free org, and set up Slackin to point to it (all channels will be visible).**
+**Important: if you use Slackin in single-channel mode, you'll only be
+able to invite as many external accounts as paying members you have
+times 5. If you are not getting invite emails, this might be the reason.
+Workaround: sign up for a free org, and set up Slackin to point to it
+(all channels will be visible).**
 
 ### Realtime Badge
 
@@ -90,7 +94,7 @@ require('slackin')({
   token: 'yourtoken', // required
   interval: 1000,
   org: 'your-slack-subdomain', // required
-  channel: 'channel' // for single channel mode,
+  channels: 'channel,channel,...' // for single channel mode
   silent: false // suppresses warnings
 }).listen(3000);
 ```
@@ -104,7 +108,7 @@ By default logging is enabled.
 
 - The SVG badge generation was taken from the
 excellent [shields](https://github.com/badges/shields) project.
-- The button CSS is based on 
+- The button CSS is based on
 [github-buttons](https://github.com/mdo/github-buttons).
 
 ## License
