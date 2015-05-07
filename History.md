@@ -1,4 +1,14 @@
 
+0.5.0 / 2015-05-07
+==================
+
+  * allow for multiple guest channels [afeld]
+  * add important notes to README
+  * better error handling and tests [afeld]
+  * add Slack favicon and better title [frabrunelle]
+  * error when the token account is not an admin [martypenner]
+  * added Dockerfile [darron]
+
 0.4.0 / 2015-04-10
 ==================
 
