@@ -1,1 +1,2 @@
---require 6to5/register
+--compilers js:babel/register
+--require ./test/setup

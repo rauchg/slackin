@@ -15,12 +15,15 @@
     "vd": "0.1.0"
   },
   "devDependencies": {
-    "browserify": "8.1.1",
-    "mocha": "2.1.0",
+    "mocha": "2.2.4",
+    "nock": "0.48.1",
     "supertest": "0.15.0"
   },
   "main": "./node/index",
   "bin": {
     "slackin": "./bin/slackin"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
