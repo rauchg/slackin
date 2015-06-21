@@ -10,6 +10,7 @@ program
 .option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', process.env.PORT || 3000)
 .option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
 .option('-c, --channel <chan>', 'Single channel guest invite (deprecated) [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
+.option('-C, --coc <link>', 'URL to your code of conduct [$SLACK_COC]', process.env.SLACK_COC)
 .option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]', process.env.SLACK_INTERVAL || 1000)
 .option('-s, --silent', 'Do not print out warns or errors')
 .option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
