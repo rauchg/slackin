@@ -19,7 +19,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.5.0)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.5.1)
 
 Or install it and launch it on your server:
 
