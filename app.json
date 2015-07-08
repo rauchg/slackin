@@ -13,8 +13,8 @@
       "description": "A Slack API token (find it on https://api.slack.com/web)",
       "required": true
     },
-    "SLACK_CHANNEL": {
-      "description": "Name of a single guest channel to invite them to (leave blank for a normal, all-channel invite). In order to make this work, you have to have a paid account. You'll only be able to invite as many people as your number of paying members times 5.",
+    "SLACK_CHANNELS": {
+      "description": "Comma-separated list of single guest channels to invite them to (leave blank for a normal, all-channel invite). In order to make this work, you have to have a paid account. You'll only be able to invite as many people as your number of paying members times 5.",
       "required": false
     }
   }
