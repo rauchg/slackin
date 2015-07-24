@@ -1,13 +1,23 @@
+INJS = $(wildcard lib/*.js)
+OUTJS = $(subst lib/,node/,$(INJS))
+
+INASSETS = $(wildcard lib/assets/*)
+OUTASSETS = $(subst lib/assets/,node/assets/,$(INASSETS))
 
 BABEL = ./node_modules/.bin/babel
 
-all: node
+.PHONY: clean
 
-node: lib
-	@mkdir -p node/assets/
-	@rm -rf node/assets/*
-	@cp -r lib/assets node/
-	@for path in lib/*.js; do \
-		file=`basename $$path`; \
-		$(BABEL) "lib/$$file" > "node/$$file"; \
-	done
+all: node/assets $(OUTJS) $(OUTASSETS)
+
+clean:
+	rm -rf node/
+
+node/assets/% : lib/assets/%
+	cp $^ $@
+
+node/%.js: lib/%.js
+	$(BABEL) $^ > $@
+
+node/assets:
+	mkdir -p node/assets/
