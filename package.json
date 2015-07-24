@@ -24,6 +24,7 @@
     "slackin": "./bin/slackin"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "postinstall": "make"
   }
 }
