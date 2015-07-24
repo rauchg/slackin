@@ -8,8 +8,6 @@ WORKDIR /srv/www
 
 RUN npm install
 
-RUN make
-
 EXPOSE 3000
 
 CMD ./bin/slackin --channels $SLACK_CHANNELS --port $PORT $SLACK_SUBDOMAIN $SLACK_API_TOKEN
