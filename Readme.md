@@ -45,6 +45,12 @@ Options:
   -s, --silent             Do not print out warns or errors
 ```
 
+The default port that the server listens on is 3000. If you're having trouble listening on port 80, do:
+```
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+```
+This will forward port 80 to port 3000 and should work.
+
 **Important: if you use Slackin in single-channel mode, you'll only be
 able to invite as many external accounts as paying members you have
 times 5. If you are not getting invite emails, this might be the reason.
