@@ -20,6 +20,9 @@
     "nock": "0.48.1",
     "supertest": "0.15.0"
   },
+  "engines": {
+    "node": ">=0.12.0"
+  },
   "main": "./node/index",
   "bin": {
     "slackin": "./bin/slackin"
