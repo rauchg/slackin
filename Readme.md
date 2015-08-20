@@ -26,7 +26,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 #### OpenShift
 
-1. Create your [OpenShift](https://openshift.redhat.com) Account
+1. Create your [OpenShift](https://openshift.redhat.com) account and [install their client tools](https://developers.openshift.com/en/managing-client-tools.html)
 
 1. Create a new OpenShift application for slackin:
 
