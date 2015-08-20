@@ -40,17 +40,19 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
   - `SLACK_API_TOKEN`: A Slack API token (find it on https://api.slack.com/web)
   - `SLACK_CHANNELS` (optional): Comma-separated list of single guest channels to invite them to (leave blank for a normal, all-channel invite). In order to make this work, you have to have a paid account. You'll only be able to invite as many people as your number of paying members times 5.
   
-  And set them using:
+  And set them for the app using:
 
   ``` shell
   rhc set-env -a slackin SLACK_API_TOKEN='' SLACK_SUBDOMAIN='' SLACK_CHANNELS=''
   ```
 
-1. Add the domain alias for your app:
+1. If you'd like a custom domain, run:
 
   ``` shell
   rhc alias-add slack.YOUR_DOMAIN.COM -a slackin
   ```
+  
+  Then create CNAME record with your DNS host pointing `slack.YOUR_DOMAIN.com` to `slackin-YOUR_OPENSHIFT_NAMESPACE.rhcloud.com`
 
 1. Deploy slackin to your app:
   
