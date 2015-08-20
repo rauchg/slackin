@@ -36,7 +36,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 1. Identify the following variable values:
 
-  - `SLACK_SUBDOMAIN`: Your Slack's subdomain (**this**.slack.com)",
+  - `SLACK_SUBDOMAIN`: Your Slack's subdomain (the `this` part in `this.slack.com`),
   - `SLACK_API_TOKEN`: A Slack API token (find it on https://api.slack.com/web)
   - `SLACK_CHANNELS` (optional): Comma-separated list of single guest channels to invite them to (leave blank for a normal, all-channel invite). In order to make this work, you have to have a paid account. You'll only be able to invite as many people as your number of paying members times 5.
   
