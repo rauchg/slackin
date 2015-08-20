@@ -27,6 +27,6 @@
   "scripts": {
     "test": "mocha",
     "postinstall": "make",
-    "start": "./bin/slackin"
+    "start": "npm install && ./bin/slackin"
   }
 }
