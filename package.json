@@ -27,6 +27,6 @@
   "scripts": {
     "test": "mocha",
     "postinstall": "make",
-    "start": "npm install && ./bin/slackin"
+    "start": "npm install && ./bin/slackin $SLACK_SUBDOMAIN $SLACK_API_TOKEN"
   }
 }
