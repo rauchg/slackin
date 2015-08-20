@@ -52,7 +52,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
   rhc alias-add slack.YOUR_DOMAIN.COM -a slackin
   ```
   
-  Then create CNAME record with your DNS host pointing `slack.YOUR_DOMAIN.com` to `slackin-YOUR_OPENSHIFT_NAMESPACE.rhcloud.com`
+  Then create CNAME record with your DNS host pointing `slack.YOUR_DOMAIN.COM` to `slackin-YOUR_OPENSHIFT_NAMESPACE.rhcloud.com`
 
 1. Deploy slackin to your app:
   
@@ -60,7 +60,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
   rhc app deploy https://github.com/balupton/slackin.git#feature-openshift -a slackin
   ```
 
-1. You should all be good now! Check the logs of your app using:
+1. You should be all good now! Check the logs of your app with:
   
   ``` shell
   rhc tail -a slackin
