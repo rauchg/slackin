@@ -19,9 +19,56 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
+
+#### Heroku
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.5.1)
 
-Or install it and launch it on your server:
+#### OpenShift
+
+1. Create your [OpenShift](https://openshift.redhat.com) Account
+
+1. Create a new OpenShift application for slackin:
+
+  ``` shell
+  rhc app create slackin https://raw.githubusercontent.com/kyrylkov/openshift-iojs/master/metadata/manifest.yml
+  ```
+
+1. Identify the following variable values:
+
+  - `SLACK_SUBDOMAIN`: Your Slack's subdomain (**this**.slack.com)",
+  - `SLACK_API_TOKEN`: A Slack API token (find it on https://api.slack.com/web)
+  - `SLACK_CHANNELS` (optional): Comma-separated list of single guest channels to invite them to (leave blank for a normal, all-channel invite). In order to make this work, you have to have a paid account. You'll only be able to invite as many people as your number of paying members times 5.
+  
+  And set them using:
+
+  ``` shell
+  rhc set-env -a slackin SLACK_API_TOKEN='' SLACK_SUBDOMAIN='' SLACK_CHANNELS=''
+  ```
+
+1. Add the domain alias for your app:
+
+  ``` shell
+  rhc alias-add slack.YOUR_DOMAIN.COM -a slackin
+  ```
+
+1. Deploy slackin to your app:
+  
+  ``` shell
+  rhc app deploy https://github.com/balupton/slackin.git#feature-openshift
+  ```
+
+1. You should all be good now! Check the logs of your app using:
+  
+  ``` shell
+  rhc tail -a slackin
+  ```
+
+
+#### Custom
+
+
+Install it and launch it on your server:
 
 ```bash
 $ npm install -g slackin
