@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "",
   "dependencies": {
     "babel": "4.7.1",
@@ -24,6 +24,7 @@
     "slackin": "./bin/slackin"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "postinstall": "make"
   }
 }

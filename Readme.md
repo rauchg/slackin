@@ -19,7 +19,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.5.0)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.5.1)
 
 Or install it and launch it on your server:
 
@@ -57,13 +57,13 @@ Workaround: sign up for a free org, and set up Slackin to point to it
 [![](https://cldup.com/IaiPnDEAA6.gif)](http://slack.socket.io)
 
 ```html
-<script async defer src="http://slackin.yourhost.com/slackin.js"></script>
+<script async defer src="http://slack.yourdomain.com/slackin.js"></script>
 ```
 
 or for the large version, append `?large`:
 
 ```html
-<script async defer src="http://slackin.yourhost.com/slackin.js?large"></script>
+<script async defer src="http://slack.yourdomain.com/slackin.js?large"></script>
 ```
 
 ### SVG
@@ -71,14 +71,14 @@ or for the large version, append `?large`:
 [![](https://cldup.com/jWUT4QFLnq.png)](http://slack.socket.io)
 
 ```html
-<img src="http://slackin.yourhost.com/badge.svg">
+<img src="http://slack.yourdomain.com/badge.svg">
 ```
 
 ### Landing page
 
 [![](https://cldup.com/WIbawiqp0Q.png)](http://slack.socket.io)
 
-Point to `http://slackin.yourhost.com`.
+Point to `http://slack.yourdomain.com`.
 
 **Note:** the image for the logo of the landing page
 is retrieved from the Slack API. If your organization
@@ -104,6 +104,20 @@ This will show response times from Slack and how many
 online users you have on the console.
 
 By default logging is enabled.
+
+## Developing
+
+Slackin's server side code is written in ES6. It uses babel to transpile the 
+ES6 code to a format node understands. After cloning Slackin, you should 
+install the prerequisite node libraries with npm:
+
+```bash
+$ npm install
+```
+
+After the libraries install, the postinstall script will run make to invoke
+babel on the source. It is important to run make manually after updating any 
+files in lib/ to update the versions in node/.
 
 ## Credits
 

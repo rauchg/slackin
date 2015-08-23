@@ -1,4 +1,10 @@
 
+0.5.1 / 2015-06-23
+==================
+
+  * added safety check for channels.
+  * fix counting deleted users
+
 0.5.0 / 2015-05-07
 ==================
 
