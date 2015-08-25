@@ -42,7 +42,8 @@ Options:
   -p, --port <port>        Port to listen on [$PORT or 3000]
   -c, --channels [<chan>]  One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]
   -i, --interval <int>     How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
-  -s, --silent             Do not print out warns or errors
+  -m, --muted              Do not print out warns or errors
+  -s, --stylesheet         Url to a stylesheet to override default css
 ```
 
 **Important: if you use Slackin in single-channel mode, you'll only be
@@ -95,7 +96,8 @@ require('slackin')({
   interval: 1000,
   org: 'your-slack-subdomain', // required
   channels: 'channel,channel,...' // for single channel mode
-  silent: false // suppresses warnings
+  stylesheet: 'http:*****/yourstylesheet.css', // to overide css using a stylesheet hosted anywhere
+  muted: false // suppresses warnings
 }).listen(3000);
 ```
 
@@ -103,6 +105,18 @@ This will show response times from Slack and how many
 online users you have on the console.
 
 By default logging is enabled.
+
+## Custom CSS
+
+You can override Slackin's default css using a stylesheet accessible anywhere 
+via http. Set a custom stylesheet by supplying the `-s` (`--stylesheet`)
+argument, or set the `SLACKIN_Stylesheet` environment variable.
+
+With heroku deployed instance of Slackin, from your terminal execute:
+
+````
+heroku config:set SLACKIN_Stylesheet=http(s)://**/yourstylesheet.css
+````
 
 ## Developing
 
