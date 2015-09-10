@@ -13,6 +13,7 @@ program
 .option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]', process.env.SLACK_INTERVAL || 1000)
 .option('-s, --silent', 'Do not print out warns or errors')
 .option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
+.option('-t, --codeofconduct <url>', 'Link to a code of conduct users must agree to')
 .parse(process.argv);
 
 if (program.args.length != 2) {
