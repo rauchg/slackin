@@ -57,7 +57,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 1. Deploy slackin to your app:
   
   ``` shell
-  rhc app deploy https://github.com/balupton/slackin.git#feature-openshift -a slackin
+  rhc deploy-app --ref git@github.com:balupton/slackin.git#feature-openshift -a slackin
   ```
 
 1. You should be all good now! Check the logs of your app with:
