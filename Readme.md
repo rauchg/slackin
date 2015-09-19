@@ -31,7 +31,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 1. Create a new OpenShift application for slackin:
 
   ``` shell
-  rhc app create slackin https://raw.githubusercontent.com/kyrylkov/openshift-iojs/master/metadata/manifest.yml
+  rhc app-create slackin https://raw.githubusercontent.com/kyrylkov/openshift-iojs/master/metadata/manifest.yml
   ```
 
 1. Identify the following variable values:
@@ -43,16 +43,16 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
   And set them for the app using:
 
   ``` shell
-  rhc set-env -a slackin SLACK_API_TOKEN='' SLACK_SUBDOMAIN='' SLACK_CHANNELS=''
+  rhc env-set -a slackin SLACK_API_TOKEN="$SLACK_API_TOKEN" SLACK_SUBDOMAIN="$SLACK_SUBDOMAIN" SLACK_CHANNELS="$SLACK_CHANNELS"
   ```
 
 1. If you'd like a custom domain, run:
 
   ``` shell
-  rhc alias-add slack.YOUR_DOMAIN.COM -a slackin
+  rhc alias-add $SLACK_CUSTOM_DOMAIN -a slackin
   ```
   
-  Then create CNAME record with your DNS host pointing `slack.YOUR_DOMAIN.COM` to `slackin-YOUR_OPENSHIFT_NAMESPACE.rhcloud.com`
+  Where `$SLACK_CUSTOM_DOMAIN` is something like `slack.bevry.me` where `bevry.me` is your domain name. Then create CNAME record with your DNS host pointing `slack.YOUR_DOMAIN.COM` to `slackin-YOUR_OPENSHIFT_NAMESPACE.rhcloud.com`
 
 1. Deploy slackin to your app:
   
