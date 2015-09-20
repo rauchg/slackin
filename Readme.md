@@ -28,7 +28,7 @@ $ npm install -g slackin
 $ slackin "your-slack-subdomain" "your-slack-token"
 ```
 
-You can find your API token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You may want to create a dedicated `@slackin-inviter` user (or similar) for this.
+You will need an API token from an admin user. You can get them by logging in as the admin user and generating one at [api.slack.com/web](https://api.slack.com/web). NOTE: Must be an admin user, an owner user does not work. If you don't have an admin user, use the normal slack invite process to invite one, and call it `ourslackbot` or something.
 
 The available options are:
 
