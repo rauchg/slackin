@@ -60,7 +60,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
   git clone https://github.com/balupton/slackin.git -b feature-openshift
   cd slackin
   git remote add openshift `rhc app-show slackin | grep Git | sed 's/^.*ssh/ssh/'`
-  git push openshift feature-openshift:slackin --force
+  git push openshift feature-openshift:master --force
   cd ..
   rm -Rf slackin
   ```
