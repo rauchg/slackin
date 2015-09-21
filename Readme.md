@@ -7,7 +7,7 @@ to a Slack server. Like Freenode, but on Slack.
 It provides
 
 - A landing page you can point users to fill in their
-  emails and receive an invite (`http://slack.yourdomain.com`)
+  emails and receive an invite (`https://slack.yourdomain.com`)
 - An `<iframe>` badge to embed on any website
   that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums
@@ -56,13 +56,13 @@ Workaround: sign up for a free org, and set up Slackin to point to it
 [![](https://cldup.com/IaiPnDEAA6.gif)](http://slack.socket.io)
 
 ```html
-<script async defer src="http://slack.yourdomain.com/slackin.js"></script>
+<script async defer src="https://slack.yourdomain.com/slackin.js"></script>
 ```
 
 or for the large version, append `?large`:
 
 ```html
-<script async defer src="http://slack.yourdomain.com/slackin.js?large"></script>
+<script async defer src="https://slack.yourdomain.com/slackin.js?large"></script>
 ```
 
 ### SVG
@@ -70,14 +70,18 @@ or for the large version, append `?large`:
 [![](https://cldup.com/jWUT4QFLnq.png)](http://slack.socket.io)
 
 ```html
-<img src="http://slack.yourdomain.com/badge.svg">
+<img src="https://slack.yourdomain.com/badge.svg">
 ```
+
+Done in Markdown this looks like:
+
+    [![Slack Status](https://slack.yourdomain.com/badge.svg)](https://yourdomain.com)
 
 ### Landing page
 
 [![](https://cldup.com/WIbawiqp0Q.png)](http://slack.socket.io)
 
-Point to `http://slack.yourdomain.com`.
+Point to `https://slack.yourdomain.com`.
 
 **Note:** the image for the logo of the landing page
 is retrieved from the Slack API. If your organization
