@@ -19,9 +19,20 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
+
+#### Heroku
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.5.1)
 
-Or install it and launch it on your server:
+#### OpenShift
+
+[Follow these instructions.](https://github.com/rauchg/slackin/wiki/OpenShift)
+
+
+#### Custom
+
+
+Install it and launch it on your server:
 
 ```bash
 $ npm install -g slackin
