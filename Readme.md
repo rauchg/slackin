@@ -26,50 +26,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 #### OpenShift
 
-1. Create your [OpenShift](https://openshift.redhat.com) account and [install their client tools](https://developers.openshift.com/en/managing-client-tools.html)
-
-1. Create a new OpenShift application for slackin:
-
-  ``` shell
-  rhc app-create slackin https://raw.githubusercontent.com/kyrylkov/openshift-iojs/master/metadata/manifest.yml
-  ```
-
-1. Identify the following variable values:
-
-  - `SLACK_SUBDOMAIN`: Your Slack's subdomain (the `this` part in `this.slack.com`),
-  - `SLACK_API_TOKEN`: A Slack API token (find it on https://api.slack.com/web)
-  - `SLACK_CHANNELS` (optional): Comma-separated list of single guest channels to invite them to (leave blank for a normal, all-channel invite). In order to make this work, you have to have a paid account. You'll only be able to invite as many people as your number of paying members times 5.
-  
-  And set them for the app using:
-
-  ``` shell
-  rhc env-set -a slackin SLACK_API_TOKEN="$SLACK_API_TOKEN" SLACK_SUBDOMAIN="$SLACK_SUBDOMAIN" SLACK_CHANNELS="$SLACK_CHANNELS"
-  ```
-
-1. If you'd like a custom domain, run:
-
-  ``` shell
-  rhc alias-add $SLACK_CUSTOM_DOMAIN -a slackin
-  ```
-  
-  Where `$SLACK_CUSTOM_DOMAIN` is something like `slack.bevry.me` where `bevry.me` is your domain name. Then create CNAME record with your DNS host pointing `slack.YOUR_DOMAIN.COM` to `slackin-YOUR_OPENSHIFT_NAMESPACE.rhcloud.com`
-
-1. Deploy slackin to your app:
-  
-  ``` shell
-  git clone https://github.com/balupton/slackin.git -b feature-openshift
-  cd slackin
-  git remote add openshift `rhc app-show slackin | grep Git | sed 's/^.*ssh/ssh/'`
-  git push openshift feature-openshift:master --force
-  cd ..
-  rm -Rf slackin
-  ```
-
-1. You should be all good now! Check the logs of your app with:
-  
-  ``` shell
-  rhc tail -a slackin
-  ```
+[Follow these instructions.](https://github.com/rauchg/slackin/wiki/OpenShift)
 
 
 #### Custom
