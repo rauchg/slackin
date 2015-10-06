@@ -85,6 +85,14 @@ Done in Markdown this looks like:
 
     [![Slack Status](https://slack.yourdomain.com/badge.svg)](https://yourdomain.com)
 
+### Iframe badge
+
+[![](https://cloud.githubusercontent.com/assets/934293/10310931/d604d0f0-6c1a-11e5-9b3e-0fc3d4a823d1.png)](http://bevacqua.github.io/dragula)
+
+```html
+<iframe src='https://slack.yourdomain.com/iframe'></iframe>
+```
+
 ### Landing page
 
 [![](https://cldup.com/WIbawiqp0Q.png)](http://slack.socket.io)
