@@ -1,4 +1,16 @@
 
+0.6.0 / 2015-10-05
+==================
+
+  * use faster API methods: users.list to get presence
+  * fix polling interval increase
+  * allow hosting slackin under a path (eg: /slack)
+  * fix for deployment instructions
+  * add already registered link
+  * use SLACK_CHANNELS instead of SLACK_CHANNEL on Heroku
+  * standardize use of example host
+  * allow hosting at a subfolder
+
 0.5.1 / 2015-06-23
 ==================
 
