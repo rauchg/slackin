@@ -19,7 +19,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
-#### Heroku
+#### Herokut
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.6.0)
 
@@ -36,7 +36,7 @@ $ npm install -g slackin
 $ slackin "your-team-id" "your-slack-token"
 ```
 
-Your team id is what you use to access your login page on Slack (eg: https://{this}.slack.com).
+Your team id is what you use to access your login page on Slack (eg: https://**{this}**.slack.com).
 
 You can find your API token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You need to create a dedicated `@slackin-inviter` user (or similar), mark that user an admin, and use a token from that dedicated admin user.
 
