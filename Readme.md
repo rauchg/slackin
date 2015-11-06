@@ -33,15 +33,17 @@ Install it and launch it on your server:
 
 ```bash
 $ npm install -g slackin
-$ slackin "your-slack-subdomain" "your-slack-token"
+$ slackin "your-team-id" "your-slack-token"
 ```
+
+Your team id is what you use to access your login page on Slack (eg: https://{this}.slack.com).
 
 You can find your API token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You need to create a dedicated `@slackin-inviter` user (or similar), mark that user an admin, and use a token from that dedicated admin user.
 
 The available options are:
 
 ```
-Usage: slackin [options] <slack-subdomain> <api-token>
+Usage: slackin [options] <team-id> <api-token>
 
 Options:
 
