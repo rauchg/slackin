@@ -4,18 +4,30 @@ import slackin from '../lib/index';
 
 describe('slackin', () => {
   describe('POST /invite', () => {
-    let mockNumUsers = (org) => {
-      nock(`https://${org}.slack.com`)
-        .get('/api/rtm.start?token=mytoken')
+    beforeEach(() => {
+      nock('https://myorg.slack.com')
+        .get('/api/users.list')
+        .query({token: 'mytoken', presence: '1'})
+        .query({token: 'mytoken'})
         .reply(200, {
-          channels: [{}],
-          team: {
-            name: 'myteam',
-            icon: {}
-          },
-          users: [{}]
+          ok: true,
+          members: [{}]
         });
-    };
+
+      nock('https://myorg.slack.com')
+        .get('/api/channels.list?token=mytoken')
+        .reply(200, {
+          ok: true,
+          channels: [{}]
+        });
+
+      nock('https://myorg.slack.com')
+        .get('/api/team.info?token=mytoken')
+        .reply(200, {
+          ok: true,
+          team: {icon: {}}
+        })
+    });
 
     it("returns success for a successful invite", (done) => {
       let opts = {
@@ -24,7 +36,6 @@ describe('slackin', () => {
       };
 
       // TODO simplify mocking
-      mockNumUsers(opts.org);
       nock(`https://${opts.org}.slack.com`)
         .post('/api/users.admin.invite')
         .reply(200, { ok: true });
@@ -46,7 +57,6 @@ describe('slackin', () => {
       };
 
       // TODO simplify mocking
-      mockNumUsers(opts.org);
       nock(`https://${opts.org}.slack.com`)
         .post('/api/users.admin.invite')
         .reply(200, {
