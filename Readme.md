@@ -51,6 +51,7 @@ Options:
   -V, --version            output the version number
   -p, --port <port>        Port to listen on [$PORT or 3000]
   -c, --channels [<chan>]  One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]
+  -C, --coc <link>         URL to your code of conduct
   -i, --interval <int>     How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]
   -s, --silent             Do not print out warns or errors
 ```

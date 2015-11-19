@@ -11,6 +11,7 @@ program
 .option('-h, --hostname <hostname>', 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || '0.0.0.0')
 .option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
 .option('-c, --channel <chan>', 'Single channel guest invite (deprecated) [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
+.option('-C, --coc <link>', 'URL to your code of conduct [$SLACK_COC]', process.env.SLACK_COC)
 .option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]', process.env.SLACK_INTERVAL || 5000)
 .option('-s, --silent', 'Do not print out warns or errors')
 .option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
