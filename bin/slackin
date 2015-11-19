@@ -12,6 +12,7 @@ program
 .option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
 .option('-c, --channel <chan>', 'Single channel guest invite (deprecated) [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
 .option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]', process.env.SLACK_INTERVAL || 5000)
+.option('-P, --path', 'Path to serve slackin under', '/')
 .option('-s, --silent', 'Do not print out warns or errors')
 .option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
 .parse(process.argv);
