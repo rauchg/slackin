@@ -1,4 +1,13 @@
 
+0.7.0 / 2015-11-19
+==================
+
+  * badge: make badge work for users with lots of users
+  * splash: fix hover color – thank goodness
+  * relative path hosting support
+  * fix tests
+  * add support for codes of conduct
+
 0.6.0 / 2015-10-05
 ==================
 
