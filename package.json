@@ -11,7 +11,7 @@
     "express": "4.11.0",
     "hostenv": "1.0.1",
     "opentype.js": "0.4.4",
-    "socket.io": "1.3.5",
+    "socket.io": "1.3.6",
     "superagent": "0.21.0",
     "vd": "0.1.0"
   },
