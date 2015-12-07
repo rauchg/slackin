@@ -2,7 +2,7 @@
 
 var pkg = require('../package');
 var program = require('commander');
-var slackin = require('../node');
+var slackin = require('../node').default;
 
 program
 .version(pkg.version)
