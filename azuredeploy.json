@@ -1,0 +1,130 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "siteName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the web app that you wish to create."
+      }
+    },
+    "hostingPlanName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the App Service plan to use for hosting the web app."
+      }
+    },
+    "siteLocation": {
+      "type": "string",
+      "defaultValue": "West US",
+      "metadata": {
+        "description": "The location to use for creating the web app and hosting plan. It must be one of the Azure locations that support web apps."
+      }
+    },
+    "repoURL": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "slackTeamId" : {
+      "type": "string",
+      "metadata": {
+        "description": "Slack Team ID. (e.g. https://{this}.slack.com)"
+      }
+    },
+    "slackApiToken" : {
+      "type": "string",
+      "metadata": {
+        "description": "Slack API token (find it on https://api.slack.com/web)"
+      }
+    },
+    "slackinRelease" : {
+      "type": "string",
+      "allowedValues": [
+        "stable",
+        "latest"
+      ],
+      "defaultValue": "stable",
+      "metadata": {
+        "description": "Slackin Release to Deploy (stable/latest)"
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[parameters('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('siteLocation')]",
+      "properties": {
+      },
+      "sku": {
+        "name": "F1"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[parameters('siteName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[parameters('siteLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[parameters('hostingPlanName')]"
+      },
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+          ],
+          "properties": {
+            "siteProperties": {
+              "webSocketsEnabled": true
+            }
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+          ],
+          "properties": {
+            "SLACK_SUBDOMAIN": "[parameters('slackTeamId')]",
+            "SLACK_API_TOKEN": "[parameters('slackApiToken')]",
+            "SLACKIN_RELEASE": "[parameters('slackinRelease')]",
+            "WEBSITE_NPM_DEFAULT_VERSION": "3.3.12",
+            "WEBSITE_NODE_DEFAULT_VERSION": "5.1.1",
+            "command": "bash scripts/azuredeploy.sh"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+            "[concat('Microsoft.Web/Sites/', parameters('siteName'), '/config/web')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoURL')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": true
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+     "siteUri": {
+       "type": "string",
+       "value": "[concat('https://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
+     }
+  }
+}

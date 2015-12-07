@@ -23,6 +23,10 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.7.3)
 
+#### Azure
+
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
+
 #### OpenShift
 
 [Follow these instructions.](https://github.com/rauchg/slackin/wiki/OpenShift)
@@ -133,8 +137,8 @@ install the prerequisite node libraries with npm:
 $ npm install
 ```
 
-After the libraries install, the postinstall script will run make to invoke
-babel on the source. It is important to run make manually after updating any 
+After the libraries install, the postinstall script will run `gulp` to invoke
+babel on the source. It is important to run `gulp` manually after updating any 
 files in lib/ to update the versions in node/.
 
 ## Credits
