@@ -19,6 +19,10 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 ### Server
 
+#### Cloud Foundry
+
+[Follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
+
 #### Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/0.7.3)
