@@ -1,4 +1,40 @@
 
+0.7.3 / 2015-11-29
+==================
+
+  * package: bump `socket.io` to fix build issue
+
+0.7.2 / 2015-11-29
+==================
+
+  * fix rendering of badge in non-chrome
+
+0.7.1 / 2015-11-19
+==================
+
+  * fix inline badge styles
+
+0.7.0 / 2015-11-19
+==================
+
+  * badge: make badge work for users with lots of users
+  * splash: fix hover color – thank goodness
+  * relative path hosting support
+  * fix tests
+  * add support for codes of conduct
+
+0.6.0 / 2015-10-05
+==================
+
+  * use faster API methods: users.list to get presence
+  * fix polling interval increase
+  * allow hosting slackin under a path (eg: /slack)
+  * fix for deployment instructions
+  * add already registered link
+  * use SLACK_CHANNELS instead of SLACK_CHANNEL on Heroku
+  * standardize use of example host
+  * allow hosting at a subfolder
+
 0.5.1 / 2015-06-23
 ==================
 
