@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "",
   "dependencies": {
     "babel-core": "6.3.26",
