@@ -1,4 +1,14 @@
 
+0.8.0 / 2016-01-06
+==================
+
+  * bump socket.io to 1.4.0 for sec advisory
+  * add deploy to Azure Button
+  * build: Update builds to use gulp and babel6 (Fixes #122)
+  * adds instructions for deploying to Cloud Foundry
+  * redirect signed up users to Slack
+  * fix --path option parsing
+
 0.7.3 / 2015-11-29
 ==================
 
