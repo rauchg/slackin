@@ -1,4 +1,10 @@
 
+0.8.2 / 2016-01-13
+==================
+
+  * use better supported anonymous function syntax [WouterSioen]
+  * bump socket.io
+
 0.8.1 / 2016-01-06
 ==================
 
