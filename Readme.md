@@ -116,7 +116,7 @@ a `Function` that creates a `HTTP.Server` instance
 that you can manipulate.
 
 ```js
-require('slackin')({
+require('slackin').default({
   token: 'yourtoken', // required
   interval: 1000,
   org: 'your-slack-subdomain', // required
