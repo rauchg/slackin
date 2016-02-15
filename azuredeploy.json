@@ -39,6 +39,12 @@
         "description": "Slack API token (find it on https://api.slack.com/web)"
       }
     },
+    "slackSegmentKey" : {
+      "type": "string",
+      "metadata": {
+        "description": "Segment.com API key for analytics"
+      }
+    },
     "slackinRelease" : {
       "type": "string",
       "allowedValues": [
@@ -98,6 +104,7 @@
           "properties": {
             "SLACK_SUBDOMAIN": "[parameters('slackTeamId')]",
             "SLACK_API_TOKEN": "[parameters('slackApiToken')]",
+            "SLACK_SEGMENT_KEY": "[parameters('slackSegmentKey')]",
             "SLACKIN_RELEASE": "[parameters('slackinRelease')]",
             "WEBSITE_NPM_DEFAULT_VERSION": "3.3.12",
             "WEBSITE_NODE_DEFAULT_VERSION": "5.1.1",

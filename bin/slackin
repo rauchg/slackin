@@ -6,7 +6,7 @@ var slackin = require('./../node').default;
 
 program
 .version(pkg.version)
-.usage('[options] <team-id> <api-token>')
+.usage('[options] <team-id> <api-token> <segment-key>')
 .option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
 .option('-h, --hostname <hostname>', 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || process.env.WEBSITE_HOSTNAME || '0.0.0.0')
 .option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
@@ -20,12 +20,14 @@ program
 
 var org = program.args[0] || process.env.SLACK_SUBDOMAIN;
 var token = program.args[1] || process.env.SLACK_API_TOKEN;
+var segment = program.args[2] || process.env.SLACK_SEGMENT_KEY;
 
-if (!org || !token) {
+if (!org || !token || !segment) {
   program.help();
 } else {
   program.org = org;
   program.token = token;
+  program.segment = segment;
 }
 
 // support deprecated option
