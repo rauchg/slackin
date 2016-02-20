@@ -46,7 +46,7 @@ describe('slackin', () => {
         .post('/invite')
         .send({ email: 'foo@example.com' })
         .expect('Content-Type', /json/)
-        .expect(200, { msg: 'success' })
+        .expect(200, { msg: 'WOOT. Check your email!' })
         .end(done);
     });
 
