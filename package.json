@@ -35,7 +35,6 @@
   "scripts": {
     "test": "mocha",
     "postinstall": "gulp",
-    "prestart" : "gulp",
     "start": "node ./bin/slackin"
   }
 }
