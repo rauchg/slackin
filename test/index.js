@@ -1,45 +1,76 @@
-import slackin from '../lib/';
-import {token, org} from './config';
-import en from '../lib/locale/en';
-import dom from 'vd';
+import nock from 'nock';
+import request from 'supertest';
+import slackin from '../lib/index';
 
-describe('Slackin instance test', () => {
-    
-  slackin({ token: token, org: org, silent: true, langs: { en : en } }).listen(3000, (err) => {
-    if(err) throw err;
+describe('slackin', () => {
+  describe('POST /invite', () => {
+    beforeEach(() => {
+      nock('https://myorg.slack.com')
+        .get('/api/users.list')
+        .query({token: 'mytoken', presence: '1'})
+        .query({token: 'mytoken'})
+        .reply(200, {
+          ok: true,
+          members: [{}]
+        });
+      nock('https://myorg.slack.com')
+        .get('/api/channels.list?token=mytoken')
+        .reply(200, {
+          ok: true,
+          channels: [{}]
+        });
+
+      nock('https://myorg.slack.com')
+        .get('/api/team.info?token=mytoken')
+        .reply(200, {
+          ok: true,
+          team: {icon: {}}
+        })
+    });
+
+    it("returns success for a successful invite", (done) => {
+      let opts = {
+        token: 'mytoken',
+        org: 'myorg'
+      };
+
+      // TODO simplify mocking
+      nock(`https://${opts.org}.slack.com`)
+        .post('/api/users.admin.invite')
+        .reply(200, { ok: true });
+
+      let app = slackin(opts);
+
+      request(app)
+        .post('/invite')
+        .send({ email: 'foo@example.com' })
+        .expect('Content-Type', /json/)
+        .expect(200, { msg: 'WOOT. Check your email!' })
+        .end(done);
+    });
+
+    it("returns a failure for a failure message", (done) => {
+      let opts = {
+        token: 'mytoken',
+        org: 'myorg'
+      };
+
+      // TODO simplify mocking
+      nock(`https://${opts.org}.slack.com`)
+        .post('/api/users.admin.invite')
+        .reply(200, {
+          ok: false,
+          error: "other error"
+        });
+
+      let app = slackin(opts);
+
+      request(app)
+        .post('/invite')
+        .send({ email: 'foo@example.com' })
+        .expect('Content-Type', /json/)
+        .expect(400, { msg: "other error" })
+        .end(done);
+    });
   });
-  
-  it("Test request response.statudCode equals 200", (done) => {
-    setTimeout(function(){
-      var req = require('request');
-      req("http://localhost:3000/", (err, response, body) => {
-        if(err) throw err;
-        if(response.statusCode != 200) {
-          throw new Error("status code: "+ response.statusCode);
-        }
-        done();
-      });
-    }, 1000);
-  });
-
-  it("Test request response body has the correct html", (done) => {
-    setTimeout(function(){
-      let req = require('request');
-      req("http://localhost:3000/", (err, response, body) => {
-        if(err) throw err;
-        if(response.statusCode != 200) {
-          throw new Error("status code: "+ response.statusCode);
-        }
-        // compare response in lower case because some text has css text-transform
-        let body = response.body.toLowerCase();
-        let joinText = dom("p", en.join(org)).toHTML().toLowerCase();
-        if(body.indexOf(joinText) == -1) {
-          throw new Error("response body doesnt has the correct html");
-        }
-        done();
-      });
-    }, 1000);
-  });
-
-
 });

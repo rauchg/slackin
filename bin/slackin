@@ -1,36 +1,56 @@
 #!/usr/bin/env node
 
-var pkg = require('../package');
+var pkg = require('./../package');
 var program = require('commander');
-var slackin = require('../node');
+var slackin = require('./../node').default;
 
 program
 .version(pkg.version)
-.usage('[options] <slack-subdomain> <api-token> <lang>')
-.option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', process.env.PORT || 3000)
-.option('-c, --channel <chan>', 'Single channel guest invite [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
-.option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 1000]', process.env.SLACK_INTERVAL || 1000)
+.usage('[options] <team-id> <api-token>')
+.option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
+.option('-h, --hostname <hostname>', 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || process.env.WEBSITE_HOSTNAME || '0.0.0.0')
+.option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
+.option('-c, --channel <chan>', 'Single channel guest invite (deprecated) [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
+.option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]', process.env.SLACK_INTERVAL || 5000)
+.option('-P, --path <path>', 'Path to serve slackin under', '/')
 .option('-s, --silent', 'Do not print out warns or errors')
+.option('-C, --coc <coc>', 'Full URL to a CoC that needs to be agreed to')
+.option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
+.option('-l, --locale [<locale>]', 'One or more comma-separated desired localization translations to serve', 'en')
 .parse(process.argv);
 
-if (program.args.length < 2) {
+var org = program.args[0] || process.env.SLACK_SUBDOMAIN;
+var token = program.args[1] || process.env.SLACK_API_TOKEN;
+
+if (!org || !token) {
   program.help();
 } else {
-  program.org = program.args[0];
-  program.token = program.args[1];
-
-  var args = program.args.slice(2, program.args.length);
-  if(args.length) {
-    var langs = {};
-    for(var i in args) {
-      try { langs[args[i]] = require('../node/locale/'+args[i]); }catch(e){ console.log(e); };
-    }
-    program.langs = langs;
-  }
+  program.org = org;
+  program.token = token;
 }
 
+// support deprecated option
+if (!program.channels && program.channel) {
+  program.channels = program.channel;
+}
+
+// load localization files
+var err = function(l) {
+  throw new Error([
+    'Translation', l,
+    'not available, please help us translate slackin at', 
+    '`https://github.com/rauchg/slackin`'
+  ].join(' '))
+}
+program.locale = program.locale.split(',') || ['en']
+program.locale = program.locale.map(function(l){
+  try { return require('./../node/locale/'+l+'.js').default; }
+  catch(e){ err(l) }
+})
+
 var port = program.port;
-slackin(program).listen(port, function(err){
+var hostname = program.hostname;
+slackin(program).listen(port, hostname, function(err){
   if (err) throw err;
-  if (!program.silent) console.log('%s – listening on *:%d', new Date, port);
+  if (!program.silent) console.log('%s – listening on %s:%d', new Date, hostname, port);
 });
