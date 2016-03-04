@@ -33,7 +33,10 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 #### Cloud Foundry
 
-[Follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
+##### IBM Bluemix
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
+
+For other CloudFoundry providers, [follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
 
 #### Custom
 
