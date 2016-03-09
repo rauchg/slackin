@@ -1,4 +1,22 @@
 
+0.8.3 / 2016-03-08
+==================
+
+  * fix postMessage({}, '*') causes slackin to throw [@laughinghan]
+  * add IBM Bluemix Deploy badge [@kevinSuttle]
+  * add `?large` to `/iframe` and `/iframe/dialog` [@laughinghan]
+  * convert dialog dimensions to em/rem for adjustability #prepwork [@laughinghan]
+  * fix redirecting already-registered users from iframe dialog [@laughinghan]
+  * add "or sign in" link to iframe too [@laughinghan]
+  * render a hidden form field for a single channel [@nickstenning]
+  * add .travis.yml [@jszwedko]
+  * fix test for successful invite [@jszwedko]
+  * update `babel-register` module name in mocha opts [@jszwedko]
+  * update readme for babel 6 change [@danreeves]
+  * shorten already-invited message [@MaxWofford]
+  * add success message for already signed up users [@MaxWofford]
+  * fix max listeners warnings [Hardeep Shoker]
+
 0.8.2 / 2016-01-13
 ==================
 
