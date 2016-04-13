@@ -1,8 +1,31 @@
+import assert from 'assert';
 import nock from 'nock';
 import request from 'supertest';
-import slackin from '../lib/index';
+import slackin, { restrictChannels } from '../lib/index';
 
 describe('slackin', () => {
+  describe('.restrictChannels()', () => {
+    it("returns the same list when the query is empty", () => {
+      let results = restrictChannels(['foo', 'bar'], {query: {}});
+      assert.deepEqual(results, ['foo', 'bar']);
+    });
+
+    it("returns the same list when the channel isn't in the list", () => {
+      let results = restrictChannels(['foo', 'bar'], {query: {channel: 'baz'}});
+      assert.deepEqual(results, ['foo', 'bar']);
+    });
+
+    it("returns undefined when there are no channels to restrict", () => {
+      let results = restrictChannels(undefined, {query: {channel: 'foo'}});
+      assert.equal(results, undefined);
+    });
+
+    it("returns undefined when there is an empty list of channels to restrict", () => {
+      let results = restrictChannels([], {query: {channel: 'foo'}});
+      assert.deepEqual(results, []);
+    });
+  });
+
   describe('POST /invite', () => {
     beforeEach(() => {
       nock('https://myorg.slack.com')
