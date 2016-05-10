@@ -106,7 +106,7 @@ Done in Markdown this looks like:
 
 [![](https://cldup.com/WIbawiqp0Q.png)](http://slack.socket.io)
 
-Point to `https://slack.yourdomain.com`.
+Point to `https://slack.yourdomain.com`. If you're only allowing single-channel guests, you can also link to `https://slack.yourdomain.com/?channel=<name>` to have them join that particular channel.
 
 **Note:** the image for the logo of the landing page
 is retrieved from the Slack API. If your organization
@@ -136,8 +136,8 @@ By default logging is enabled.
 
 ## Developing
 
-Slackin's server side code is written in ES6. It uses babel to transpile the 
-ES6 code to a format node understands. After cloning Slackin, you should 
+Slackin's server side code is written in ES6. It uses babel to transpile the
+ES6 code to a format node understands. After cloning Slackin, you should
 install the prerequisite node libraries with npm:
 
 ```bash
@@ -145,7 +145,7 @@ $ npm install
 ```
 
 After the libraries install, the postinstall script will run `gulp` to invoke
-babel on the source. It is important to run `gulp` manually after updating any 
+babel on the source. It is important to run `gulp` manually after updating any
 files in lib/ to update the versions in node/.
 
 ## Credits
