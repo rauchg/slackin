@@ -3,6 +3,11 @@
   "version": "0.8.3",
   "description": "Public Slack organizations made easy",
   "repository": "rauchg/slackin",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
     "args": "^1.2.1",
     "babel-core": "6.3.26",
