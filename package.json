@@ -28,6 +28,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.12.0",
+    "eslint-config-default": "^0.1.0",
     "mocha": "2.2.4",
     "nock": "2.17.0",
     "supertest": "0.15.0"
@@ -39,8 +42,12 @@
   "bin": {
     "slackin": "./bin/slackin"
   },
+  "eslintConfig": {
+    "extends": "default",
+    "parser": "babel-eslint"
+  },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha && eslint lib/**",
     "postinstall": "gulp",
     "start": "node ./bin/slackin"
   }
