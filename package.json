@@ -44,7 +44,10 @@
   },
   "eslintConfig": {
     "extends": "default",
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "no-var": 0
+    }
   },
   "scripts": {
     "test": "mocha && eslint lib/**",
