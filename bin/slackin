@@ -1,41 +1,37 @@
 #!/usr/bin/env node
 
 var pkg = require('./../package');
-var program = require('commander');
+var args = require('args');
 var slackin = require('./../node').default;
 
-program
-.version(pkg.version)
-.usage('[options] <team-id> <api-token>')
-.option('-p, --port <port>', 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
-.option('-h, --hostname <hostname>', 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || process.env.WEBSITE_HOSTNAME || '0.0.0.0')
-.option('-c, --channels [<chan>]', 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
-.option('-c, --channel <chan>', 'Single channel guest invite (deprecated) [$SLACK_CHANNEL]', process.env.SLACK_CHANNEL)
-.option('-i, --interval <int>', 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]', process.env.SLACK_INTERVAL || 5000)
-.option('-P, --path <path>', 'Path to serve slackin under', '/')
-.option('-s, --silent', 'Do not print out warns or errors')
-.option('-C, --coc <coc>', 'Full URL to a CoC that needs to be agreed to')
-.option('-c, --css <file>', 'Full URL to a custom CSS file to use on the main page')
-.parse(process.argv);
+args
+  .option(['p', 'port'], 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
+  .option(['h', 'hostname'], 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || process.env.WEBSITE_HOSTNAME || '0.0.0.0')
+  .option(['c', 'channels'], 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
+  .option(['i', 'interval'], 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]', process.env.SLACK_INTERVAL || 5000)
+  .option(['P', 'path'], 'Path to serve slackin under', '/')
+  .option(['s', 'silent'], 'Do not print out warns or errors')
+  .option(['C', 'coc'], 'Full URL to a CoC that needs to be agreed to')
+  .option(['S', 'css'], 'Full URL to a custom CSS file to use on the main page');
 
-var org = program.args[0] || process.env.SLACK_SUBDOMAIN;
-var token = program.args[1] || process.env.SLACK_API_TOKEN;
+var flags = args.parse(process.argv, {
+  value: '<team-id> <api-token>'
+});
+
+var org = args.sub[0] || process.env.SLACK_SUBDOMAIN;
+var token = args.sub[1] || process.env.SLACK_API_TOKEN;
 
 if (!org || !token) {
-  program.help();
+  args.showHelp();
 } else {
-  program.org = org;
-  program.token = token;
+  flags.org = org;
+  flags.token = token;
 }
 
-// support deprecated option
-if (!program.channels && program.channel) {
-  program.channels = program.channel;
-}
+var port = flags.port;
+var hostname = flags.hostname;
 
-var port = program.port;
-var hostname = program.hostname;
-slackin(program).listen(port, hostname, function(err){
+slackin(flags).listen(port, hostname, function(err){
   if (err) throw err;
-  if (!program.silent) console.log('%s – listening on %s:%d', new Date, hostname, port);
+  if (!flags.silent) console.log('%s – listening on %s:%d', new Date, hostname, port);
 });
