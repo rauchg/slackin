@@ -1,2 +1,8 @@
+# build output
 node
+
+# dependencies
 node_modules
+
+# logs
+npm-debug.log
