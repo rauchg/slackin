@@ -1,30 +1,34 @@
-'use strict';
-
-import gulp from 'gulp';
-import babel from 'gulp-babel';
-import rimraf from 'gulp-rimraf';
+import gulp from 'gulp'
+import babel from 'gulp-babel'
+import rimraf from 'gulp-rimraf'
 
 const paths = {
-  in_js: "lib/*.js",
-  in_assets: "lib/assets/*",
-  out_js: "node",
-  out_assets: "node/assets",
-};
+  in: {
+    js: 'lib/*.js',
+    assets: 'lib/assets/*'
+  },
+  out: {
+    js: 'dist',
+    assets: 'dist/assets'
+  }
+}
 
-gulp.task('es6to5', () => {
-  return gulp.src(paths.in_js)
-             .pipe(babel())
-             .pipe(gulp.dest(paths.out_js));
-});
+gulp.task('transpile', () => {
+  return gulp.src(paths.in.js)
+  .pipe(babel())
+  .pipe(gulp.dest(paths.out.js))
+})
 
-gulp.task('copyassets', () => {
-  return gulp.src(paths.in_assets)
-             .pipe(gulp.dest(paths.out_assets));
-});
+gulp.task('assets', () => {
+  return gulp.src(paths.in.assets)
+  .pipe(gulp.dest(paths.out.assets))
+})
 
 gulp.task('clean', () => {
-  return gulp.src(paths.out_js, { read: false })
-             .pipe(rimraf());
-});
+  return gulp.src(paths.out.js, {
+    read: false
+  })
+  .pipe(rimraf())
+})
 
-gulp.task('default', ['es6to5', 'copyassets']);
+gulp.task('default', ['transpile', 'assets'])
