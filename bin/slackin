@@ -2,7 +2,7 @@
 
 var pkg = require('./../package');
 var args = require('args');
-var slackin = require('./../node').default;
+var slackin = require('./../dist').default;
 
 args
   .option(['p', 'port'], 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
