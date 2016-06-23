@@ -6,20 +6,26 @@ var slackin = require('./../dist').default;
 
 args
   .option(['p', 'port'], 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
-  .option(['H', 'hostname'], 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || process.env.WEBSITE_HOSTNAME || '0.0.0.0')
+  .option(['h', 'hostname'], 'Hostname to listen on [$HOSTNAME or 0.0.0.0]', require('hostenv').HOSTNAME || process.env.WEBSITE_HOSTNAME || '0.0.0.0')
   .option(['c', 'channels'], 'One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]', process.env.SLACK_CHANNELS)
   .option(['i', 'interval'], 'How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]', process.env.SLACK_INTERVAL || 5000)
   .option(['P', 'path'], 'Path to serve slackin under', '/')
   .option(['s', 'silent'], 'Do not print out warns or errors')
   .option(['C', 'coc'], 'Full URL to a CoC that needs to be agreed to')
-  .option(['S', 'css'], 'Full URL to a custom CSS file to use on the main page');
+  .option(['S', 'css'], 'Full URL to a custom CSS file to use on the main page')
+  .option(['?', 'help'], 'Show the usage information');
 
 var flags = args.parse(process.argv, {
-  value: '<team-id> <api-token>'
+  value: '<team-id> <api-token>',
+  help: false
 });
 
 var org = args.sub[0] || process.env.SLACK_SUBDOMAIN;
 var token = args.sub[1] || process.env.SLACK_API_TOKEN;
+
+if (flags.help) {
+  args.showHelp();
+}
 
 if (!org || !token) {
   args.showHelp();
