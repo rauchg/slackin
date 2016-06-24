@@ -56,8 +56,8 @@ Usage: slackin [options] <team-id> <api-token>
 
 Options:
 
-  -h, --help                 output usage information
-  -V, --version              output the version number
+  -?, --help                 output usage information
+  -v, --version              output the version number
   -p, --port <port>          Port to listen on [$PORT or 3000]
   -h, --hostname <hostname>  Hostname to listen on [$HOSTNAME or 0.0.0.0]
   -c, --channels [<chan>]    One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]

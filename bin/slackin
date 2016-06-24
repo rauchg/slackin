@@ -2,7 +2,7 @@
 
 var pkg = require('./../package');
 var args = require('args');
-var slackin = require('./../node').default;
+var slackin = require('./../dist').default;
 
 args
   .option(['p', 'port'], 'Port to listen on [$PORT or 3000]', require('hostenv').PORT || process.env.PORT || 3000)
@@ -12,14 +12,20 @@ args
   .option(['P', 'path'], 'Path to serve slackin under', '/')
   .option(['s', 'silent'], 'Do not print out warns or errors')
   .option(['C', 'coc'], 'Full URL to a CoC that needs to be agreed to')
-  .option(['S', 'css'], 'Full URL to a custom CSS file to use on the main page');
+  .option(['S', 'css'], 'Full URL to a custom CSS file to use on the main page')
+  .option(['?', 'help'], 'Show the usage information');
 
 var flags = args.parse(process.argv, {
-  value: '<team-id> <api-token>'
+  value: '<team-id> <api-token>',
+  help: false
 });
 
 var org = args.sub[0] || process.env.SLACK_SUBDOMAIN;
 var token = args.sub[1] || process.env.SLACK_API_TOKEN;
+
+if (flags.help) {
+  args.showHelp();
+}
 
 if (!org || !token) {
   args.showHelp();
