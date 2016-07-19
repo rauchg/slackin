@@ -1,4 +1,17 @@
 
+0.9.0 / 2016-07-19
+==================
+
+  * Important bug fixes (#208) [@leo]
+  * Switch to args, lint code and clean up (#200) [@leo]
+  * Update docs with more clear token generation info
+  * Change heroku deploy to master
+  * Update Dockerfile to match Procfile
+  * issue #169, add turnary assignment for client sdk channels
+  * Change case on the "already invited" message
+  * Update Readme.md
+  * Fix TypeError when submitting w/o SLACK_CHANNELS config
+
 0.8.3 / 2016-03-08
 ==================
 
