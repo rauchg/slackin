@@ -53,6 +53,7 @@
   "scripts": {
     "test": "mocha && eslint lib/**",
     "postinstall": "gulp",
+    "prepublish": "gulp transpile",
     "start": "node ./bin/slackin"
   }
 }
