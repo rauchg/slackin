@@ -3,6 +3,7 @@
   "version": "0.10.2",
   "description": "Public Slack organizations made easy",
   "repository": "rauchg/slackin",
+  "files": ["dist", "bin"],
   "babel": {
     "presets": [
       "es2015"
