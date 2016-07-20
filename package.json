@@ -53,6 +53,6 @@
   },
   "scripts": {
     "test": "mocha && eslint lib/**",
-    "prepublish": "gulp transpile"
+    "prepublish": "gulp"
   }
 }
