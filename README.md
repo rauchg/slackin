@@ -136,6 +136,13 @@ The returned `http.Server` has an `app` property that is
 the `express` application that you can define or override
 routes on.
 
+### JSON
+
+All the metadata for your organization can be fetched
+via a JSON HTTP request to `/data`.
+
+If you wish to turn on CORS, pass `-x` or `--cors` to `slackin`.
+
 ## Developing
 
 Slackin's server side code is written in ES6. It uses babel to transpile the
