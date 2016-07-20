@@ -1,4 +1,10 @@
 
+0.10.1 / 2016-07-19
+===================
+
+  * moving babel and gulp into dev deps [@rauchg]
+  * package: remove `start` as it requires ENV stuff [@rauchg]
+
 0.10.0 / 2016-07-19
 ===================
 
