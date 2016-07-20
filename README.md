@@ -36,13 +36,25 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 For other CloudFoundry providers, [follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
 
-#### Custom
+#### NPM
 
 Install it and launch it on your server:
 
 ```bash
 $ npm install -g slackin
 $ slackin "your-team-id" "your-slack-token"
+```
+
+#### Node.js (programmatic use)
+
+```
+const slackin = require('slackin').default;
+// slackin returns a `http.Server`
+// `server.app` is the underlying express app
+const server = slackin({
+  /* options */
+});
+server.listen(3000);
 ```
 
 Your team id is what you use to access your login page on Slack (eg: https://**{this}**.slack.com).
