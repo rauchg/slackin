@@ -1,4 +1,9 @@
 
+0.11.0 / 2016-07-19
+===================
+
+  * index: expose express app as `app` on the returned value of `slackin`
+
 0.10.3 / 2016-07-19
 ===================
 
