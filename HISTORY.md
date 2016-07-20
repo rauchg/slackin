@@ -1,4 +1,9 @@
 
+0.13.0 / 2016-07-20
+===================
+
+  * index: add `/data` endpoint to get data through a JSON API
+
 0.12.0 / 2016-07-20
 ===================
 
