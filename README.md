@@ -45,18 +45,6 @@ $ npm install -g slackin
 $ slackin "your-team-id" "your-slack-token"
 ```
 
-#### Node.js (programmatic use)
-
-```
-const slackin = require('slackin').default;
-// slackin returns a `http.Server`
-// `server.app` is the underlying express app
-const server = slackin({
-  /* options */
-});
-server.listen(3000);
-```
-
 Your team id is what you use to access your login page on Slack (eg: https://**{this}**.slack.com).
 
 You can find or generate your API test token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You need to create a dedicated `@slackin-inviter` user (or similar), mark that user an admin, and use a test token from that dedicated admin user.  Note that test tokens have actual permissions so you do not need to create an OAuth 2 app. Also check out the Slack docs on [generating a test token](https://get.slack.help/hc/en-us/articles/215770388-Creating-and-regenerating-API-tokens).
@@ -143,6 +131,10 @@ This will show response times from Slack and how many
 online users you have on the console.
 
 By default logging is enabled.
+
+The returned `http.Server` has an `app` property that is
+the `express` application that you can define or override
+routes on.
 
 ## Developing
 
