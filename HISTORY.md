@@ -1,4 +1,10 @@
 
+0.12.0 / 2016-07-20
+===================
+
+  * add options cors support
+  * slack: improve error handling
+
 0.11.3 / 2016-07-19
 ===================
 
