@@ -40,7 +40,7 @@
   "engines": {
     "node": ">=0.12.0"
   },
-  "main": "./node/index",
+  "main": "./dist/index",
   "bin": {
     "slackin": "./bin/slackin"
   },
