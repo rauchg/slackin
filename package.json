@@ -3,6 +3,7 @@
   "version": "0.11.0",
   "description": "Public Slack organizations made easy",
   "repository": "rauchg/slackin",
+  "main": "dist/index",
   "files": ["dist", "bin"],
   "babel": {
     "presets": [
