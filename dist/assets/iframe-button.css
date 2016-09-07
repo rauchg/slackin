@@ -1,0 +1,139 @@
+
+/*
+  CSS from: https://github.com/mdo/github-buttons
+  Copyright 2014-2015 Mark Otto. Released under Apache 2.0.
+*/
+
+body, html {
+  background: transparent;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font: bold 11px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+.slack-button {
+  height: 20px;
+  overflow: hidden;
+  display: inline-block;
+}
+.slack-btn,
+.slack-count,
+.slack-ico {
+  float: left;
+}
+.slack-btn,
+.slack-count {
+  padding: 2px 5px 2px 4px;
+  color: #333;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 200ms ease-in;
+}
+.slack-btn {
+  background-color: #eee;
+  background-image: -moz-linear-gradient(#fcfcfc, #eee);
+  background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+  background-image: linear-gradient(#fcfcfc, #eee);
+  background-repeat: no-repeat;
+  border: 1px solid #d5d5d5;
+}
+.slack-btn:hover,
+.slack-btn:focus {
+  text-decoration: none;
+  background-color: #ddd;
+  background-image: -moz-linear-gradient(#eee, #ddd);
+  background-image: -webkit-linear-gradient(#eee, #ddd);
+  background-image: linear-gradient(#eee, #ddd);
+  border-color: #ccc;
+}
+.slack-btn:active {
+  background-image: none;
+  background-color: #dcdcdc;
+  border-color: #b5b5b5;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+.slack-ico {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.slack-count {
+  position: relative;
+  display: block;
+  margin-left: 4px;
+  background-color: #fafafa;
+  border: 1px solid #d4d4d4;
+}
+.slack-count:hover,
+.slack-count:focus {
+  color: #4183C4;
+}
+.slack-count:before,
+.slack-count:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  transition: border-color 200ms ease-in;
+}
+.slack-count:before {
+  top: 50%;
+  left: -3px;
+  margin-top: -4px;
+  border-width: 4px 4px 4px 0;
+  border-right-color: #fafafa;
+}
+.slack-count:after {
+  top: 50%;
+  left: -4px;
+  z-index: -1;
+  margin-top: -5px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #d4d4d4;
+}
+
+.slack-count.anim {
+  background-color: yellow;
+}
+.slack-count.anim:before {
+  border-right-color: yellow;
+}
+
+.slack-btn-large {
+  height: 30px;
+}
+.slack-btn-large .slack-btn,
+.slack-btn-large .slack-count {
+  padding: 3px 10px 3px 8px;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 4px;
+}
+.slack-btn-large .slack-ico {
+  width: 20px;
+  height: 20px;
+}
+.slack-btn-large .slack-count {
+  margin-left: 6px;
+}
+.slack-btn-large .slack-count:before {
+  left: -5px;
+  margin-top: -6px;
+  border-width: 6px 6px 6px 0;
+}
+.slack-btn-large .slack-count:after {
+  left: -6px;
+  margin-top: -7px;
+  border-width: 7px 7px 7px 0;
+}
