@@ -24,8 +24,9 @@ var flags = args.parse(process.argv, {
 var org = args.sub[0] || process.env.SLACK_SUBDOMAIN
 var token = args.sub[1] || process.env.SLACK_API_TOKEN
 
-var gcaptcha_secret = args.sub[2] || process.env.SLACK_SUBDOMAIN
-var gcaptcha_sitekey = args.sub[3] || process.env.SLACK_API_TOKEN
+var gcaptcha_secret = args.sub[2] || process.env.GOOGLE_CAPTCHA_SECRET
+var gcaptcha_sitekey = args.sub[3] || process.env.GOOGLE_CAPTCHA_SITEKEY
+
 
 
 if (flags.help) {
@@ -45,7 +46,6 @@ var port = flags.port
 var hostname = flags.hostname
 
 slackin(flags).listen(port, hostname, function (err) {
-  console.log("FLAGS: ", flags);
   if (err) throw err
   if (!flags.silent) console.log('%s – listening on %s:%d', new Date, hostname, port)
 })

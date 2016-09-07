@@ -31,6 +31,10 @@ var _cors = require('cors');
 
 var _cors2 = _interopRequireDefault(_cors);
 
+var _superagent = require('superagent');
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
 var _slack = require('./slack');
 
 var _slack2 = _interopRequireDefault(_slack);
@@ -58,12 +62,16 @@ var _log2 = _interopRequireDefault(_log);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // our code
-// es6 runtime requirements
+
+
+// their code
 function slackin(_ref) {
   var token = _ref.token;
   var _ref$interval = _ref.interval;
   var interval = _ref$interval === undefined ? 5000 : _ref$interval;
   var org = _ref.org;
+  var gcaptcha_secret = _ref.gcaptcha_secret;
+  var gcaptcha_sitekey = _ref.gcaptcha_sitekey;
   var css = _ref.css;
   var coc = _ref.coc;
   var _ref$cors = _ref.cors;
@@ -77,6 +85,8 @@ function slackin(_ref) {
   // must haves
   if (!token) throw new Error('Must provide a `token`.');
   if (!org) throw new Error('Must provide an `org`.');
+  if (!gcaptcha_secret) throw new Error('Must provide a `gcaptcha_secret`.');
+  if (!gcaptcha_sitekey) throw new Error('Must provide an `gcaptcha_sitekey`.');
 
   if (channels) {
     // convert to an array
@@ -123,7 +133,7 @@ function slackin(_ref) {
     var total = _slack$users.total;
 
     if (!name) return res.send(404);
-    var page = (0, _vd2.default)('html', (0, _vd2.default)('head', (0, _vd2.default)('title', 'Join ', name, ' on Slack!'), (0, _vd2.default)('meta name=viewport content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no"'), (0, _vd2.default)('link rel="shortcut icon" href=https://slack.global.ssl.fastly.net/272a/img/icons/favicon-32.png'), css && (0, _vd2.default)('link rel=stylesheet', { href: css })), (0, _splash2.default)({ coc: coc, path: path, css: css, name: name, org: org, logo: logo, channels: channels, active: active, total: total }));
+    var page = (0, _vd2.default)('html', (0, _vd2.default)('head', (0, _vd2.default)('title', 'Join ', name, ' on Slack!'), (0, _vd2.default)("script src=https://www.google.com/recaptcha/api.js"), (0, _vd2.default)('meta name=viewport content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no"'), (0, _vd2.default)('link rel="shortcut icon" href=https://slack.global.ssl.fastly.net/272a/img/icons/favicon-32.png'), css && (0, _vd2.default)('link rel=stylesheet', { href: css })), (0, _splash2.default)({ coc: coc, path: path, css: css, name: name, org: org, logo: logo, channels: channels, active: active, total: total, gcaptcha_sitekey: gcaptcha_sitekey }));
     res.type('html');
     res.send(page.toHTML());
   });
@@ -165,9 +175,14 @@ function slackin(_ref) {
     }
 
     var email = req.body.email;
+    var captcha_response = req.body.captcha_response;
 
     if (!email) {
       return res.status(400).json({ msg: 'No email provided' });
+    }
+
+    if (captcha_response == undefined || !captcha_response.length) {
+      return res.status(400).send({ msg: 'Invalid captcha' });
     }
 
     if (!(0, _emailRegex2.default)().test(email)) {
@@ -178,17 +193,46 @@ function slackin(_ref) {
       return res.status(400).json({ msg: 'Agreement to CoC is mandatory' });
     }
 
-    (0, _slackInvite2.default)({ token: token, org: org, email: email, channel: chanId }, function (err) {
+    /////////////////////////////////////////////////////////////////////////
+
+
+    var captcha_data = {
+      secret: gcaptcha_secret,
+      response: captcha_response,
+      remoteip: req.connection.remoteAddress
+    };
+
+    var captcha_callback = function captcha_callback(err, resp) {
+
       if (err) {
-        if (err.message === 'Sending you to Slack...') {
-          return res.status(303).json({ msg: err.message, redirectUrl: 'https://' + org + '.slack.com' });
+        return res.status(400).send({ msg: err });
+      } else {
+
+        if (resp.body.success) {
+
+          var _chanId = slack.channel ? slack.channel.id : null;
+
+          (0, _slackInvite2.default)({ token: token, org: org, email: email, channel: _chanId }, function (err) {
+            if (err) {
+              if (err.message === 'Sending you to Slack...') {
+                return res.status(303).json({ msg: err.message, redirectUrl: 'https://' + org + '.slack.com' });
+              }
+
+              return res.status(400).json({ msg: err.message });
+            }
+
+            res.status(200).json({ msg: 'WOOT. Check your email!' });
+          });
+        } else {
+
+          if (err) {
+            return res.status(400).send({ msg: "Captcha check failed" });
+          }
         }
-
-        return res.status(400).json({ msg: err.message });
       }
+    };
 
-      res.status(200).json({ msg: 'WOOT. Check your email!' });
-    });
+    _superagent2.default.post('https://www.google.com/recaptcha/api/siteverify').type('form').send(captcha_data).end(captcha_callback);
   });
 
   // iframe
@@ -239,6 +283,4 @@ function slackin(_ref) {
   });
 
   return srv;
-}
-
-// their code
+} // es6 runtime requirements

@@ -22,6 +22,7 @@ function splash(_ref) {
   var channels = _ref.channels;
   var large = _ref.large;
   var iframe = _ref.iframe;
+  var gcaptcha_sitekey = _ref.gcaptcha_sitekey;
 
   var div = (0, _vd2.default)('.splash', !iframe && (0, _vd2.default)('.logos', logo && (0, _vd2.default)('.logo.org'), (0, _vd2.default)('.logo.slack')), (0, _vd2.default)('p', 'Join ', (0, _vd2.default)('b', name),
   // mention single single-channel inline
@@ -31,7 +32,7 @@ function splash(_ref) {
     return (0, _vd2.default)('option', { value: channel, text: channel });
   }))
   // otherwise a fixed channel
-  : (0, _vd2.default)('input type=hidden name=channel', { value: channels[0] })), (0, _vd2.default)('input.form-item type=email name=email placeholder=you@yourdomain.com ' + (!iframe ? 'autofocus' : '')), coc && (0, _vd2.default)('.coc', (0, _vd2.default)('label', (0, _vd2.default)('input type=checkbox name=coc value=1'), 'I agree to the ', (0, _vd2.default)('a', { href: coc, target: '_blank' }, 'Code of Conduct'), '.')), (0, _vd2.default)('button.loading', 'Get my Invite')), (0, _vd2.default)('p.signin', 'or ', (0, _vd2.default)('a href=https://' + org + '.slack.com target=_top', 'sign in'), '.'), !iframe && (0, _vd2.default)('footer', 'powered by ', (0, _vd2.default)('a href=http://rauchg.com/slackin target=_blank', 'slackin')), style({ logo: logo, active: active, large: large, iframe: iframe }),
+  : (0, _vd2.default)('input type=hidden name=channel', { value: channels[0] })), (0, _vd2.default)('input.form-item type=email name=email placeholder=you@yourdomain.com ' + (!iframe ? 'autofocus' : '')), (0, _vd2.default)('br'), (0, _vd2.default)('div class="g-recaptcha" data-sitekey="' + gcaptcha_sitekey + '"'), coc && (0, _vd2.default)('.coc', (0, _vd2.default)('label', (0, _vd2.default)('input type=checkbox name=coc value=1'), 'I agree to the ', (0, _vd2.default)('a', { href: coc, target: '_blank' }, 'Code of Conduct'), '.')), (0, _vd2.default)('button.loading', 'Get my Invite')), (0, _vd2.default)('p.signin', 'or ', (0, _vd2.default)('a href=https://' + org + '.slack.com target=_top', 'sign in'), '.'), !iframe && (0, _vd2.default)('footer', 'powered by ', (0, _vd2.default)('a href=http://rauchg.com/slackin target=_blank', 'slackin')), style({ logo: logo, active: active, large: large, iframe: iframe }),
   // xxx: single build
   (0, _vd2.default)('script', '\n      data = {};\n      data.path = ' + JSON.stringify(path) + ';\n    '), (0, _vd2.default)('script src=https://cdn.socket.io/socket.io-1.4.4.js'), (0, _vd2.default)('script src=' + path + 'assets/superagent.js'), (0, _vd2.default)('script src=' + path + 'assets/client.js'));
   return div;
