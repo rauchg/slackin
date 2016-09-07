@@ -1,4 +1,4 @@
-# slackin
+# Slackin with Google Recaptcha integration
 
 A little server that enables public access to a Slack server. Like Freenode, but on Slack.
 
