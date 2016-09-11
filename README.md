@@ -122,7 +122,7 @@ require('slackin').default({
   interval: 1000,
   org: 'your-slack-subdomain', // required
   path: '/some/path/you/host/slackin/under/', // defaults to '/'
-  channels: 'channel,channel,...' // for single channel mode
+  channels: 'channel,channel,...', // for single channel mode
   silent: false // suppresses warnings
 }).listen(3000);
 ```
