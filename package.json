@@ -57,6 +57,6 @@
   },
   "scripts": {
     "test": "mocha && eslint lib/**",
-    "prepublish": "gulp"
+    "postinstall": "gulp"
   }
 }
