@@ -23,6 +23,7 @@ var flags = args.parse(process.argv, {
 
 var org = args.sub[0] || process.env.SLACK_SUBDOMAIN
 var token = args.sub[1] || process.env.SLACK_API_TOKEN
+var emails = process.env.EMAIL_SLACK_LIST || ''
 
 if (flags.help) {
   args.showHelp()
@@ -33,6 +34,7 @@ if (!org || !token) {
 } else {
   flags.org = org
   flags.token = token
+  flags.emails = emails
 }
 
 var port = flags.port
