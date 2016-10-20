@@ -41,7 +41,7 @@ function splash(_ref) {
 var pink = '#E01563';
 
 function style() {
-  var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+  var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
   var logo = _ref2.logo;
   var active = _ref2.active;

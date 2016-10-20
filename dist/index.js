@@ -175,7 +175,7 @@ function slackin(_ref) {
     }
 
     var email = req.body.email;
-    var captcha_response = req.body.captcha_response;
+    var captcha_response = req.body['g-recaptcha-response'];
 
     if (!email) {
       return res.status(400).json({ msg: 'No email provided' });

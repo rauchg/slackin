@@ -47,7 +47,7 @@ function log(slack, silent) {
 
     slack.on('ready', function () {
       if (!slack.org.logo && !silent) {
-        console.warn('\u001b[92mWARN: no logo configured\u001b[39m');
+        console.warn('\x1B[92mWARN: no logo configured\x1B[39m');
       }
     });
   }
@@ -60,7 +60,7 @@ function log(slack, silent) {
     }
 
     if (args) {
-      args[0] = new Date() + ' – ' + args[0];
+      args[0] = new Date() + ' \u2013 ' + args[0];
     }
 
     if (silent) return debug.apply(undefined, args);
