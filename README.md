@@ -1,6 +1,6 @@
 # slackin
 
-A little server that enables public access to a Slack server. Like Freenode, but on Slack.
+A little server that enables public access to a Slack server. Like freenode, but on Slack.
 
 It provides
 
