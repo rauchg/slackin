@@ -1,4 +1,4 @@
-FROM node:slim
+FROM octohost/nodejs
 
 ENV PORT 3000
 
