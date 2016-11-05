@@ -64,7 +64,8 @@ Options:
   -c, --channel <chan>       Single channel guest invite (deprecated) [$SLACK_CHANNEL]
   -i, --interval <int>       How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]
   -P, --path                 Path to serve slackin under
-  -s, --silent               Do not print out warns or errors
+  -l, --laconic              Do not print "fetching" or "online 12, total 34 (+56ms)" messages every polling interval, but do print errors, warnings, startup info
+  -s, --silent               Do not print anything, even warnings or errors
   -c, --css <file>           Full URL to a custom CSS file to use on the main page
 ```
 
@@ -123,7 +124,7 @@ require('slackin').default({
   org: 'your-slack-subdomain', // required
   path: '/some/path/you/host/slackin/under/', // defaults to '/'
   channels: 'channel,channel,...', // for single channel mode
-  silent: false // suppresses warnings
+  silent: true // suppresses logging
 }).listen(3000);
 ```
 
