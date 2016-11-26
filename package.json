@@ -58,6 +58,6 @@
   "scripts": {
     "test": "mocha && eslint lib/**",
     "postinstall": "gulp",
-    "start": "slackin"
+    "start": "chmod +x bin/slackin && ./bin/slackin"
   }
 }
