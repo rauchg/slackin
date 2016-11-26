@@ -62,6 +62,10 @@
     "start": "chmod +x bin/slackin && ./bin/slackin"
   },
   "now": {
-    "files": ["bin", "lib"]
+    "files": [
+      "bin",
+      "lib",
+      "gulpfile.babel.js"
+    ]
   }
 }
