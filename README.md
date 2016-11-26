@@ -31,10 +31,14 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 #### Cloud Foundry
 
+For other CloudFoundry providers, [follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
+
 ##### IBM Bluemix
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
 
-For other CloudFoundry providers, [follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
+#### Myrskyt
+
+<a href="https://myrskyt.com/container/deploy/https://github.com/rauchg/slackin"><img src="https://myrskyt.com/static/img/button.jpg" height="40" width="155"></a>
 
 #### NPM
 
