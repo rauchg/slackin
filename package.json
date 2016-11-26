@@ -60,5 +60,8 @@
     "postinstall": "gulp",
     "build": "gulp",
     "start": "chmod +x bin/slackin && ./bin/slackin"
+  },
+  "now": {
+    "files": ["bin", "lib"]
   }
 }
