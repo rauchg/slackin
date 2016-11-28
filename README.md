@@ -1,8 +1,6 @@
-# slackin
+![](https://github.com/zeit/art/blob/26e8d259270738f6282037f7a8f5850cc55db296/slackin/repo-banner.png)
 
-A little server that enables public access to a Slack server. Like freenode, but on Slack.
-
-It provides
+## Features
 
 - A landing page you can point users to fill in their
   emails and receive an invite (`https://slack.yourdomain.com`)
@@ -13,30 +11,22 @@ It provides
 
 Read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
-## How to use
+## Usage
 
-### Server
+Install [Now.app](https://zeit.co/app), setup the Now CLI and run this:
 
-#### Heroku
+```bash
+$ now -e SLACK_API_TOKEN="<token>" -e SLACK_SUBDOMAIN="<team-name>" rauchg/slackin
+```
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/master)
+Other platforms:
 
-#### Azure
+- [Heroku](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/master)
+- [Azure](https://azuredeploy.net/)
+- [OpenShift](https://github.com/rauchg/slackin/wiki/OpenShift)
+- [IBM Bluemix](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
-
-#### OpenShift
-
-[Follow these instructions.](https://github.com/rauchg/slackin/wiki/OpenShift)
-
-#### Cloud Foundry
-
-##### IBM Bluemix
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
-
-For other CloudFoundry providers, [follow these instructions.](https://github.com/pivotal-cf/slackin/wiki/Cloud-Foundry)
-
-#### NPM
+### The Command
 
 Install it and launch it on your server:
 
@@ -163,7 +153,3 @@ files in lib/ to update the versions in node/.
 excellent [shields](https://github.com/badges/shields) project.
 - The button CSS is based on
 [github-buttons](https://github.com/mdo/github-buttons).
-
-## License
-
-MIT
