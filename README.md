@@ -1,4 +1,4 @@
-![](https://github.com/zeit/art/blob/26e8d259270738f6282037f7a8f5850cc55db296/slackin/repo-banner.png)
+![](https://github.com/zeit/art/blob/e081cf46e6609b51ac485dcc337ac6644c0da5e7/slackin/repo-banner.png)
 
 ## Features
 
