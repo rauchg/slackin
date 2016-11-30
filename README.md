@@ -2,17 +2,11 @@
 
 ## Features
 
-- A landing page you can point users to fill in their
-  emails and receive an invite (`https://slack.yourdomain.com`)
-- An `<iframe>` badge to embed on any website
-  that shows connected users in *realtime* with socket.io.
-- A SVG badge that works well from static mediums
-  (like GitHub README pages)
+- A landing page you can point users to fill in their emails and receive an invite (`https://slack.yourdomain.com`)
+- An `<iframe>` badge to embed on any website that shows connected users in *realtime* with socket.io.
+- A SVG badge that works well from static mediums (like GitHub README pages)
 
-Read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
-
-[Demo](https://slackin-spzhjhzdnp.now.sh/) | [Screenshots](#svg)
-
+Check out the [Demo](https://slackin-spzhjhzdnp.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
 ## Usage
 
@@ -58,7 +52,7 @@ Workaround: sign up for a free org, and set up Slackin to point to it
 
 ## API
 
-Requiring `slackin` as a module will return a `Function` that creates a `HTTP.Server` instance that you can manipulate.
+Loading `slackin` will return a `Function` that creates a `HTTP.Server` instance:
 
 ```js
 import slackin from 'slackin'
@@ -75,11 +69,7 @@ slackin.default({
 
 This will show response times from Slack and how many online users you have on the console. The returned `http.Server` has an `app` property that is the `express` application that you can define or override routes on.
 
-### JSON
-
 All the metadata for your organization can be fetched via a JSON HTTP request to `/data`.
-
-If you wish to turn on CORS, pass `-x` or `--cors` to `slackin`.
 
 ## Caught a Bug?
 
