@@ -58,34 +58,26 @@ Workaround: sign up for a free org, and set up Slackin to point to it
 
 ## API
 
-Requiring `slackin` as a module will return
-a `Function` that creates a `HTTP.Server` instance
-that you can manipulate.
+Requiring `slackin` as a module will return a `Function` that creates a `HTTP.Server` instance that you can manipulate.
 
 ```js
-require('slackin').default({
-  token: 'yourtoken', // required
+import slackin from 'slackin'
+
+slackin.default({
+  token: 'yourtoken',                             // required
   interval: 1000,
-  org: 'your-slack-subdomain', // required
-  path: '/some/path/you/host/slackin/under/', // defaults to '/'
-  channels: 'channel,channel,...', // for single channel mode
-  silent: false // suppresses warnings
-}).listen(3000);
+  org: 'your-slack-subdomain',                    // required
+  path: '/some/path/you/host/slackin/under/',     // defaults to '/'
+  channels: 'channel,channel,...',                // for single channel mode
+  silent: false                                   // suppresses warnings
+}).listen(3000)
 ```
 
-This will show response times from Slack and how many
-online users you have on the console.
-
-By default logging is enabled.
-
-The returned `http.Server` has an `app` property that is
-the `express` application that you can define or override
-routes on.
+This will show response times from Slack and how many online users you have on the console. The returned `http.Server` has an `app` property that is the `express` application that you can define or override routes on.
 
 ### JSON
 
-All the metadata for your organization can be fetched
-via a JSON HTTP request to `/data`.
+All the metadata for your organization can be fetched via a JSON HTTP request to `/data`.
 
 If you wish to turn on CORS, pass `-x` or `--cors` to `slackin`.
 
