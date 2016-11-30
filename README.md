@@ -11,7 +11,7 @@
 
 Read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
-[Demo](https://slackin-spzhjhzdnp.now.sh/) | [Docs](#svg)
+[Demo](https://slackin-spzhjhzdnp.now.sh/) | [Screenshots](#svg)
 
 ## Usage
 
