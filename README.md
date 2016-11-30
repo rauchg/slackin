@@ -13,6 +13,7 @@ Read more about the [motivations and history](http://rauchg.com/slackin) behind 
 
 [Demo](https://slackin-spzhjhzdnp.now.sh/) | [Screenshots](#svg)
 
+
 ## Usage
 
 Install [Now.app](https://zeit.co/app), setup the Now CLI and run this:
@@ -27,6 +28,7 @@ Other platforms:
 - [Azure](https://azuredeploy.net/)
 - [OpenShift](https://github.com/rauchg/slackin/wiki/OpenShift)
 - [IBM Bluemix](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
+
 
 ### The Command
 
@@ -46,6 +48,7 @@ able to invite as many external accounts as paying members you have
 times 5. If you are not getting invite emails, this might be the reason.
 Workaround: sign up for a free org, and set up Slackin to point to it
 (all channels will be visible).**
+
 
 ### Realtime Badge
 
@@ -73,6 +76,7 @@ Done in Markdown this looks like:
 
     [![Slack Status](https://slack.yourdomain.com/badge.svg)](https://yourdomain.com)
 
+
 ### Landing page
 
 [![](https://cldup.com/WIbawiqp0Q.png)](http://slack.socket.io)
@@ -82,6 +86,7 @@ Point to `https://slack.yourdomain.com`.
 **Note:** the image for the logo of the landing page
 is retrieved from the Slack API. If your organization
 doesn't have one configured, it won't be shown.
+
 
 ## API
 
@@ -109,12 +114,14 @@ The returned `http.Server` has an `app` property that is
 the `express` application that you can define or override
 routes on.
 
+
 ### JSON
 
 All the metadata for your organization can be fetched
 via a JSON HTTP request to `/data`.
 
 If you wish to turn on CORS, pass `-x` or `--cors` to `slackin`.
+
 
 ## Developing
 
@@ -129,6 +136,7 @@ $ npm install
 After the libraries install, the postinstall script will run `gulp` to invoke
 babel on the source. It is important to run `gulp` manually after updating any
 files in lib/ to update the versions in node/.
+
 
 ## Credits
 
