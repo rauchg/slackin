@@ -26,25 +26,6 @@ Your team id is what you use to access your login page on Slack (eg: https://**{
 
 You can find or generate your API test token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You need to create a dedicated `@slackin-inviter` user (or similar), mark that user an admin, and use a test token from that dedicated admin user.  Note that test tokens have actual permissions so you do not need to create an OAuth 2 app. Also check out the Slack docs on [generating a test token](https://get.slack.help/hc/en-us/articles/215770388-Creating-and-regenerating-API-tokens).
 
-The available options are:
-
-```
-Usage: slackin [options] <team-id> <api-token>
-
-Options:
-
-  -?, --help                 output usage information
-  -v, --version              output the version number
-  -p, --port <port>          Port to listen on [$PORT or 3000]
-  -h, --hostname <hostname>  Hostname to listen on [$HOSTNAME or 0.0.0.0]
-  -c, --channels [<chan>]    One or more comma-separated channel names to allow single-channel guests [$SLACK_CHANNELS]
-  -c, --channel <chan>       Single channel guest invite (deprecated) [$SLACK_CHANNEL]
-  -i, --interval <int>       How frequently (ms) to poll Slack [$SLACK_INTERVAL or 5000]
-  -P, --path                 Path to serve slackin under
-  -s, --silent               Do not print out warns or errors
-  -c, --css <file>           Full URL to a custom CSS file to use on the main page
-```
-
 **Important: if you use Slackin in single-channel mode, you'll only be
 able to invite as many external accounts as paying members you have
 times 5. If you are not getting invite emails, this might be the reason.
