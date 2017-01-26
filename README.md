@@ -35,6 +35,21 @@ times 5. If you are not getting invite emails, this might be the reason.
 Workaround: sign up for a free org, and set up Slackin to point to it
 (all channels will be visible).
 
+### Restrict invitations using an email list
+
+You can restrict user invites to a limited list of valid emails. To do it you 
+only have to export the environment variable `EMAIL_SLACK_LIST` with the email 
+list (comma separated and spaceless):
+
+```
+export EMAIL_SLACK_LIST="user@domain.com,pal@company.io,john@doe.co"
+```
+
+**Important:** By defining the list, any intent to get an invitation with an
+email not listed will be rejected with the message: 
+
+> Your email is not on the accepted email list
+
 ### Badges
 
 #### Realtime ([demo](https://cldup.com/IaiPnDEAA6.gif))
