@@ -45,7 +45,7 @@ list (comma separated and spaceless):
 export EMAIL_SLACK_LIST="user@domain.com,pal@company.io,john@doe.co"
 ```
 
-**Important:** By defining the list, any intent to get an invitation with an
+**Important:** By defining the list any intent to get an invitation with an
 email not listed will be rejected with the message: 
 
 > Your email is not on the accepted email list
