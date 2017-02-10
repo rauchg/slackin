@@ -13,7 +13,7 @@ Check out the [Demo](https://slackin-spzhjhzdnp.now.sh/) or read more about the 
 Set up [Now](https://zeit.co/now) on your device and run this command:
 
 ```bash
-$ now -e SLACK_API_TOKEN="<token>" -e SLACK_SUBDOMAIN="<team-name>" rauchg/slackin
+$ now --docker -e SLACK_API_TOKEN="<token>" -e SLACK_SUBDOMAIN="<team-name>" rauchg/slackin
 ```
 
 Other platforms:
