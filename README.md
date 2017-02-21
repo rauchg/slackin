@@ -74,8 +74,8 @@ All the metadata for your organization can be fetched via a JSON HTTP request to
 ## Caught a Bug?
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
-2. Uninstall slackin if it's already installed: `npm uninstall -g slack`
+2. Uninstall slackin if it's already installed: `npm uninstall -g slackin`
 3. Link it to the global module directory: `npm link`
 4. Transpile the source code and watch for changes: `npm start`
 
-Yey! Now can use the `slack` command everywhere.
+Yey! Now can use the `slackin` command everywhere.
