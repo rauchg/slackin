@@ -14,27 +14,30 @@ args
   .option(['x', 'cors'], 'Enable CORS for all routes')
   .option(['C', 'coc'], 'Full URL to a CoC that needs to be agreed to')
   .option(['S', 'css'], 'Full URL to a custom CSS file to use on the main page')
+  .option(['r', 'captcha'], 'Google recaptcha secret to verify user response')
   .option(['?', 'help'], 'Show the usage information')
 
 var flags = args.parse(process.argv, {
-  value: '<team-id> <api-token>',
+  value: '<team-id> <api-token> <recaptcha-secret>',
   help: false
 })
 
 var org = args.sub[0] || process.env.SLACK_SUBDOMAIN
 var token = args.sub[1] || process.env.SLACK_API_TOKEN
+var recaptchaSecret = args.sub[2] || process.env.RECAPTCHA_SECRET
 var emails = process.env.EMAIL_SLACK_LIST || ''
 
 if (flags.help) {
   args.showHelp()
 }
 
-if (!org || !token) {
+if (!org || !token || !recaptchaSecret) {
   args.showHelp()
 } else {
   flags.org = org
   flags.token = token
   flags.emails = emails
+  flags.recaptchaSecret = recaptchaSecret
 }
 
 var port = flags.port
