@@ -6,7 +6,7 @@
 - An `<iframe>` badge to embed on any website that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums (like GitHub README pages)
 
-Check out the [Demo](https://slackin-spzhjhzdnp.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
+Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
 ## Usage
 
