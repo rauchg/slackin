@@ -14,11 +14,7 @@ Check out the [Demo](https://slackin.now.sh/) or read more about the [motivation
 Set up [Now](https://zeit.co/now) on your device and run this command:
 
 ```bash
-$ now -e SLACK_API_TOKEN="<token>" \
-      -e SLACK_SUBDOMAIN="<team-name>" \
-      -e GOOGLE_CAPTCHA_SECRET="<secret>" \
-      -e GOOGLE_CAPTCHA_SITEKEY="<sitekey>" \
-      now-examples/slackin
+now now-examples/slackin
 ```
 
 Other platforms:
