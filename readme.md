@@ -63,7 +63,7 @@ sitekey](https://www.google.com/recaptcha/admin) for Google reCAPTCHA.
 Loading `slackin` will return a `Function` that creates a `HTTP.Server` instance:
 
 ```js
-import slackin from 'slackin'
+const slackin = require('slackin')
 
 slackin.default({
   token: 'yourtoken',                             // required
