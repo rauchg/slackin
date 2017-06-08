@@ -10,7 +10,7 @@
       "required": true
     },
     "SLACK_API_TOKEN": {
-      "description": "A Slack API token (find it on https://api.slack.com/web)",
+      "description": "A Slack API token (find it on https://api.slack.com/custom-integrations/legacy-tokens)",
       "required": true
     },
     "GOOGLE_CAPTCHA_SECRET": {
