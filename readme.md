@@ -14,7 +14,7 @@ Check out the [Demo](https://slackin.now.sh/) or read more about the [motivation
 Set up [Now](https://zeit.co/now) on your device and run this command. [Now](https://zeit.co/now) will automatically ask you for the required information and then spin up a deployment instantly. That easy!
 
 ```bash
-now now-examples/slackin
+now rauchg/slackin
 ```
 
 Other platforms:
