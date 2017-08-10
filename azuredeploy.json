@@ -39,6 +39,18 @@
         "description": "Slack API token (find it on https://api.slack.com/web)"
       }
     },
+    "googleCaptchaSiteKey": {
+      "type": "string",
+      "metadata": {
+        "description": "Google reCAPTCHA API Site key (find it on https://www.google.com/recaptcha/admin)"
+      }
+    },
+    "googleCaptchaSecret": {
+      "type": "string",
+      "metadata": {
+        "description": "Google reCAPTCHA API Secret key (find it on https://www.google.com/recaptcha/admin)"
+      }
+    },
     "slackinRelease" : {
       "type": "string",
       "allowedValues": [
@@ -99,6 +111,8 @@
             "SLACK_SUBDOMAIN": "[parameters('slackTeamId')]",
             "SLACK_API_TOKEN": "[parameters('slackApiToken')]",
             "SLACKIN_RELEASE": "[parameters('slackinRelease')]",
+            "GOOGLE_CAPTCHA_SITEKEY": "[parameters('googleCaptchaSiteKey')]",
+            "GOOGLE_CAPTCHA_SECRET": "[parameters('googleCaptchaSecret')]",
             "WEBSITE_NPM_DEFAULT_VERSION": "3.3.12",
             "WEBSITE_NODE_DEFAULT_VERSION": "5.1.1",
             "command": "bash scripts/azuredeploy.sh"
