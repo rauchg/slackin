@@ -9,6 +9,8 @@
 
 Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
+If you don't want to deal with installation or just need a landing page, you can use [Community Inviter](https://communityinviter.com/) for free. 
+
 ## Usage
 
 Set up [Now](https://zeit.co/now) on your device and run this command. [Now](https://zeit.co/now) will automatically ask you for the required information and then spin up a deployment instantly. That easy!
