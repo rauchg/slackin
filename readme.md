@@ -45,7 +45,7 @@ sitekey](https://www.google.com/recaptcha/admin) for Google reCAPTCHA.
 
 ```html
 <script async defer src="https://slack.yourdomain.com/slackin.js"></script>
-<!-- append "?" to the URL for the large version -->
+<!-- append "?large" to the URL for the large version -->
 ```
 
 #### SVG ([demo](https://cldup.com/jWUT4QFLnq.png))
