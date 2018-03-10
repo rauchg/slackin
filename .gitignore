@@ -4,9 +4,6 @@ node_modules
 # logs
 npm-debug.log
 
-# Env when deploying
-.env.now
-
 # Ignore dist files
 dist
 
