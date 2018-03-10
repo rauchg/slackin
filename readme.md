@@ -24,6 +24,25 @@ Other platforms:
 - [OpenShift](https://github.com/rauchg/slackin/wiki/OpenShift)
 - [IBM Bluemix](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
 
+### Environment Variables
+
+These environment variables can be used to configure the app.
+
+```bash
+# Time in milliseconds to ping the slack api
+SLACK_INTERVAL=15000
+
+# Slack team id (subdomain of slack.com)
+SLACK_SUBDOMAIN=
+
+# Slack api token of your slack app with admin permission
+SLACK_API_TOKEN=
+
+# Google reCAPTCHA keys
+GOOGLE_CAPTCHA_SITEKEY=
+GOOGLE_CAPTCHA_SECRET=
+```
+
 ### Tips
 
 Your team id is what you use to access your login page on Slack (eg: https://**{this}**.slack.com).

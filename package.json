@@ -69,10 +69,12 @@
             "gulpfile.babel.js"
         ],
         "env": [
+            "SLACK_INTERVAL",
             "SLACK_API_TOKEN",
             "SLACK_SUBDOMAIN",
             "GOOGLE_CAPTCHA_SECRET",
             "GOOGLE_CAPTCHA_SITEKEY"
-        ]
+        ],
+        "dotenv": ".env"
     }
 }
