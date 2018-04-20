@@ -7,7 +7,7 @@
 - A SVG badge that works well from static mediums (like GitHub README pages)
 - Abuse prevention via [Google reCAPTCHA](https://www.google.com/recaptcha/intro/)
 
-Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
+Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](https://web.archive.org/web/20161220085650/http://rauchg.com/slackin/) behind Slackin.
 
 ## Usage
 
