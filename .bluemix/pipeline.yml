@@ -1,0 +1,84 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: master
+    service: ${SLACKIN_REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  - name: APP_URL
+    value: undefined
+    type: text
+  - name: SLACK_SUBDOMAIN
+    value: ${SLACK_SUBDOMAIN}
+  - name: SLACK_API_TOKEN
+    value: ${SLACK_API_TOKEN}
+  - name: GOOGLE_CAPTCHA_SECRET
+    value: ${GOOGLE_CAPTCHA_SECRET}
+  - name: GOOGLE_CAPTCHA_SITEKEY
+    value: ${GOOGLE_CAPTCHA_SITEKEY}
+  - name: SLACK_INTERVAL
+    value: '600000'
+  jobs:
+  - name: Blue-Green Deploy
+    type: deployer
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}      
+    script: |
+      #!/bin/bash
+      # Push app
+      push_app() {
+        if ! cf push "${CF_APP}" --no-start; then
+          echo "Error pushing ${CF_APP}."
+          exit 1
+        fi
+        cf set-env ${CF_APP} "SLACK_SUBDOMAIN" ${SLACK_SUBDOMAIN}
+        cf set-env ${CF_APP} "SLACK_API_TOKEN" ${SLACK_API_TOKEN} > /dev/null
+        cf set-env ${CF_APP} "GOOGLE_CAPTCHA_SECRET" ${GOOGLE_CAPTCHA_SECRET} > /dev/null
+        cf set-env ${CF_APP} "GOOGLE_CAPTCHA_SITEKEY" ${GOOGLE_CAPTCHA_SITEKEY} > /dev/null
+        cf set-env ${CF_APP} "SLACK_INTERVAL" ${SLACK_INTERVAL}
+        cf start "${CF_APP}"
+      }
+      if ! cf app $CF_APP; then  
+        push_app        
+      else
+        OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
+        rollback() {
+          set +e  
+          if cf app $OLD_CF_APP; then
+            cf logs $CF_APP --recent
+            cf delete $CF_APP -f
+            cf rename $OLD_CF_APP $CF_APP
+          fi
+          exit 1
+        }
+        set -e
+        trap rollback ERR
+        cf rename $CF_APP $OLD_CF_APP
+        push_app
+        cf delete $OLD_CF_APP -f
+      fi
+      # Export app name and URL for use in later Pipeline jobs
+      export CF_APP_NAME="$CF_APP"
+      export APP_URL=http://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
+      # View logs
+      #cf logs "${CF_APP}" --recent
+      

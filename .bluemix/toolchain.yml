@@ -1,0 +1,62 @@
+version: '2'
+messages:
+  $i18n: locales.yml
+template:
+  name:
+    $ref: "#/messages/template.name"
+  description:
+    $ref: "#/messages/template.description"
+  header: '![](toolchain.svg?localize)'
+  icon: icon.svg
+  required:
+    - slackin-build
+    - slackin-repo
+  info:
+    git url: >-
+      [https://github.com/rauchg/slackin](https://github.com/rauchg/slackin)
+    git branch: >-
+      [master](https://github.com/rauchg/slackin/tree/master)
+toolchain:
+  name: 'slackin-toolchain-{{timestamp}}'
+  template:
+    getting_started:
+      $ref: "#/messages/template.gettingStarted"
+services:
+  slackin-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: '{{toolchain.name}}'
+      repo_url: 'https://github.com/rauchg/slackin'
+      type: clone
+      has_issues: true
+      enable_traceability: true
+  slackin-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - slackin-repo
+      name: '{{services.slackin-repo.parameters.repo_name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          SLACKIN_REPO: slackin-repo
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          SLACK_SUBDOMAIN: '{{form.pipeline.parameters.slack-teamid}}'
+          SLACK_API_TOKEN: '{{form.pipeline.parameters.slack-apitoken}}'
+          GOOGLE_CAPTCHA_SECRET: '{{form.pipeline.parameters.captcha-secret}}'
+          GOOGLE_CAPTCHA_SITEKEY: '{{form.pipeline.parameters.captcha-sitekey}}'
+
+        execute: true
+  webide:
+    service_id: orion
+form:
+  pipeline:
+    parameters:
+      prod-app-name: '{{services.slackin-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
