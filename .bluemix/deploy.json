@@ -139,7 +139,7 @@
           "type": "text",
           "readonly": false,
           "title": {
-              "$ref": "#/messages/slackTeamId"
+              "$ref": "#/messages/deploy.slackTeamId"
           },
           "key": "slack-teamid"
         },
@@ -147,7 +147,7 @@
           "type": "password",
           "readonly": false,
           "title": {
-              "$ref": "#/messages/slackApiToken"
+              "$ref": "#/messages/deploy.slackApiToken"
           },
           "key": "slack-apitoken"
         },
@@ -155,7 +155,7 @@
           "type": "password",
           "readonly": false,
           "title": {
-              "$ref": "#/messages/captchaSecret"
+              "$ref": "#/messages/deploy.captchaSecret"
           },
           "key": "captcha-secret"
         },
@@ -163,7 +163,7 @@
           "type": "password",
           "readonly": false,
           "title": {
-              "$ref": "#/messages/captchaSiteKey"
+              "$ref": "#/messages/deploy.captchaSiteKey"
           },
           "key": "captcha-sitekey"
         }
