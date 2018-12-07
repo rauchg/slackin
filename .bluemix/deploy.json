@@ -1,0 +1,171 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "messages": {
+        "$i18n": "locales.yml"
+    },
+    "title": {
+        "$ref": "#/messages/deploy.title"
+    },
+    "description": {
+        "$ref": "#/messages/deploy.description"
+    },
+    "longDescription": {
+        "$ref": "#/messages/deploy.longDescription"
+    },
+    "type": "object",
+    "properties": {
+        "prod-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "prod-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+        "prod-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "prod-app-name": {
+            "description": {
+                "$ref": "#/messages/deploy.appDescription"
+            },
+            "type": "string",
+            "pattern": "\\S"
+        },
+        "slack-teamid": {
+            "description": {
+                "$ref": "#/messages/deploy.slackTeamId"
+            },
+            "type": "string"
+        },
+        "slack-apitoken": {
+            "description": {
+                "$ref": "#/messages/deploy.slackApiToken"
+            },
+          "type": "string"
+        },
+        "captcha-secret": {
+            "description": {
+                "$ref": "#/messages/deploy.captchaSecret"
+            },
+          "type": "string"
+        },
+        "captcha-sitekey": {
+            "description": {
+                "$ref": "#/messages/deploy.captchaSiteKey"
+            },
+          "type": "string"
+        }
+
+    },
+    "required": [
+        "prod-region",
+        "prod-organization",
+        "prod-space",
+        "prod-app-name",
+        "slack-teamid",
+        "slack-apitoken",
+        "captcha-secret",
+        "captcha-sitekey"
+    ],
+    "form": [
+        {
+            "type": "validator",
+            "url": "/devops/setup/bm-helper/helper.html"
+        },
+        {
+            "type": "text",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.appName"
+            },
+            "key": "prod-app-name"
+        },
+        {
+            "type": "table",
+            "columnCount": 4,
+            "widths": [
+                "15%",
+                "28%",
+                "28%",
+                "28%"
+            ],
+            "items": [
+                {
+                    "type": "label",
+                    "title": ""
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/region"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/organization"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/space"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/prodStage"
+                    }
+                },
+                {
+                    "type": "select",
+                    "key": "prod-region"
+                },
+                {
+                    "type": "select",
+                    "key": "prod-organization"
+                },
+                {
+                    "type": "select",
+                    "key": "prod-space",
+                    "readonly": false
+                }
+            ]
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": {
+              "$ref": "#/messages/deploy.slackTeamId"
+          },
+          "key": "slack-teamid"
+        },
+        {
+          "type": "password",
+          "readonly": false,
+          "title": {
+              "$ref": "#/messages/deploy.slackApiToken"
+          },
+          "key": "slack-apitoken"
+        },
+        {
+          "type": "password",
+          "readonly": false,
+          "title": {
+              "$ref": "#/messages/deploy.captchaSecret"
+          },
+          "key": "captcha-secret"
+        },
+        {
+          "type": "password",
+          "readonly": false,
+          "title": {
+              "$ref": "#/messages/deploy.captchaSiteKey"
+          },
+          "key": "captcha-sitekey"
+        }
+    ]
+}
