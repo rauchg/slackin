@@ -1,0 +1,4 @@
+builds:
+  - root:
+      port.container: 3000
+
