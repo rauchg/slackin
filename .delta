@@ -1,4 +1,5 @@
 builds:
   - root:
       port.container: 3000
+      initial.number.instances: 1
 
