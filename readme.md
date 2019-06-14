@@ -5,7 +5,7 @@
 - A landing page you can point users to fill in their emails and receive an invite (`https://slack.yourdomain.com`)
 - An `<iframe>` badge to embed on any website that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums (like GitHub README pages)
-- Abuse prevention via [Google reCAPTCHA](https://www.google.com/recaptcha/intro/)
+- Abuse prevention via [Google reCAPTCHA](https://www.google.com/recaptcha/intro/). Select reCaptcha v2 (not v3)
 
 Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
