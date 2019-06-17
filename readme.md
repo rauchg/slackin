@@ -13,7 +13,7 @@ Check out the [Demo](https://slackin.now.sh/) or read more about the [motivation
 
 Set up [Now](https://zeit.co/now) on your device and run the following commands. 
 
-1. Clone the now repo locally using git: `git clone https://github.com/rauchg/slackin` or `git clone git@github.com:rauchg.slackin`
+1. Clone the now repo locally using git: `git clone https://github.com/rauchg/slackin` or `git clone git@github.com:rauchg/slackin.git`
 2. Change directory to the repo: `cd slackin`
 3. Add the required information as `now` secrets:
     * `now secret add slack-subdomain <domain>`.
