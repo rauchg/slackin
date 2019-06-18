@@ -7,6 +7,7 @@
       { "src": "lib/now.js", "use": "@now/node-server" }
     ],
     "routes": [
+      { "src": "/assets/(.*)", "dest": "/lib/assets/$1" },
       { "src": "/(.*)", "dest": "/lib/now.js" }
     ],
     "env": {
