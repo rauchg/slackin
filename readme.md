@@ -22,7 +22,7 @@ Other platforms:
 - [Heroku](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/master)
 - [Azure](https://azuredeploy.net/)
 - [OpenShift](https://github.com/rauchg/slackin/wiki/OpenShift)
-- [IBM Cloud](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
+- [IBM Cloud](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/rauchg/slackin)
 
 ### Tips
 
