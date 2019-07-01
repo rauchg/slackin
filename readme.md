@@ -11,10 +11,19 @@ Check out the [Demo](https://slackin.now.sh/) or read more about the [motivation
 
 ## Usage
 
-Set up [Now](https://zeit.co/now) on your device and run this command. [Now](https://zeit.co/now) will automatically ask you for the required information and then spin up a deployment instantly. That easy!
+Set up [Now](https://zeit.co/now) on your device and run the following commands. 
+
+1. Clone the now repo locally using git: `git clone https://github.com/rauchg/slackin` or `git clone git@github.com:rauchg/slackin.git`
+2. Change directory to the repo: `cd slackin`
+3. Add the required information as `now` secrets:
+    * `now secret add slack-subdomain <domain>`.
+    * `now secret add slack-api-token <api-token>`
+    * `now secret add google-captcha-sitekey <captcha-sitekey>`
+    * `now secret add google-captcha-secret <captcha-secret>`
+4. Deploy by running now:
 
 ```bash
-now rauchg/slackin
+now
 ```
 
 Other platforms:

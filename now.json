@@ -1,0 +1,19 @@
+{
+    "name": "slackin",
+    "public": true,
+    "version": 2,
+    "builds": [
+      { "src": "lib/assets/*", "use": "@now/static" },
+      { "src": "lib/now.js", "use": "@now/node-server" }
+    ],
+    "routes": [
+      { "src": "/assets/(.*)", "dest": "/lib/assets/$1" },
+      { "src": "/(.*)", "dest": "/lib/now.js" }
+    ],
+    "env": {
+        "SLACK_API_TOKEN": "@slack-api-token",
+        "SLACK_SUBDOMAIN" :"@slack-subdomain",
+        "GOOGLE_CAPTCHA_SECRET" : "@google-captcha-secret",
+        "GOOGLE_CAPTCHA_SITEKEY" : "@google-captcha-sitekey"
+    }
+}

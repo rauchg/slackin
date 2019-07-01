@@ -3,3 +3,9 @@ node_modules
 
 # logs
 npm-debug.log
+
+# local env
+.env
+
+# output
+dist/
