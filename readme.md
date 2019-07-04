@@ -24,6 +24,12 @@ Other platforms:
 - [OpenShift](https://github.com/rauchg/slackin/wiki/OpenShift)
 - [IBM Cloud](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/rauchg/slackin)
 
+To host Slackin yourself, install it via npm and launch it on your server:
+```
+$ npm install -g slackin
+$ slackin "your-team-id" "your-slack-token"
+```
+
 ### Tips
 
 Your team id is what you use to access your login page on Slack (eg: https://**{this}**.slack.com).
