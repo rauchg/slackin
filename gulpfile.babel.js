@@ -13,22 +13,22 @@ const paths = {
   }
 }
 
-gulp.task('transpile', () => {
+gulp.task('transpile', gulp.series(() => {
   return gulp.src(paths.in.js)
   .pipe(babel())
   .pipe(gulp.dest(paths.out.js))
-})
+}))
 
-gulp.task('assets', () => {
+gulp.task('assets', gulp.series(() => {
   return gulp.src(paths.in.assets)
   .pipe(gulp.dest(paths.out.assets))
-})
+}))
 
-gulp.task('clean', () => {
+gulp.task('clean', gulp.series(() => {
   return gulp.src(paths.out.js, {
     read: false
   })
   .pipe(rimraf())
-})
+}))
 
-gulp.task('default', ['transpile', 'assets'])
+gulp.task('default', gulp.series(['transpile', 'assets']))
