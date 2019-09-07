@@ -3,3 +3,9 @@ node_modules
 
 # logs
 npm-debug.log
+
+# Ignore dist files
+dist
+
+# WebStorm
+.idea
