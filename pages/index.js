@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 
 const getData = async () => ({
@@ -5,9 +6,33 @@ const getData = async () => ({
     name: 'ZEIT',
     logo: 'https://avatars.slack-edge.com/2015-10-14/12533264214_c5dd3e906cd6321497a2_132.jpg',
   },
+  users: {
+    active: 60,
+    total: 670,
+  },
 })
 
+const useData = () => {
+  const [data, setData] = React.useState()
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await getData()
+      setData(data)
+    }
+    fetchData()
+  }, [])
+
+  return data
+}
+
 const Index = ({ name, logo, channels, large, iframe }) => {
+  const data = useData()
+  const { users } = data || {}
+  const { active, total } = users || {}
+
+  console.log(active, total)
+
   return (
     <>
       <Head>
@@ -32,9 +57,39 @@ const Index = ({ name, logo, channels, large, iframe }) => {
           Slack.
         </p>
 
-        <p className="status"></p>
+        {users &&
+          (active ? (
+            <p className="status">
+              <b className="active">{active}</b> users online now of{' '}
+              <b className="total">{total}</b> registered.
+            </p>
+          ) : (
+            <p className="status">
+              <b className="total">{total}</b> users are registered so far.
+            </p>
+          ))}
 
-        <form id="invite"></form>
+        <form id="invite">
+          {channels && channels.length > 1 && (
+            <select name="channel" className="form-item">
+              {channels.map(channel => (
+                <option key={channel} value={channel}>
+                  {channel}
+                </option>
+              ))}
+            </select>
+          )}
+
+          <input
+            type="email"
+            className="form-item"
+            name="email"
+            placeholder="you@yourdomain.com"
+            autoFocus={!iframe}
+          />
+
+          <br />
+        </form>
       </div>
 
       <style jsx global>{`
