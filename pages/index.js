@@ -26,12 +26,10 @@ const useData = () => {
   return data
 }
 
-const Index = ({ name, logo, channels, large, iframe }) => {
+const Index = ({ name, logo, channels, large, iframe, coc }) => {
   const data = useData()
   const { users } = data || {}
   const { active, total } = users || {}
-
-  console.log(active, total)
 
   return (
     <>
@@ -87,9 +85,29 @@ const Index = ({ name, logo, channels, large, iframe }) => {
             placeholder="you@yourdomain.com"
             autoFocus={!iframe}
           />
-
           <br />
+
+          {coc && (
+            <div className="coc">
+              <label>
+                <input type="checkbox" name="coc" value="1" />I agree to the{' '}
+                <a href={coc} target="_blank" rel="noopener noreferrer">
+                  Code of Conduct
+                </a>
+                .
+              </label>
+            </div>
+          )}
+          <button className="loading">Get my Invite</button>
         </form>
+
+        <p className="signin">
+          or{' '}
+          <a href={`https://${org}.slack.com`} target="_top">
+            sign in
+          </a>
+          .
+        </p>
       </div>
 
       <style jsx global>{`
