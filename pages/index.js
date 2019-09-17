@@ -108,6 +108,15 @@ const Index = ({ name, logo, channels, large, iframe, coc }) => {
           </a>
           .
         </p>
+
+        {!iframe && (
+          <footer>
+            Powered by{' '}
+            <a href="http://rauchg.com/slackin" target="_blank" rel="noopener noreferrer">
+              slackin
+            </a>
+          </footer>
+        )}
       </div>
 
       <style jsx global>{`
@@ -129,6 +138,10 @@ const Index = ({ name, logo, channels, large, iframe, coc }) => {
           padding: ${iframe ? '1rem' : '0'};
           text-align: center;
           font-family: 'Helvetica Neue', Helvetica, Arial;
+        }
+        .logos {
+          position: relative;
+          margin-bottom: 4rem;
         }
       `}</style>
     </>
