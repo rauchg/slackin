@@ -13,17 +13,15 @@ const Index = ({ name, logo, channels, large, coc }) => {
     <>
       <Head name={name} />
 
-      <Splash>
-        <Logos logo={logo} />
-
+      <Splash iframe={true}>
         <p>
           Join <b>{name}</b> {channels && channels.length === 1 && <span>#{channels[0]}</span>} on
           Slack.
         </p>
 
-        {users && <Users users={users}></Users>}
+        {users && <Users iframe={true} users={users}></Users>}
 
-        <InviteForm channels={channels} coc={coc} />
+        <InviteForm iframe={true} channels={channels} coc={coc} />
 
         <p className="signin">
           or{' '}
@@ -45,15 +43,15 @@ const Index = ({ name, logo, channels, large, coc }) => {
         html {
           font-size: ${large ? '14px' : '10px'};
         }
+        body {
+          margin: 0;
+          padding: 0;
+          background: #fafafa;
+          overflow: hidden;
+        }
         p {
           font-size: 1.5rem;
           margin: 0.5rem 0;
-        }
-      `}</style>
-      <style jsx>{`
-        .logos {
-          position: relative;
-          margin-bottom: 4rem;
         }
       `}</style>
     </>
