@@ -21,7 +21,7 @@ const Index = ({ name, logo, channels, large, coc }) => {
           Slack.
         </p>
 
-        {users && <Users users={users}></Users>}
+        {users ? <Users users={users}></Users> : <p>&nbsp;</p>}
 
         <InviteForm channels={channels} coc={coc} />
 
@@ -43,7 +43,15 @@ const Index = ({ name, logo, channels, large, coc }) => {
 
       <style jsx global>{`
         html {
-          font-size: ${large ? '14px' : '10px'};
+          font-size: ${large ? '87.5%' : '62.5%'}; /* 14px and 10px */
+          box-sizing: border-box;
+        }
+        *,
+        *::before,
+        *::after {
+          margin: 0;
+          padding: 0;
+          box-sizing: inherit;
         }
         p {
           font-size: 1.5rem;
@@ -51,9 +59,32 @@ const Index = ({ name, logo, channels, large, coc }) => {
         }
       `}</style>
       <style jsx>{`
-        .logos {
-          position: relative;
-          margin-bottom: 4rem;
+        .signin {
+          font-size: 1.2rem;
+          margin: 2rem 0 0;
+        }
+        .signin a {
+          color: #e01563;
+          text-decoration: none;
+        }
+        .signin a:hover {
+          background-color: #e01563;
+          color: #fff;
+        }
+        footer {
+          width: 30rem;
+          color: #d6d6d6;
+          font-size: 1.1rem;
+          margin: 20rem auto 0;
+        }
+        footer a {
+          color: #9b9b9b;
+          text-decoration: none;
+          border-bottom: 0.1rem solid #9b9b9b;
+        }
+        footer a:hover {
+          color: #fff;
+          background-color: #9b9b9b;
         }
       `}</style>
     </>

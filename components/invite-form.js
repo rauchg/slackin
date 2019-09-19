@@ -18,7 +18,6 @@ export default function InviteForm({ iframe, channels, coc }) {
         placeholder="you@yourdomain.com"
         autoFocus={!iframe}
       />
-      <br />
 
       {coc && (
         <div className="coc">
@@ -32,15 +31,12 @@ export default function InviteForm({ iframe, channels, coc }) {
         </div>
       )}
 
-      <button className="loading">Get my Invite</button>
+      <button>Get my Invite</button>
 
       <style jsx>{`
         form {
           margin-top: 1rem;
           margin-bottom: 0;
-        }
-        .iframe-form {
-          margin-top: 2rem;
         }
         .iframe-form button,
         .iframe-form .form-item {
@@ -63,7 +59,7 @@ export default function InviteForm({ iframe, channels, coc }) {
         }
         button, .form-item {
           font-size: 1.2rem;
-          margin-top: ${iframe ? '0.5rem' : '1rem'};
+          margin-top: ${iframe ? '0.5rem' : '1.5rem'};
           vertical-align: middle;
           display: block;
           text-align: center;
@@ -93,7 +89,6 @@ export default function InviteForm({ iframe, channels, coc }) {
         }
         .coc {
           font-size: ${iframe ? '1.1rem' : '1.2rem'};
-          padding: 1.5rem 0 0.5rem;
           padding-top: ${iframe ? '1rem' : '1.5rem'};
           color: #666;
         }
