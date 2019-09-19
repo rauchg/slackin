@@ -109,12 +109,13 @@ export default function InviteForm({ iframe, channels, coc }) {
           margin: 0 0.5rem 0 0;
         }
         .coc input::after {
-          content: '""';
+          content: '';
           display: inline-block;
           width: 1.5rem;
           height: 1.5rem;
           vertical-align: middle;
           background: url(assets/checkbox.svg);
+          background-size: cover;
           cursor: pointer;
         }
         .coc input:checked::after {
