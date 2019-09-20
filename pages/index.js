@@ -34,10 +34,12 @@ const Index = ({ name, logo, channels, large, coc }) => {
         </p>
 
         <footer>
-          Powered by{' '}
-          <a href="http://rauchg.com/slackin" target="_blank" rel="noopener noreferrer">
-            slackin
-          </a>
+          <p>
+            Powered by{' '}
+            <a href="http://rauchg.com/slackin" target="_blank" rel="noopener noreferrer">
+              slackin
+            </a>
+          </p>
         </footer>
       </Splash>
 
@@ -57,6 +59,17 @@ const Index = ({ name, logo, channels, large, coc }) => {
           font-size: 1.5rem;
           margin: 0.5rem 0;
         }
+        /* Use media queries to reduce the font size in large mode for small devices */
+        @media only screen and (max-width: 29rem) {
+          html {
+            font-size: ${large ? '75%' : '62.5%'};
+          }
+        }
+        @media only screen and (max-width: 23rem) {
+          html {
+            font-size: 62.5%;
+          }
+        }
       `}</style>
       <style jsx>{`
         .signin {
@@ -72,10 +85,16 @@ const Index = ({ name, logo, channels, large, coc }) => {
           color: #fff;
         }
         footer {
-          width: 30rem;
+          display: flex;
+          flex-grow: 1;
           color: #d6d6d6;
-          font-size: 1.1rem;
-          margin: 20rem auto 0;
+          align-items: flex-end;
+          justify-content: center;
+          padding: 5vh;
+        }
+        footer p {
+          font-size: 1rem;
+          margin: 0;
         }
         footer a {
           color: #9b9b9b;

@@ -4,16 +4,14 @@ const Splash = ({ children, iframe }) =>
       {children}
       <style jsx>{`
         .splash {
-          width: 30rem;
-          margin: 20rem auto;
-          text-align: center;
           font-family: 'Helvetica Neue', Helvetica, Arial;
-        }
-
-        @media only screen and (max-width: 50rem) {
-          .splash {
-            margin-top: 10rem;
-          }
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+          width: 30rem;
+          margin: 0 auto;
+          text-align: center;
+          padding-top: 20vh;
         }
       `}</style>
     </div>
@@ -22,7 +20,7 @@ const Splash = ({ children, iframe }) =>
       {children}
       <style jsx>{`
         .splash {
-          box-sizing: border-box;
+          display: grid;
           width: 25rem;
           margin: 0;
           padding: 1rem;

@@ -34,10 +34,6 @@ export default function InviteForm({ iframe, channels, coc }) {
       <button>Get my Invite</button>
 
       <style jsx>{`
-        form {
-          margin-top: 1rem;
-          margin-bottom: 0;
-        }
         .iframe-form button,
         .iframe-form .form-item {
           height: 2.8rem
@@ -60,10 +56,8 @@ export default function InviteForm({ iframe, channels, coc }) {
         button, .form-item {
           font-size: 1.2rem;
           margin-top: ${iframe ? '0.5rem' : '1.5rem'};
-          vertical-align: middle;
           display: block;
           text-align: center;
-          box-sizing: border-box;
           width: 100%;
           padding: 0.9rem;
         }

@@ -6,7 +6,7 @@ const Logos = ({ logo }) => (
     <style jsx>{`
       .logos {
         position: relative;
-        margin-bottom: 4rem;
+        margin-bottom: 3.5rem;
       }
       .logo {
         width: 4.8rem;
@@ -28,7 +28,6 @@ const Logos = ({ logo }) => (
         top: 1.5rem;
         left: 0;
         width: 30rem;
-        text-align: center;
         color: #d6d6d6;
         font-size: 1.5rem;
         font-family: 'Helvetica Neue';
