@@ -5,6 +5,7 @@ import Logos from '../components/logos'
 import Users from '../components/users'
 import InviteForm from '../components/invite-form'
 import { channels } from '../utils/config'
+import { getTeam } from '../utils/slack'
 
 const Index = ({ name, logo, large }) => {
   const data = useData()
@@ -110,11 +111,9 @@ const Index = ({ name, logo, large }) => {
   )
 }
 
-Index.getInitialProps = async function() {
-  const slack = await getData()
-  const { name, logo } = slack.org
-
-  return { name, logo, large: true }
+Index.getInitialProps = async ctx => {
+  const team = await getTeam(ctx.req)
+  return { ...team, large: true }
 }
 
 export default Index
