@@ -6,7 +6,7 @@ import Users from '../components/users'
 import InviteForm from '../components/invite-form'
 import { channels } from '../utils/config'
 
-const Index = ({ name, logo, large, coc }) => {
+const Index = ({ name, logo, large }) => {
   const data = useData()
   const { users } = data || {}
 
@@ -23,7 +23,7 @@ const Index = ({ name, logo, large, coc }) => {
 
         {users ? <Users users={users}></Users> : <p>&nbsp;</p>}
 
-        <InviteForm channels={channels} coc={coc} />
+        <InviteForm />
 
         <p className="signin">
           or{' '}
@@ -114,7 +114,7 @@ Index.getInitialProps = async function() {
   const slack = await getData()
   const { name, logo } = slack.org
 
-  return { name, logo, large: true, coc: 'https://nextjs.org/' }
+  return { name, logo, large: true }
 }
 
 export default Index

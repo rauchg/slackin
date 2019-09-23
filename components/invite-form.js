@@ -1,4 +1,6 @@
-export default function InviteForm({ iframe, channels, coc }) {
+import { channels, coc } from '../utils/config'
+
+export default function InviteForm({ iframe }) {
   return (
     <form className={iframe ? 'iframe-form' : null}>
       {channels.length > 1 && (

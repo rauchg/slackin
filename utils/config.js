@@ -16,3 +16,5 @@ function getChannels() {
 }
 
 export const channels = getChannels()
+
+export const coc = process.env.SLACK_COC
