@@ -1,7 +1,7 @@
 export default function InviteForm({ iframe, channels, coc }) {
   return (
     <form className={iframe ? 'iframe-form' : null}>
-      {channels && channels.length > 1 && (
+      {channels.length > 1 && (
         <select name="channel" className="form-item">
           {channels.map(channel => (
             <option key={channel} value={channel}>

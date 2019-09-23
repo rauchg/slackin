@@ -4,8 +4,9 @@ import Splash from '../components/splash'
 import Logos from '../components/logos'
 import Users from '../components/users'
 import InviteForm from '../components/invite-form'
+import { channels } from '../utils/config'
 
-const Index = ({ name, logo, channels, large, coc }) => {
+const Index = ({ name, logo, large, coc }) => {
   const data = useData()
   const { users } = data || {}
 
@@ -17,8 +18,7 @@ const Index = ({ name, logo, channels, large, coc }) => {
         <Logos logo={logo} />
 
         <p>
-          Join <b>{name}</b> {channels && channels.length === 1 && <span>#{channels[0]}</span>} on
-          Slack.
+          Join <b>{name}</b> {channels.length === 1 && <span>#{channels[0]}</span>} on Slack.
         </p>
 
         {users ? <Users users={users}></Users> : <p>&nbsp;</p>}
@@ -113,9 +113,8 @@ const Index = ({ name, logo, channels, large, coc }) => {
 Index.getInitialProps = async function() {
   const slack = await getData()
   const { name, logo } = slack.org
-  const channels = ['best-channel']
 
-  return { name, logo, channels, large: true, coc: 'https://nextjs.org/' }
+  return { name, logo, large: true, coc: 'https://nextjs.org/' }
 }
 
 export default Index
