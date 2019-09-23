@@ -1,4 +1,5 @@
 import React from 'react'
+import { getUsers } from './slack'
 
 export const getData = async () => ({
   org: {
@@ -23,4 +24,18 @@ export const useData = () => {
   }, [])
 
   return data
+}
+
+export const useUsers = () => {
+  const [users, setUsers] = React.useState()
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUsers()
+      setUsers(data.users)
+    }
+    fetchData()
+  }, [])
+
+  return users
 }

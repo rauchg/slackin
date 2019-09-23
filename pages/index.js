@@ -1,4 +1,4 @@
-import { getData, useData } from '../utils/hooks'
+import { getData, useData, useUsers } from '../utils/hooks'
 import Head from '../components/head'
 import Splash from '../components/splash'
 import Logos from '../components/logos'
@@ -10,6 +10,7 @@ import { getTeam } from '../utils/slack'
 const Index = ({ name, logo, large }) => {
   const data = useData()
   const { users } = data || {}
+  // const users = useUsers()
 
   return (
     <>

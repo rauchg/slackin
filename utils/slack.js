@@ -19,3 +19,10 @@ export async function getTeam(req) {
 
   return res.json()
 }
+
+export async function getUsers(req) {
+  const origin = getOrigin(req)
+  const res = await fetch(`${origin}/api/v1/users`)
+
+  return res.json()
+}
