@@ -1,0 +1,14 @@
+{
+  "build": {
+    "env": {
+      "SLACK_CHANNELS": "best-channel",
+      "RECAPTCHA_SITE_KEY": "@slackin-recaptcha-site-key"
+    }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/next@canary"
+    }
+  ]
+}
