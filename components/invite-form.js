@@ -38,24 +38,24 @@ export default function InviteForm({ iframe }) {
       <style jsx>{`
         .iframe-form button,
         .iframe-form .form-item {
-          height: 2.8rem
+          height: 2.8rem;
           line-height: 2.8rem;
-          padding: 0;
           font-size: 1.1rem;
         }
-        .select {
+        select {
           background: none;
         }
         input {
-          color: #9B9B9B;
-          border: 0.1rem solid #D6D6D6;
+          color: #9b9b9b;
+          border: 0.1rem solid #d6d6d6;
         }
         input:focus {
           color: #666;
           border-color: #999;
           outline: 0;
         }
-        button, .form-item {
+        button,
+        .form-item {
           font-size: 1.2rem;
           margin-top: ${iframe ? '0.5rem' : '1.5rem'};
           display: block;
@@ -67,7 +67,7 @@ export default function InviteForm({ iframe }) {
           color: #fff;
           font-weight: bold;
           border-width: 0;
-          background: #E01563;
+          background: #e01563;
           text-transform: uppercase;
           cursor: pointer;
           appearence: none;
@@ -78,8 +78,8 @@ export default function InviteForm({ iframe }) {
           pointer-events: none;
         }
         button:disabled {
-          color: #9B9B9B;
-          background-color: #D6D6D6;
+          color: #9b9b9b;
+          background-color: #d6d6d6;
           cursor: default;
           pointer-events: none;
         }
