@@ -24,12 +24,9 @@ function reducer(state, action) {
 }
 
 function getRecaptchaToken(options) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     grecaptcha.ready(() => {
-      grecaptcha
-        .execute(process.env.RECAPTCHA_SITE_KEY, options)
-        .then(resolve)
-        .catch(reject)
+      grecaptcha.execute(process.env.RECAPTCHA_SITE_KEY, options).then(resolve)
     })
   })
 }
@@ -53,7 +50,7 @@ export default function InviteForm({ iframe }) {
 
     try {
       const token = await getRecaptchaToken({ action: 'invite' })
-      const data = await inviteToSlack({ email, channel })
+      const data = await inviteToSlack({ token, email, channel })
 
       dispatch({ type: 'success', text: data.message })
     } catch (error) {
