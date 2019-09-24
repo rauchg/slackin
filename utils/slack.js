@@ -27,18 +27,14 @@ export async function getUsers(req) {
   return res.json()
 }
 
-export async function inviteToSlack({ email, channel }) {
+export async function inviteToSlack({ token, email, channel }) {
   try {
     const res = await fetch('/api/invite', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        recaptcha: 'hello',
-        channel: 'channel',
-        email: 'email',
-      }),
+      body: JSON.stringify({ token, email, channel }),
     })
     const data = await res.json()
 

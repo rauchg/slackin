@@ -23,9 +23,20 @@ function reducer(state, action) {
   }
 }
 
+function getRecaptchaToken(options) {
+  return new Promise((resolve, reject) => {
+    grecaptcha.ready(() => {
+      grecaptcha
+        .execute(process.env.RECAPTCHA_SITE_KEY, options)
+        .then(resolve)
+        .catch(reject)
+    })
+  })
+}
+
 export default function InviteForm({ iframe }) {
   const [{ disabled, className, text }, dispatch] = useReducer(reducer, initialState)
-  const handleInvite = e => {
+  const handleInvite = async e => {
     e.preventDefault()
     dispatch({ type: 'loading' })
 
@@ -34,19 +45,20 @@ export default function InviteForm({ iframe }) {
     const channel = form.channel.value || channels[0]
     const cocChecked = form.coc.checked
 
-    // This should never happen because the inputs have required set
+    // This should never happen because all fields have `required`
     if (!email || !channel || !cocChecked) {
       dispatch({ type: 'ready' })
       return
     }
 
-    inviteToSlack({ email, channel })
-      .then(data => {
-        dispatch({ type: 'success', text: data.message })
-      })
-      .catch(error => {
-        dispatch({ type: 'error', text: error.message })
-      })
+    try {
+      const token = await getRecaptchaToken({ action: 'invite' })
+      const data = await inviteToSlack({ email, channel })
+
+      dispatch({ type: 'success', text: data.message })
+    } catch (error) {
+      dispatch({ type: 'error', text: error.message })
+    }
   }
 
   return (
