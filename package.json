@@ -4,6 +4,7 @@
   "description": "Public Slack organizations made easy",
   "repository": "rauchg/slackin",
   "main": "dist/index",
+  "license": "MIT",
   "files": [
     "dist",
     "bin"
@@ -47,7 +48,6 @@
     "superagent": "3.6.0",
     "vd": "0.1.0"
   },
-  "license": "MIT",
   "devDependencies": {
     "mocha": "2.2.4",
     "nock": "2.17.0",
@@ -56,19 +56,5 @@
   },
   "bin": {
     "slackin": "./bin/slackin"
-  },
-  "now": {
-    "type": "npm",
-    "files": [
-      "bin",
-      "lib",
-      "gulpfile.babel.js"
-    ],
-    "env": [
-      "SLACK_API_TOKEN",
-      "SLACK_SUBDOMAIN",
-      "GOOGLE_CAPTCHA_SECRET",
-      "GOOGLE_CAPTCHA_SITEKEY"
-    ]
   }
 }
