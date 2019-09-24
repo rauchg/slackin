@@ -31,7 +31,7 @@ export default function InviteForm({ iframe }) {
 
     const form = e.target
     const email = form.email.value
-    const channel = form.channel.value
+    const channel = form.channel.value || channels[0]
     const cocChecked = form.coc.checked
 
     // This should never happen because the inputs have required set
