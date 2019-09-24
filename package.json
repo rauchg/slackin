@@ -33,7 +33,7 @@
     "body-parser": "1.10.2",
     "cors": "2.7.1",
     "debug": "3.0.1",
-    "email-regex": "1.0.0",
+    "email-regex": "^4.0.0",
     "express": "4.15.4",
     "gulp": "3.9.0",
     "gulp-babel": "6.1.1",

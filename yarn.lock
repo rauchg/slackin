@@ -2776,10 +2776,10 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-email-regex@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/email-regex/-/email-regex-1.0.0.tgz#16c08f1fa8310907090127430a68562728bd029b"
-  integrity sha1-FsCPH6gxCQcJASdDCmhWJyi9Aps=
+email-regex@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/email-regex/-/email-regex-4.0.0.tgz#3a86bc66afaebb6de2f7eb1251133062c4c8c3d5"
+  integrity sha512-OxR2NqoYS3ZikqOkju2krRTyxngwjJ5Wh4yalpTqbBnUOr+LLwwjY2x5Sksruw6TieyQDswE5Pc83Eh6RQj3GA==
 
 emojis-list@^2.0.0:
   version "2.1.0"
