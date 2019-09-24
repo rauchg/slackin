@@ -1,28 +1,9 @@
-import { URLSearchParams } from 'url'
-import fetch from 'isomorphic-unfetch'
 import emailRegex from 'email-regex'
-import { WebClient } from '@slack/web-api'
 import { channels } from '../../../utils/config'
+import { verifyRecaptcha } from '../../../utils/api/recaptcha'
+import slack from '../../../utils/api/slack'
 
 const EMAIL_REGEX = emailRegex({ exact: true })
-
-const slack = new WebClient(process.env.SLACK_OAUTH_ACCESS_TOKEN)
-
-const verifyRecaptcha = async (token, ip) => {
-  const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-    method: 'post',
-    headers: {
-      'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    },
-    body: new URLSearchParams({
-      secret: process.env.RECAPTCHA_SECRET_KEY,
-      response: token,
-      remoteip: ip,
-    }),
-  })
-
-  return res.json()
-}
 
 const getChannelId = async name => {
   const data = await slack.conversations.list({ exclude_archived: true })

@@ -1,7 +1,4 @@
-import { WebClient } from '@slack/web-api'
-
-const slack = new WebClient(process.env.SLACK_OAUTH_ACCESS_TOKEN)
-
+import slack from '../../../utils/api/slack'
 /**
  * Returns basic info about the team
  * https://api.slack.com/methods/team.info
