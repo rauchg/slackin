@@ -26,3 +26,29 @@ export async function getUsers(req) {
 
   return res.json()
 }
+
+export async function inviteToSlack({ email, channel }) {
+  try {
+    const res = await fetch('/api/invite', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        recaptcha: 'hello',
+        channel: 'channel',
+        email: 'email',
+      }),
+    })
+    const data = await res.json()
+
+    if (res.status < 200 || res.status > 300) {
+      throw new Error(data.error || res.statusText)
+    }
+
+    return data
+  } catch (error) {
+    console.error(error)
+    throw new Error(error.message || 'Server error')
+  }
+}

@@ -1,8 +1,56 @@
+import { useReducer } from 'react'
+import fetch from 'isomorphic-unfetch'
 import { channels, coc } from '../utils/config'
+import { inviteToSlack } from '../utils/slack'
+
+const initialState = { text: 'Get my Invite' }
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'ready':
+      return { ...initialState }
+    case 'loading':
+      return { disabled: true, text: 'Please Wait' }
+    case 'success':
+    case 'error':
+      return {
+        disabled: action.type === 'success',
+        className: action.type,
+        text: action.text,
+      }
+    default:
+      throw new Error()
+  }
+}
 
 export default function InviteForm({ iframe }) {
+  const [{ disabled, className, text }, dispatch] = useReducer(reducer, initialState)
+  const handleInvite = e => {
+    e.preventDefault()
+    dispatch({ type: 'loading' })
+
+    const form = e.target
+    const email = form.email.value
+    const channel = form.channel.value
+    const cocChecked = form.coc.checked
+
+    // This should never happen because the inputs have required set
+    if (!email || !channel || !cocChecked) {
+      dispatch({ type: 'ready' })
+      return
+    }
+
+    inviteToSlack({ email, channel })
+      .then(data => {
+        dispatch({ type: 'success', text: data.message })
+      })
+      .catch(error => {
+        dispatch({ type: 'error', text: error.message })
+      })
+  }
+
   return (
-    <form className={iframe ? 'iframe-form' : null}>
+    <form className={iframe ? 'iframe-form' : null} onSubmit={handleInvite}>
       {channels.length > 1 && (
         <select name="channel" className="form-item">
           {channels.map(channel => (
@@ -19,12 +67,13 @@ export default function InviteForm({ iframe }) {
         className="form-item"
         placeholder="you@yourdomain.com"
         autoFocus={!iframe}
+        required
       />
 
       {coc && (
         <div className="coc">
           <label>
-            <input type="checkbox" name="coc" value="1" />I agree to the{' '}
+            <input type="checkbox" name="coc" required />I agree to the{' '}
             <a href={coc} target="_blank" rel="noopener noreferrer">
               Code of Conduct
             </a>
@@ -33,7 +82,9 @@ export default function InviteForm({ iframe }) {
         </div>
       )}
 
-      <button>Get my Invite</button>
+      <button type="submit" className={className} disabled={disabled}>
+        {text}
+      </button>
 
       <style jsx>{`
         .iframe-form button,
@@ -74,14 +125,19 @@ export default function InviteForm({ iframe }) {
           outline: 0;
           transition: background-color 150ms ease-in, color 150ms ease-in;
         }
-        button.loading {
-          pointer-events: none;
-        }
         button:disabled {
           color: #9b9b9b;
           background-color: #d6d6d6;
           cursor: default;
           pointer-events: none;
+        }
+        button.success:disabled {
+          color: #fff;
+          background-color: #68c200;
+        }
+        button.error {
+          background-color: #f4001e;
+          text-transform: none;
         }
         .coc {
           font-size: ${iframe ? '1.1rem' : '1.2rem'};
