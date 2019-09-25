@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer, useCallback } from 'react'
 import fetch from 'isomorphic-unfetch'
 import { channels, coc } from '../utils/config'
 import { inviteToSlack } from '../utils/slack'
@@ -33,37 +33,40 @@ function getRecaptchaToken(options) {
 
 export default function InviteForm({ iframe, teamName }) {
   const [{ disabled, className, text }, dispatch] = useReducer(reducer, initialState)
-  const handleInvite = async e => {
-    e.preventDefault()
-    dispatch({ type: 'loading' })
+  const handleInvite = useCallback(
+    async e => {
+      e.preventDefault()
+      dispatch({ type: 'loading' })
 
-    const form = e.target
-    const email = form.email.value
-    const channel = form.channel.value || channels[0]
-    const cocChecked = form.coc.checked
+      const form = e.target
+      const email = form.email.value
+      const channel = form.channel.value || channels[0]
+      const cocChecked = form.coc.checked
 
-    // This should never happen because all fields have `required`
-    if (!email || !channel || !cocChecked) {
-      dispatch({ type: 'ready' })
-      return
-    }
-
-    try {
-      const token = await getRecaptchaToken({ action: 'invite' })
-      const data = await inviteToSlack({ token, email, channel })
-      const text = data.alreadyInTeam ? 'Sending you to Slack...' : 'WOOT. Check your email!'
-
-      dispatch({ type: 'success', text })
-
-      if (data.alreadyInTeam) {
-        setTimeout(() => {
-          window.location.href = `https://${teamName}.slack.com`
-        }, 1500)
+      // This should never happen because all fields have `required`
+      if (!email || !channel || !cocChecked) {
+        dispatch({ type: 'ready' })
+        return
       }
-    } catch (error) {
-      dispatch({ type: 'error', text: error.message })
-    }
-  }
+
+      try {
+        const token = await getRecaptchaToken({ action: 'invite' })
+        const data = await inviteToSlack({ token, email, channel })
+        const message = data.alreadyInTeam ? 'Sending you to Slack...' : 'WOOT. Check your email!'
+
+        dispatch({ type: 'success', text: message })
+
+        if (data.alreadyInTeam) {
+          setTimeout(() => {
+            window.location.href = `https://${teamName}.slack.com`
+          }, 1500)
+        }
+      } catch (error) {
+        dispatch({ type: 'error', text: error.message })
+      }
+    },
+    [teamName, dispatch]
+  )
 
   return (
     <form className={iframe ? 'iframe-form' : null} onSubmit={handleInvite}>
