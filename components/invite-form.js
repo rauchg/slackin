@@ -106,12 +106,6 @@ export default function InviteForm({ iframe, teamName }) {
       </button>
 
       <style jsx>{`
-        .iframe-form button,
-        .iframe-form .form-item {
-          height: 2.8rem;
-          line-height: 2.8rem;
-          font-size: 1.1rem;
-        }
         select {
           background: none;
         }
@@ -127,7 +121,7 @@ export default function InviteForm({ iframe, teamName }) {
         button,
         .form-item {
           font-size: 1.2rem;
-          margin-top: ${iframe ? '0.5rem' : '1.5rem'};
+          margin-top: ${iframe ? '0.5rem' : '1rem'};
           display: block;
           text-align: center;
           width: 100%;
@@ -142,6 +136,7 @@ export default function InviteForm({ iframe, teamName }) {
           cursor: pointer;
           appearence: none;
           outline: 0;
+          margin-top: ${iframe ? '1rem' : '1.5rem'};
           transition: background-color 150ms ease-in, color 150ms ease-in;
         }
         button:disabled {
@@ -159,7 +154,7 @@ export default function InviteForm({ iframe, teamName }) {
           text-transform: none;
         }
         .coc {
-          font-size: ${iframe ? '1.1rem' : '1.2rem'};
+          font-size: 1.2rem;
           padding-top: ${iframe ? '1rem' : '1.5rem'};
           color: #666;
         }
@@ -167,8 +162,7 @@ export default function InviteForm({ iframe, teamName }) {
           cursor: pointer;
         }
         .coc input {
-          position: ${iframe ? 'relative' : 'static'};
-          top: -0.2rem;
+          position: static;
           appearance: none;
           border: none;
           vertical-align: middle;
@@ -194,14 +188,6 @@ export default function InviteForm({ iframe, teamName }) {
           background-color: #666;
           text-decoration: none;
           color: #fff;
-        }
-        .iframe-form .coc {
-          font-size: 1.1rem;
-          padding-top: 1rem;
-        }
-        .iframe-form .coc input {
-          position: relative;
-          top: -0.2rem;
         }
       `}</style>
     </form>

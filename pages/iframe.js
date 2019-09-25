@@ -1,69 +1,57 @@
-import { getData, useData } from '../utils/hooks'
+import { channels } from '../utils/config'
+import { getTeam } from '../utils/slack'
 import Head from '../components/head'
 import Splash from '../components/splash'
 import Logos from '../components/logos'
 import Users from '../components/users'
 import InviteForm from '../components/invite-form'
+import Signin from '../components/signin'
 
-const Index = ({ name, logo, channels, large, coc }) => {
-  const data = useData()
-  const { users } = data || {}
+const Iframe = ({ name, logo, large }) => (
+  <>
+    <Head name={name} />
 
-  return (
-    <>
-      <Head name={name} />
+    <Splash iframe={true}>
+      <p>
+        Join <b>{name}</b> {channels && channels.length === 1 && <span>#{channels[0]}</span>} on
+        Slack.
+      </p>
 
-      <Splash iframe={true}>
-        <p>
-          Join <b>{name}</b> {channels && channels.length === 1 && <span>#{channels[0]}</span>} on
-          Slack.
-        </p>
+      <Users />
 
-        {users && <Users iframe={true} users={users}></Users>}
+      <InviteForm iframe={true} teamName={name} />
 
-        <InviteForm iframe={true} channels={channels} coc={coc} />
+      <Signin teamName={name} />
+    </Splash>
 
-        <p className="signin">
-          or{' '}
-          <a href={`https://${name}.slack.com`} target="_top">
-            sign in
-          </a>
-          .
-        </p>
+    <style jsx global>{`
+      html {
+        font-size: ${large ? '87.5%' : '62.5%'}; /* 14px and 10px */
+        box-sizing: border-box;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+      p {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+      }
+    `}</style>
+  </>
+)
 
-        <footer>
-          Powered by{' '}
-          <a href="http://rauchg.com/slackin" target="_blank" rel="noopener noreferrer">
-            slackin
-          </a>
-        </footer>
-      </Splash>
+Iframe.getInitialProps = async ({ req, res }) => {
+  const team = await getTeam(req)
 
-      <style jsx global>{`
-        html {
-          font-size: ${large ? '14px' : '10px'};
-        }
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fafafa;
-          overflow: hidden;
-        }
-        p {
-          font-size: 1.5rem;
-          margin: 0.5rem 0;
-        }
-      `}</style>
-    </>
-  )
+  if (res) {
+    res.setHeader('Cache-Control', 's-maxage=7200, stale-while-revalidate')
+  }
+
+  return { ...team, large: true }
 }
 
-Index.getInitialProps = async function() {
-  const slack = await getData()
-  const { name, logo } = slack.org
-  const channels = ['best-channel']
-
-  return { name, logo, channels, large: true, coc: 'https://nextjs.org/' }
-}
-
-export default Index
+export default Iframe

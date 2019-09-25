@@ -1,23 +1,30 @@
-const Status = ({ iframe, children }) =>
-  iframe ? (
-    <p>
-      {children}
-      <style jsx>{`
-        p {
-          font-size: 1.1rem;
-        }
-      `}</style>
-    </p>
-  ) : (
-    <p>{children}</p>
-  )
+import { useData, useUsers } from '../utils/hooks'
 
-export default function Users({ users, iframe }) {
+const Status = ({ children }) => (
+  <p>
+    {children}
+    <style jsx>{`
+      p {
+        font-size: 1.2rem;
+      }
+    `}</style>
+  </p>
+)
+
+export default function Users() {
+  const data = useData()
+  const { users } = data || {}
+  // const users = useUsers()
+
+  if (!users) {
+    return <Status>&nbsp;</Status>
+  }
+
   const { active, total } = users
 
   if (active) {
     return (
-      <Status iframe={iframe}>
+      <Status>
         <b className="active">{active}</b> users online now of <b>{total}</b> registered.
         <style jsx>{`
           .active {
@@ -29,8 +36,8 @@ export default function Users({ users, iframe }) {
   }
 
   return (
-    <Status iframe={iframe}>
-      <b className="total">{total}</b> users are registered so far.
+    <Status>
+      <b>{total}</b> users are registered so far.
     </Status>
   )
 }

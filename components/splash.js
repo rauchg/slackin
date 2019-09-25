@@ -20,12 +20,10 @@ const Splash = ({ children, iframe }) =>
       {children}
       <style jsx>{`
         .splash {
-          display: grid;
+          font-family: 'Helvetica Neue', Helvetica, Arial;
           width: 25rem;
-          margin: 0;
           padding: 1rem;
           text-align: center;
-          font-family: 'Helvetica Neue', Helvetica, Arial;
         }
       `}</style>
     </div>
