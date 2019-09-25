@@ -1,3 +1,4 @@
+import { URLSearchParams } from 'url'
 import emailRegex from 'email-regex'
 import fetch from 'isomorphic-unfetch'
 import { channels } from '../../../utils/config'
@@ -34,15 +35,15 @@ async function getChannelId(name) {
  * there are no more options.
  * https://github.com/ErikKalkoken/slackApiDoc/blob/master/users.admin.invite.md
  */
-async function inviteToSlack({ email, channel }) {
+async function inviteToSlack({ email, channelId }) {
   const res = await fetch('https://slack.com/api/users.admin.invite', {
     method: 'post',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
     },
-    body: JSON.stringify({
-      token: process.env.SLACK_OAUTH_ACCESS_TOKEN,
-      channels: channel,
+    body: new URLSearchParams({
+      token: process.env.SLACK_LEGACY_TOKEN,
+      channels: channelId,
       ultra_restricted: true,
       resend: true,
       email,
@@ -85,7 +86,7 @@ export default async function invite(req, res) {
       throw new ApiError(400, `Channel not found: #${channel}`)
     }
 
-    const data = await inviteToSlack({ email, channel })
+    const data = await inviteToSlack({ email, channelId })
     const { ok, error } = data
     const result = { message: 'WOOT. Check your email!' }
 

@@ -4,6 +4,7 @@
       "RECAPTCHA_SITE_KEY": "@slackin-recaptcha-site-key",
       "RECAPTCHA_SECRET_KEY": "@slackin-recaptcha-secret-key",
       "SLACK_OAUTH_ACCESS_TOKEN": "@slackin-slack-oauth-access-token",
+      "SLACK_LEGACY_TOKEN": "@slackin-slack-legacy-token",
       "SLACK_COC": "https://github.com/zeit/next.js/blob/canary/CODE_OF_CONDUCT.md",
       "SLACK_CHANNELS": "general,best-channel"
     }
