@@ -8,7 +8,7 @@ export default async function team(req, res) {
     const { ok, team } = await slack.team.info()
 
     if (!ok) {
-      throw new Error('Slack was not able to handle this request')
+      throw new Error('An unexpected error occurred with Slack')
     }
 
     const result = { name: team.name }

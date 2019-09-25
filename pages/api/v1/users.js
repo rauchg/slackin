@@ -8,7 +8,7 @@ export default async function users(req, res) {
     const { ok, members } = await slack.users.list({ presence: true })
 
     if (!ok) {
-      throw new Error('Slack was not able to handle this request')
+      throw new Error('An unexpected error occurred with Slack')
     }
 
     let total = 0
