@@ -95,6 +95,7 @@ export default async function invite(req, res) {
     if (!ok) {
       switch (error) {
         case 'already_invited':
+        case 'already_in_team_invited_user':
           throw new ApiError(
             403,
             'You have already been invited to Slack. Check for an email from feedback@slack.com.'
