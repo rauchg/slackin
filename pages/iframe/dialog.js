@@ -1,13 +1,13 @@
-import { channels } from '../utils/config'
-import { getTeam } from '../utils/slack'
-import Head from '../components/head'
-import Splash from '../components/splash'
-import Logos from '../components/logos'
-import Users from '../components/users'
-import InviteForm from '../components/invite-form'
-import Signin from '../components/signin'
+import { channels } from '../../utils/config'
+import { getTeam } from '../../utils/slack'
+import Head from '../../components/head'
+import Splash from '../../components/splash'
+import Logos from '../../components/logos'
+import Users from '../../components/users'
+import InviteForm from '../../components/invite-form'
+import Signin from '../../components/signin'
 
-const Iframe = ({ name, logo, large }) => (
+const Dialog = ({ name, logo, large }) => (
   <>
     <Head name={name} />
 
@@ -44,7 +44,7 @@ const Iframe = ({ name, logo, large }) => (
   </>
 )
 
-Iframe.getInitialProps = async ({ req, res }) => {
+Dialog.getInitialProps = async ({ req, res }) => {
   const team = await getTeam(req)
 
   if (res) {
@@ -54,4 +54,4 @@ Iframe.getInitialProps = async ({ req, res }) => {
   return { ...team, large: true }
 }
 
-export default Iframe
+export default Dialog
