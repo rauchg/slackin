@@ -112,8 +112,13 @@ const Index = ({ name, logo, large }) => {
   )
 }
 
-Index.getInitialProps = async ctx => {
-  const team = await getTeam(ctx.req)
+Index.getInitialProps = async ({ req, res }) => {
+  const team = await getTeam(req)
+
+  if (res) {
+    res.setHeader('Cache-Control', 's-maxage=7200, stale-while-revalidate')
+  }
+
   return { ...team, large: true }
 }
 
