@@ -31,7 +31,7 @@ function getRecaptchaToken(options) {
   })
 }
 
-export default function InviteForm({ iframe }) {
+export default function InviteForm({ iframe, teamName }) {
   const [{ disabled, className, text }, dispatch] = useReducer(reducer, initialState)
   const handleInvite = async e => {
     e.preventDefault()
@@ -51,8 +51,15 @@ export default function InviteForm({ iframe }) {
     try {
       const token = await getRecaptchaToken({ action: 'invite' })
       const data = await inviteToSlack({ token, email, channel })
+      const text = data.alreadyInTeam ? 'Sending you to Slack...' : 'WOOT. Check your email!'
 
-      dispatch({ type: 'success', text: data.message })
+      dispatch({ type: 'success', text })
+
+      if (data.alreadyInTeam) {
+        setTimeout(() => {
+          window.location.href = `https://${teamName}.slack.com`
+        }, 1500)
+      }
     } catch (error) {
       dispatch({ type: 'error', text: error.message })
     }

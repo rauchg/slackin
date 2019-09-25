@@ -25,7 +25,7 @@ const Index = ({ name, logo, large }) => {
 
         {users ? <Users users={users}></Users> : <p>&nbsp;</p>}
 
-        <InviteForm />
+        <InviteForm teamName={name} />
 
         <p className="signin">
           or{' '}

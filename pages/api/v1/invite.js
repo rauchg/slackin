@@ -88,7 +88,7 @@ export default async function invite(req, res) {
 
     const data = await inviteToSlack({ email, channelId })
     const { ok, error } = data
-    const result = { message: 'WOOT. Check your email!' }
+    const result = { success: true }
 
     console.log('SLACK INVITE', data)
 
@@ -100,7 +100,7 @@ export default async function invite(req, res) {
             'You have already been invited to Slack. Check for an email from feedback@slack.com.'
           )
         case 'already_in_team':
-          result.message = 'Sending you to Slack...'
+          result.success = false
           result.alreadyInTeam = true
           break
         case 'invalid_email':
