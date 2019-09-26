@@ -37,6 +37,9 @@ export default async function users(req, res) {
       }
     })
 
+    // Cache this response, this same response will be used for all users thanks to SPR
+    res.setHeader('cache-control', 's-maxage=4,stale-while-revalidate')
+
     res.json({ users: { total, active } })
   } catch (error) {
     console.error(error)
