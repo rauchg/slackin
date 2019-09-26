@@ -1,4 +1,4 @@
-import { useData, useUsers } from '../utils/hooks'
+import { useUsers, useChanged } from '../utils/hooks'
 
 const Status = ({ children }) => (
   <p>
@@ -12,9 +12,8 @@ const Status = ({ children }) => (
 )
 
 export default function Users() {
-  const data = useData()
-  const { users } = data || {}
-  // const users = useUsers()
+  const users = useUsers()
+  const changed = useChanged(users, 150)
 
   if (!users) {
     return <Status>&nbsp;</Status>
@@ -22,22 +21,31 @@ export default function Users() {
 
   const { active, total } = users
 
-  if (active) {
-    return (
-      <Status>
-        <b className="active">{active}</b> users online now of <b>{total}</b> registered.
-        <style jsx>{`
-          .active {
-            color: #e01563;
-          }
-        `}</style>
-      </Status>
-    )
-  }
-
   return (
     <Status>
-      <b>{total}</b> users are registered so far.
+      {active ? (
+        <>
+          <b className={`active ${changed.active ? ' grow' : ''}`}>{active}</b> users online now of{' '}
+          <b className={changed.total ? 'grow' : null}>{total}</b> registered.
+        </>
+      ) : (
+        <>
+          <b className={changed.total ? 'grow' : null}>{total}</b> users are registered so far.
+        </>
+      )}
+
+      <style jsx>{`
+        b {
+          display: inline-block;
+          transition: transform 150ms ease-in;
+        }
+        .active {
+          color: #e01563;
+        }
+        .grow {
+          transform: scale(1.3);
+        }
+      `}</style>
     </Status>
   )
 }

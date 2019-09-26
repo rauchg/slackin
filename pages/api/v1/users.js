@@ -1,10 +1,22 @@
 import slack from '../../../utils/api/slack'
 /**
- * Consider doing this in a different way, the users.list method is Tier 2 (20+ per minute)
+ * Returns a count of total and active users
  * https://api.slack.com/methods/users.list
  */
 export default async function users(req, res) {
   try {
+    // The client has a poller to this endpoint, it can quickly exceed the rate
+    // limit in Slack: Tier 2 (20+ per minute)
+    if (process.env.NODE_ENV !== 'production') {
+      res.json({
+        users: {
+          total: Math.round(Math.random()) > 0 ? 630 : 635,
+          active: Math.floor(Math.random() * (100 - 60)) + 60,
+        },
+      })
+      return
+    }
+
     const { ok, members } = await slack.users.list({ presence: true })
 
     if (!ok) {

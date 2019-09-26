@@ -1,10 +1,11 @@
-import { useData } from '../../utils/hooks'
+import { useUsers, useChanged } from '../../utils/hooks'
 
 const Iframe = () => {
-  const data = useData()
-  const { users } = data || {}
-  const { active, total } = users || {}
-  const text = users ? (active ? `${active}/${total}` : total) : '-'
+  const data = useUsers()
+  const changed = useChanged(data, 200)
+  const { active, total } = data || {}
+  const text = data ? (active ? `${active}/${total}` : total) : '-'
+  const countChanged = changed.active || changed.total
 
   return (
     <span className="slack-button">
@@ -12,7 +13,12 @@ const Iframe = () => {
         <span className="slack-ico"></span>
         <span className="slack-text">Slack</span>
       </a>
-      <a className="slack-count" href="/" target="_blank" rel="noopener noreferrer">
+      <a
+        className={`slack-count${countChanged ? ' anim' : ''}`}
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {text}
       </a>
 

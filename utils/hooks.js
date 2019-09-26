@@ -1,41 +1,61 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { getUsers } from './slack'
 
-export const getData = async () => ({
-  org: {
-    name: 'ZEIT',
-    logo: 'https://avatars.slack-edge.com/2015-10-14/12533264214_c5dd3e906cd6321497a2_132.jpg',
-  },
-  users: {
-    active: 60,
-    total: 670,
-  },
-})
-
-export const useData = () => {
-  const [data, setData] = React.useState()
-
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const data = await getData()
-      setData(data)
-    }
-    fetchData()
-  }, [])
-
-  return data
-}
-
 export const useUsers = () => {
-  const [users, setUsers] = React.useState()
+  const [users, setUsers] = useState()
 
-  React.useEffect(() => {
+  useEffect(() => {
+    let isMounted = true
+    let timeout
+
     const fetchData = async () => {
       const data = await getUsers()
-      setUsers(data.users)
+
+      if (isMounted) {
+        setUsers(data.users)
+        timeout = setTimeout(fetchData, 2000)
+      }
     }
+
     fetchData()
+
+    return () => {
+      isMounted = false
+      clearTimeout(timeout)
+    }
   }, [])
 
   return users
+}
+
+// Watches an object and returns a new object indicating changed properties, it resets the changes
+// after a timeout has finished. It's used for animations.
+export const useChanged = (data, ms) => {
+  const [copy, setCopy] = useState({ data, changed: {} })
+
+  useEffect(() => {
+    let timeout
+
+    if (!data) return
+    if (!copy.data) {
+      setCopy({ data, changed: {} })
+    } else {
+      const changed = Object.keys(data).reduce(
+        (obj, k) => Object.assign(obj, { [k]: data[k] !== copy.data[k] }),
+        {}
+      )
+
+      if (Object.keys(changed).length) {
+        setCopy({ data, changed })
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() => setCopy({ data, changed: {} }), ms)
+      }
+    }
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [data])
+
+  return copy.changed
 }
