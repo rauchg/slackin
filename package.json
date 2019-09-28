@@ -40,13 +40,13 @@
     "gulp-rimraf": "0.2.0",
     "hostenv": "1.0.1",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.0.5",
+    "next": "^9.0.6",
     "opentype.js": "0.4.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "socket.io": "2.0.3",
     "superagent": "3.6.0",
-    "vd": "0.1.0"
+    "vd": "^0.8.2"
   },
   "devDependencies": {
     "mocha": "2.2.4",
