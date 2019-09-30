@@ -40,8 +40,8 @@ export default function InviteForm({ teamName }) {
 
       const form = e.target
       const email = form.email.value
-      const channel = form.channel.value || channels[0]
-      const cocChecked = form.coc.checked
+      const channel = form.channel ? form.channel.value : channels[0]
+      const cocChecked = form.coc ? form.coc.checked : true
 
       // This should never happen because all fields have `required`
       if (!email || !channel || !cocChecked) {
