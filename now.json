@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "build": {
     "env": {
       "RECAPTCHA_SITE_KEY": "@slackin-recaptcha-site-key",
@@ -8,11 +9,5 @@
       "SLACK_COC": "https://github.com/zeit/next.js/blob/canary/CODE_OF_CONDUCT.md",
       "SLACK_CHANNELS": "general,best-channel"
     }
-  },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@now/next@canary"
-    }
-  ]
+  }
 }
