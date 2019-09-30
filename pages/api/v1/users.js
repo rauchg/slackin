@@ -37,11 +37,16 @@ export async function getTotalUsers() {
  * https://api.slack.com/methods/users.list
  */
 export default async function users(req, res) {
+  if (req.method !== 'GET') {
+    res.status(404).end()
+    return
+  }
+
   try {
     const users = await getTotalUsers()
 
     // Cache this response, this same response will be used for all users thanks to SPR
-    res.setHeader('cache-control', 's-maxage=4,stale-while-revalidate')
+    res.setHeader('cache-control', 's-maxage=5,stale-while-revalidate')
     res.json({ users })
   } catch (error) {
     console.error(error)

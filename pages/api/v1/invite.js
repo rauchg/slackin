@@ -58,6 +58,11 @@ async function inviteToSlack({ email, channelId }) {
 }
 
 export default async function invite(req, res) {
+  if (req.method !== 'POST') {
+    res.status(404).end()
+    return
+  }
+
   try {
     const token = req.body['g-recaptcha-response']
     const { email, channel } = req.body
@@ -89,8 +94,6 @@ export default async function invite(req, res) {
     const data = await inviteToSlack({ email, channelId })
     const { ok, error } = data
     const result = { success: true }
-
-    console.log('SLACK INVITE', data)
 
     if (!ok) {
       switch (error) {

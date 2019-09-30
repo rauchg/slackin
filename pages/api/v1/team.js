@@ -4,6 +4,11 @@ import slack from '../../../utils/api/slack'
  * https://api.slack.com/methods/team.info
  */
 export default async function team(req, res) {
+  if (req.method !== 'GET') {
+    res.status(404).end()
+    return
+  }
+
   try {
     const { ok, team } = await slack.team.info()
 
@@ -17,6 +22,7 @@ export default async function team(req, res) {
       result.logo = team.icon.image_132
     }
 
+    res.setHeader('Cache-Control', 's-maxage=7200, stale-while-revalidate')
     res.json(result)
   } catch (error) {
     console.error(error)

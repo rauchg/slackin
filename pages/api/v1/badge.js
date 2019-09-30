@@ -39,12 +39,17 @@ function width(str) {
 }
 
 export default async function badge(req, res) {
+  if (req.method !== 'GET') {
+    res.status(404).end()
+    return
+  }
+
   try {
     const users = await getTotalUsers()
 
     res.setHeader('Content-Type', 'image/svg+xml')
     // Cache this response, this same response will be used for all users thanks to SPR
-    res.setHeader('cache-control', 's-maxage=4,stale-while-revalidate')
+    res.setHeader('cache-control', 's-maxage=10,stale-while-revalidate')
     res.send(badgeSvg(users).toHTML())
   } catch (error) {
     console.error(error)
