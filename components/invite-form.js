@@ -31,7 +31,7 @@ function getRecaptchaToken(options) {
   })
 }
 
-export default function InviteForm({ iframe, teamName }) {
+export default function InviteForm({ teamName }) {
   const [{ disabled, className, text }, dispatch] = useReducer(reducer, initialState)
   const handleInvite = useCallback(
     async e => {
@@ -69,7 +69,7 @@ export default function InviteForm({ iframe, teamName }) {
   )
 
   return (
-    <form className={iframe ? 'iframe-form' : null} onSubmit={handleInvite}>
+    <form onSubmit={handleInvite}>
       {channels.length > 1 && (
         <select name="channel" className="form-item">
           {channels.map(channel => (
@@ -85,7 +85,7 @@ export default function InviteForm({ iframe, teamName }) {
         name="email"
         className="form-item"
         placeholder="you@yourdomain.com"
-        autoFocus={!iframe}
+        autoFocus
         required
       />
 
@@ -121,7 +121,7 @@ export default function InviteForm({ iframe, teamName }) {
         button,
         .form-item {
           font-size: 1.2rem;
-          margin-top: ${iframe ? '0.5rem' : '1rem'};
+          margin-top: 1rem;
           display: block;
           text-align: center;
           width: 100%;
@@ -136,7 +136,7 @@ export default function InviteForm({ iframe, teamName }) {
           cursor: pointer;
           appearence: none;
           outline: 0;
-          margin-top: ${iframe ? '1rem' : '1.5rem'};
+          margin-top: 1.5rem;
           transition: background-color 150ms ease-in, color 150ms ease-in;
         }
         button:disabled {
@@ -155,7 +155,7 @@ export default function InviteForm({ iframe, teamName }) {
         }
         .coc {
           font-size: 1.2rem;
-          padding-top: ${iframe ? '1rem' : '1.5rem'};
+          padding-top: 1.5rem;
           color: #666;
         }
         .coc label {

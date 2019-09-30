@@ -1,10 +1,6 @@
 const Signin = ({ teamName }) => (
   <p className="signin">
-    or{' '}
-    <a href={`https://${teamName}.slack.com`} target="_top">
-      sign in
-    </a>
-    .
+    or <a href={`https://${teamName}.slack.com`}>sign in</a>.
     <style jsx>{`
       .signin {
         font-size: 1.2rem;
