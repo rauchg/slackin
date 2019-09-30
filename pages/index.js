@@ -95,7 +95,7 @@ Index.getInitialProps = async ({ req, res }) => {
     res.setHeader('Cache-Control', 's-maxage=7200, stale-while-revalidate')
   }
 
-  return { ...team, large: false }
+  return { ...team, large: true }
 }
 
 export default Index
