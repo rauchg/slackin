@@ -18,7 +18,7 @@
     "@slack/web-api": "^5.1.0",
     "email-regex": "^4.0.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.0.7",
+    "next": "^9.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "vd": "^0.8.2"

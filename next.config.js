@@ -1,8 +1,6 @@
 module.exports = {
-  experimental: {
-    publicDirectory: true,
-  },
   env: {
+    API_URL: process.env.API_URL,
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
     RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
     SLACK_OAUTH_ACCESS_TOKEN: process.env.SLACK_OAUTH_ACCESS_TOKEN,
