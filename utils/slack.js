@@ -1,16 +1,10 @@
 import fetch from 'isomorphic-unfetch'
 
 /**
- * Returns an absolute URL in the case of `getInitialProps`
+ * Returns an absolute URL in the case of `getInitialProps` for SSR
  */
-function getOrigin(req) {
-  if (typeof window === 'undefined') {
-    const { host } = req.headers
-    const protocol = process.env.NODE_ENV === 'production' ? 'https:' : 'http:'
-
-    return `${protocol}//${host}`
-  }
-  return ''
+function getOrigin() {
+  return (typeof window === 'undefined' && process.env.API_URL) || ''
 }
 
 function getJson(res) {
@@ -20,15 +14,15 @@ function getJson(res) {
   return isJSON ? res.json() : undefined
 }
 
-export async function getTeam(req) {
-  const origin = getOrigin(req)
+export async function getTeam() {
+  const origin = getOrigin()
   const res = await fetch(`${origin}/api/v1/team`)
 
   return getJson(res)
 }
 
-export async function getUsers(req) {
-  const origin = getOrigin(req)
+export async function getUsers() {
+  const origin = getOrigin()
   const res = await fetch(`${origin}/api/v1/users`)
 
   return getJson(res)
