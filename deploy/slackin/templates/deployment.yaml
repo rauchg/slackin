@@ -69,14 +69,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /_internal_/healthcheck
+              path: /data
               port: http
             initialDelaySeconds: 130
             periodSeconds: 5
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
-              path: /_internal_/healthcheck
+                path: /data
               port: http
             initialDelaySeconds: 120
             failureThreshold: 10
