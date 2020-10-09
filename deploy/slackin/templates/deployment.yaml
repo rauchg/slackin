@@ -1,0 +1,104 @@
+{{- $fullName := include "deploy.fullname" . -}}
+{{- range $stage, $deployment := index .Values "deployments" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullName }}-{{ $stage }}
+  labels:
+    helm.sh/chart: {{ include "deploy.chart" $ }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+    app.kubernetes.io/name: {{ include "deploy.name" $ }}
+    app: {{ include "deploy.name" $ }}
+    app.kubernetes.io/stage: {{ $stage }}
+    flow.io/version: {{ $deployment.version }}
+spec:
+  replicas: {{ $deployment.minReplicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "deploy.name" $ }}
+      app.kubernetes.io/instance: {{ $.Release.Name }}
+      app.kubernetes.io/stage: {{ $stage }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "deploy.name" $ }}
+        app.kubernetes.io/instance: {{ $.Release.Name }}
+        app.kubernetes.io/stage: {{ $stage }}
+        app: {{ include "deploy.name" $ }}
+        flow.io/version: {{ $deployment.version }}
+      annotations:
+        iam.amazonaws.com/role: {{ $.Values.iamRole }}
+        sumologic.com/sourceCategory: {{ $fullName }}
+    spec:
+      containers:
+        - name: {{ $.Chart.Name }}
+          image: "{{ $.Values.image.repository }}:{{ $deployment.version }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          env:
+            - name: JAVA_OPTS
+              value: "-Xms{{ $.Values.jvmMemory}}m -Xmx{{ $.Values.jvmMemory}}m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt"
+            - name: FLOW_KUBERNETES_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: FLOW_KUBERNETES_NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: FLOW_KUBERNETES_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: FLOW_KUBERNETES_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: FLOW_KUBERNETES_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: FLOW_KUBERNETES_POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+          args: ["production"]
+          ports:
+            - name: http
+              containerPort: {{ $.Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /_internal_/healthcheck
+              port: http
+            initialDelaySeconds: 130
+            periodSeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /_internal_/healthcheck
+              port: http
+            initialDelaySeconds: 120
+            failureThreshold: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+          resources:
+{{ toYaml $.Values.resources | indent 12 }}
+    {{- with $.Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      imagePullSecrets:
+        - name: flow-docker-hub
+    {{- with $.Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with $.Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+  strategy:
+    type: {{ $deployment.strategy | default "RollingUpdate" }}
+---
+{{- end -}}

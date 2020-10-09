@@ -1,0 +1,16 @@
+{{- $fullName := include "deploy.fullname" . -}}
+{{- range $stage, $deployment := index .Values "deployments" }}
+{{- if $deployment.disruptionBudgetEnabled }}
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ $fullName }}-{{ $stage }}
+spec:
+  maxUnavailable: {{ $deployment.maxUnavailable }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ $.Release.Name }}
+      app.kubernetes.io/stage: {{ $stage }}
+---
+{{- end -}}
+{{- end -}}

@@ -1,0 +1,25 @@
+{{- $fullName := include "deploy.fullname" . -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $fullName }}
+  labels:
+    helm.sh/chart: {{ include "deploy.chart" $ }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+    app.kubernetes.io/name: {{ include "deploy.name" $ }}
+    app: {{ include "deploy.name" $ }}
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+    {{ if eq .Values.service.metricsEndpoint.enabled true}}
+    - port: 9095
+      protocol: TCP
+      name: http-metrics
+    {{ end }}
+  selector:
+    app.kubernetes.io/name: {{ include "deploy.name" $ }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}

@@ -1,0 +1,20 @@
+{{- $fullName := include "deploy.fullname" . -}}
+{{ if .Values.service.metricsEndpoint.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ $fullName }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    release: prometheus
+spec:
+  endpoints:
+    - path: /
+      port: http-metrics
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ $fullName }}
+{{ end }}

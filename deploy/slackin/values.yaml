@@ -1,0 +1,61 @@
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  port: 3000
+  metricsEndpoint:
+    enabled: false
+
+iamRole: ecsInstanceRole
+image:
+  repository: flowcommerce/slackin
+  pullPolicy: IfNotPresent
+resources:
+  limits:
+    memory: "3400Mi"
+    cpu: 1
+  requests:
+    memory: "3400Mi"
+    cpu: .05
+
+jvmMemory: 3000
+
+nodeSelector: {} 
+affinity: {}
+tolerations: {} 
+
+ingress:
+  enabled: true
+  gateways:
+    - key: slackin-apibuilder-io
+      tld: apibuilder.io
+      hosts:
+        - slackin.apibuilder.io
+    - key: slackin-flow-pub
+      tld: flo.pub
+      hosts:
+        - slackin.flo.pub
+
+services:
+  live:
+    hosts:
+      - slackin
+      - slackin.apibuilder.io
+      - slackin.flo.pub
+    gateways:
+      - mesh
+      - slackin-apibuilder-io
+      - slackin-flow-pub
+    stages:
+      - deployment: live
+        weight: 100
+
+deployments:
+  live:
+    minReplicas: 1
+    maxReplicas: 1
+    maxUnavailable: 1
+    disruptionBudgetEnabled: true
+    targetCPUUtilizationPercentage: 80
+    version: #from commandline
+    strategy: RollingUpdate

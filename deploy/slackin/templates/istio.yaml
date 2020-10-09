@@ -1,0 +1,48 @@
+{{- $fullName := include "deploy.fullname" . -}}
+{{- range $key, $service := index .Values "services" }}
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ $fullName }}-{{ $key }}
+spec:
+  host: {{ $fullName }}
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+    loadBalancer:
+      simple: ROUND_ROBIN
+  subsets:
+{{- range $stage := $service.stages }}
+    - name: {{ $stage.deployment }}
+      labels:
+        app.kubernetes.io/stage: {{ $stage.deployment }}
+{{- end }}
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ $fullName }}-{{ $key }}
+  labels:
+    app.kubernetes.io/name: {{ include "deploy.name" $ }}
+    helm.sh/chart: {{ include "deploy.chart" $ }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+    app: {{ include "deploy.name" $ }}
+spec:
+  hosts:
+{{ toYaml $service.hosts | indent 4 }}
+  gateways:
+{{ toYaml $service.gateways | indent 4 }}
+  http:
+  - route:
+{{- range $stage := $service.stages }}
+    - destination:
+        host: {{ $fullName }}
+        port:
+          number: 80
+        subset:  {{ $stage.deployment }}
+{{- end }}
+---
+{{- end -}}
