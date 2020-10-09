@@ -27,10 +27,10 @@ tolerations: {}
 ingress:
   enabled: true
   gateways:
-    - key: slackin-apibuilder-io
+    - key: slack-apibuilder-io
       tld: apibuilder.io
       hosts:
-        - slackin.apibuilder.io
+        - slack.apibuilder.io
     - key: slackin-flow-pub
       tld: flo.pub
       hosts:
@@ -40,11 +40,11 @@ services:
   live:
     hosts:
       - slackin
-      - slackin.apibuilder.io
+      - slack.apibuilder.io
       - slackin.flo.pub
     gateways:
       - mesh
-      - slackin-apibuilder-io
+      - slack-apibuilder-io
       - slackin-flow-pub
     stages:
       - deployment: live
