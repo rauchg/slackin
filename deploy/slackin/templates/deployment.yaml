@@ -76,7 +76,7 @@ spec:
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
-                path: /data
+              path: /data
               port: http
             initialDelaySeconds: 120
             failureThreshold: 10
