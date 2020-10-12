@@ -3,3 +3,4 @@ builds:
       port.container: 3000
       initial.number.instances: 1
       healthcheck.url: /data
+      cluster: k8s
