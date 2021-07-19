@@ -35,7 +35,7 @@ pipeline {
     }
 
     stage('Commit SemVer tag') {
-      when { branch 'master' }
+      when { branch 'main' }
       steps {
         script {
           new flowSemver().commitSemver(VERSION)
@@ -44,7 +44,7 @@ pipeline {
     }
 
     stage('Build and push docker image release') {
-      when { branch 'master' }
+      when { branch 'main' }
       steps {
         container('docker') {
           script {
@@ -61,7 +61,7 @@ pipeline {
     }
 
     stage('Deploy Helm chart') {
-      when { branch 'master' }
+      when { branch 'main' }
       steps {
         container('helm') {
           script {
