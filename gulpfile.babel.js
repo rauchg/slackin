@@ -31,4 +31,4 @@ gulp.task('clean', () => {
   .pipe(rimraf())
 })
 
-gulp.task('default', ['transpile', 'assets'])
+gulp.task('default', gulp.series('transpile', 'assets'));
