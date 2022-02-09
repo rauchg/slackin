@@ -66,7 +66,7 @@ pipeline {
         container('helm') {
           script {
           
-            new helmDeploy().deploy('slackin', VERSION.printable(), 300, 'apicollective')
+            new helmDeploy().deploy('slackin', VERSION.printable(), 420, 'apicollective')
           
           }
         }
