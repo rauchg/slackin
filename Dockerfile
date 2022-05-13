@@ -1,4 +1,4 @@
-FROM flowdocker/node:0.1.7
+FROM flowdocker/node12:latest
 
 ENV PORT 3000
 
