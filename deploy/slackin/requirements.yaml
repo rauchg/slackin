@@ -1,0 +1,4 @@
+dependencies:
+  - name: flow-generic
+    version: ^1.0.0
+    repository: https://flow.jfrog.io/artifactory/api/helm/generic-charts-helm

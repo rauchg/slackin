@@ -1,15 +1,15 @@
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "slackin"
+fullnameOverride: "slackin"
 
-service:
-  port: 3000
-  metricsEndpoint:
-    enabled: false
+team: foundation
 
 iamRole: ecsInstanceRole
 image:
   repository: flowcommerce/slackin
-  pullPolicy: IfNotPresent
+
+service:
+  healthcheckEndpoint: /data
+
 resources:
   limits:
     memory: "3400Mi"
@@ -18,25 +18,24 @@ resources:
     memory: "3400Mi"
     cpu: .05
 
-jvmMemory: 3000
+jvmOpts:
+  enabled: false
 
-nodeSelector: {} 
-affinity: {}
-tolerations: {} 
-
-ingress:
+istioIngress:
   enabled: true
   gateways:
     - key: slack-apibuilder-io
       tld: apibuilder.io
+      dns: true
       hosts:
         - slack.apibuilder.io
     - key: slackin-flow-pub
       tld: flo.pub
+      dns: true
       hosts:
         - slackin.flo.pub
 
-services:
+istioService:
   live:
     hosts:
       - slackin
@@ -55,7 +54,9 @@ deployments:
     minReplicas: 1
     maxReplicas: 1
     maxUnavailable: 1
-    disruptionBudgetEnabled: true
-    targetCPUUtilizationPercentage: 80
-    version: #from commandline
-    strategy: RollingUpdate
+
+rolloutResource:
+  enabled: false
+
+canary:
+  enabled: false
