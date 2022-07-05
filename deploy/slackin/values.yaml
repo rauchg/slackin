@@ -9,6 +9,7 @@ image:
 
 service:
   healthcheckEndpoint: /data
+  port: 3000
 
 resources:
   limits:
