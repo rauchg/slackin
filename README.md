@@ -1,4 +1,10 @@
-![](https://github.com/zeit/art/blob/e081cf46e6609b51ac485dcc337ac6644c0da5e7/slackin/repo-banner.png)
+## SlovenskoDigital špecifiká
+
+V najnovšej verzii je potrebná captcha. Tú nechceme reišiť, tak sme sa vrátili na commit 3ff77b9d6fc72508941fd4bd5a1e49eb4f2a650c . Okrem toho sme ešte opravili Dockerfile - v pôvodnom repe nebola locknutá verzia na node 6. Toto máme nasadené na produkcii.
+
+---
+
+# SlackIn
 
 ## Features
 
