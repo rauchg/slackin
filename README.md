@@ -1,4 +1,12 @@
-![](https://github.com/zeit/art/blob/e081cf46e6609b51ac485dcc337ac6644c0da5e7/slackin/repo-banner.png)
+## SlovenskoDigital špecifiká
+
+Toto je zámerne stará verzia z 5/2017.
+
+V najnovšej verzii je potrebná captcha. Tú nechceme reišiť, tak sme sa vrátili na commit 3ff77b9d6fc72508941fd4bd5a1e49eb4f2a650c . Okrem toho sme ešte opravili Dockerfile - v pôvodnom repe nebola locknutá verzia na node 6. Toto máme nasadené na produkcii.
+
+---
+
+# SlackIn
 
 ## Features
 
@@ -6,14 +14,14 @@
 - An `<iframe>` badge to embed on any website that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums (like GitHub README pages)
 
-Check out the [Demo](https://slackin-spzhjhzdnp.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
+Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
 ## Usage
 
 Set up [Now](https://zeit.co/now) on your device and run this command:
 
 ```bash
-$ now -e SLACK_API_TOKEN="<token>" -e SLACK_SUBDOMAIN="<team-name>" rauchg/slackin
+$ now -e SLACK_API_TOKEN="<token>" -e SLACK_SUBDOMAIN="<team-name>" now-examples/slackin
 ```
 
 Other platforms:

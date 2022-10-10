@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "Public Slack organizations made easy",
   "repository": "rauchg/slackin",
   "main": "dist/index",
