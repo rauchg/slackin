@@ -13,14 +13,6 @@
       "description": "A Slack API token (find it on https://api.slack.com/web)",
       "required": true
     },
-    "GOOGLE_CAPTCHA_SECRET": {
-      "description": "Google captcha secret key",
-      "required": true
-    },
-    "GOOGLE_CAPTCHA_SITEKEY": {
-      "description": "Google captcha site key",
-      "required": true
-    },
     "SLACK_COC": {
       "description": "A URL to a Code of Conduct people must agree on before joining.",
       "required": false

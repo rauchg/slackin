@@ -11,9 +11,35 @@ V najnovšej verzii je potrebná captcha. Tú nechceme reišiť, tak sme sa vrá
 - A landing page you can point users to fill in their emails and receive an invite (`https://slack.yourdomain.com`)
 - An `<iframe>` badge to embed on any website that shows connected users in *realtime* with socket.io.
 - A SVG badge that works well from static mediums (like GitHub README pages)
-- Abuse prevention via [Google reCAPTCHA](https://www.google.com/recaptcha/intro/)
+
+Check out the [Demo](https://slackin.now.sh/) or read more about the [motivations and history](http://rauchg.com/slackin) behind Slackin.
 
 ## Usage
+
+Set up [Now](https://zeit.co/now) on your device and run this command:
+
+```bash
+$ now -e SLACK_API_TOKEN="<token>" -e SLACK_SUBDOMAIN="<team-name>" now-examples/slackin
+```
+
+Other platforms:
+
+- [Heroku](https://heroku.com/deploy?template=https://github.com/rauchg/slackin/tree/master)
+- [Azure](https://azuredeploy.net/)
+- [OpenShift](https://github.com/rauchg/slackin/wiki/OpenShift)
+- [IBM Bluemix](https://bluemix.net/deploy?repository=https://github.com/rauchg/slackin)
+
+### Tips
+
+Your team id is what you use to access your login page on Slack (eg: https://**{this}**.slack.com).
+
+You can find or generate your API test token at [api.slack.com/web](https://api.slack.com/web) – note that the user you use to generate the token must be an admin. You need to create a dedicated `@slackin-inviter` user (or similar), mark that user an admin, and use a test token from that dedicated admin user.  Note that test tokens have actual permissions so you do not need to create an OAuth 2 app. Also check out the Slack docs on [generating a test token](https://get.slack.help/hc/en-us/articles/215770388-Creating-and-regenerating-API-tokens).
+
+**Important:** If you use Slackin in single-channel mode, you'll only be
+able to invite as many external accounts as paying members you have
+times 5. If you are not getting invite emails, this might be the reason.
+Workaround: sign up for a free org, and set up Slackin to point to it
+(all channels will be visible).
 
 ### Badges
 
@@ -21,7 +47,7 @@ V najnovšej verzii je potrebná captcha. Tú nechceme reišiť, tak sme sa vrá
 
 ```html
 <script async defer src="https://slack.yourdomain.com/slackin.js"></script>
-<!-- append "?large" to the URL for the large version -->
+<!-- append "?" to the URL for the large version -->
 ```
 
 #### SVG ([demo](https://cldup.com/jWUT4QFLnq.png))
@@ -35,7 +61,7 @@ V najnovšej verzii je potrebná captcha. Tú nechceme reišiť, tak sme sa vrá
 Loading `slackin` will return a `Function` that creates a `HTTP.Server` instance:
 
 ```js
-const slackin = require('slackin')
+import slackin from 'slackin'
 
 slackin.default({
   token: 'yourtoken',                             // required
