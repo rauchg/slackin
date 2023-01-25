@@ -27,25 +27,19 @@ istioIngress:
   gateways:
     - key: slack-apibuilder-io
       tld: apibuilder.io
+      selector: ingressgateway-apibuilder-io
       dns: true
       hosts:
         - slack.apibuilder.io
-    - key: slackin-flow-pub
-      tld: flo.pub
-      dns: true
-      hosts:
-        - slackin.flo.pub
 
 istioService:
   live:
     hosts:
       - slackin
       - slack.apibuilder.io
-      - slackin.flo.pub
     gateways:
       - mesh
       - slack-apibuilder-io
-      - slackin-flow-pub
     stages:
       - deployment: live
         weight: 100
