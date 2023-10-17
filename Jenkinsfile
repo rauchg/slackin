@@ -10,12 +10,7 @@ pipeline {
   agent {
     kubernetes {
       label 'worker-slackin'
-      inheritFrom 'default'
-
-      containerTemplates([
-        containerTemplate(name: 'helm', image: "lachlanevenson/k8s-helm:v2.17.0", command: 'cat', ttyEnabled: true),
-        containerTemplate(name: 'docker', image: 'docker:18', resourceRequestCpu: '1', resourceRequestMemory: '2Gi', command: 'cat', ttyEnabled: true)
-      ])
+      inheritFrom 'kaniko-slim'
     }
   }
 
@@ -46,15 +41,15 @@ pipeline {
     stage('Build and push docker image release') {
       when { branch 'main' }
       steps {
-        container('docker') {
+        container('kaniko') {
           script {
             semver = VERSION.printable()
-            
-            docker.withRegistry('https://index.docker.io/v1/', 'jenkins-dockerhub') {
-              db = docker.build("$ORG/slackin:$semver", '--network=host -f Dockerfile .')
-              db.push()
-            }
-            
+
+            sh """
+              /kaniko/executor -f `pwd`/Dockerfile -c `pwd` \
+              --snapshot-mode=redo --use-new-run  \
+              --destination ${env.ORG}/slackin:$semver
+            """ 
           }
         }
       }
